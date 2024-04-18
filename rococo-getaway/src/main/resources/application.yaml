@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: 'jdbc:mysql://localhost:3306/rococo'
+    username: admin
+    password: admin
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: 'http://127.0.0.1:9000'
+
+grpc:
+  client:
+    grpcArtistClient:
+      address: 'static://localhost:8092'
+      negotiationType: PLAINTEXT
+
+rococo-front:
+  base-uri: 'http://127.0.0.1:3000'
+
+server:
+  port: 8083
+
+
+logging:
+  level:
+    root: INFO
+    net.devh.boot.grpc: DEBUG
+    org.springframework.boot.autoconfigure: DEBUG

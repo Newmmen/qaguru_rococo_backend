@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: 'jdbc:mysql://localhost:3306/rococo'
+    username: admin
+    password: admin
+
+
+grpc:
+  server:
+    port: 8093

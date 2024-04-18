@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package guru.qa.grpc.rococo.grpc;
+
+option java_multiple_files = true;
+option java_package = "guru.qa.grpc.rococo.grpc";
+option java_outer_classname = "RococoServiceProto";
+
+service RococoArtistService {
+  rpc GetAllArtists (AllArtistRequest) returns (ArtistResponse) {}
+  rpc GetArtist (ArtistIdRequest) returns (Artist) {}
+}
+service RococoMuseumService {
+  rpc GetAllMuseums (AllMuseumRequest) returns (MuseumResponse) {}
+  rpc GetMuseum (MuseumIdRequest) returns (Museum) {}
+}
+service RococoPaintingService {
+  rpc GetAllPainting (AllPaintingRequest) returns (PaintingResponse) {}
+  rpc GetPainting (PaintingIdRequest) returns (Painting) {}
+}
+
+message ArtistResponse {
+  repeated Artist allArtists = 1;
+  int32 total_count = 2;
+}
+
+message MuseumResponse {
+  repeated Museum allMuseum = 1;
+  int32 total_count = 2;
+}
+message PaintingResponse {
+  repeated Painting allpainting = 1;
+  int32 total_count = 2;
+}
+
+message AllArtistRequest {
+  string name = 1;
+  int32 page_number = 2;
+  int32 page_size = 3;
+}
+
+message AllMuseumRequest {
+  string name = 1;
+  int32 page_number = 2;
+  int32 page_size = 3;
+}
+message AllPaintingRequest {
+  string name = 1;
+  int32 page_number = 2;
+  int32 page_size = 3;
+}
+
+message ArtistIdRequest {
+  string id = 1;
+}
+message MuseumIdRequest {
+  string id = 1;
+}
+message PaintingIdRequest {
+  string id = 1;
+}
+
+message Artist {
+  string id = 1;
+  string name = 2;
+  string biography = 3;
+  string photo = 4;
+}
+message Museum {
+  string id = 1;
+  string photo = 2;
+  string title = 3;
+  string description = 4;
+  Geo geo = 5;
+}
+message Painting {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  string content = 4;
+  Artist artist = 5;
+}
+message Geo {
+  string city = 1;
+  Country country = 2;
+}
+message Country {
+  string id = 1;
+  string name = 2;
+}
