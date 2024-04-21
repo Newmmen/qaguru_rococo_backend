@@ -1,9 +1,11 @@
 package guru.qa.rococoauth.service;
 
-import guru.qa.rococoauth.data.Authority;
-import guru.qa.rococoauth.data.AuthorityEntity;
+
+import java.util.UUID;
+
 import guru.qa.rococoauth.data.UserEntity;
 import guru.qa.rococoauth.data.repository.UserRepository;
+
 import guru.qa.rococoauth.model.UserJson;
 import jakarta.annotation.Nonnull;
 import org.slf4j.Logger;
@@ -37,21 +39,12 @@ public class UserService {
     String registerUser(@Nonnull String username, @Nonnull String password) {
         UserEntity userEntity = new UserEntity();
         userEntity.setEnabled(true);
-        userEntity.setAccountNonExpired(true);
-        userEntity.setCredentialsNonExpired(true);
-        userEntity.setAccountNonLocked(true);
         userEntity.setUsername(username);
         userEntity.setPassword(passwordEncoder.encode(password));
 
-        AuthorityEntity readAuthorityEntity = new AuthorityEntity();
-        readAuthorityEntity.setAuthority(Authority.read);
-        AuthorityEntity writeAuthorityEntity = new AuthorityEntity();
-        writeAuthorityEntity.setAuthority(Authority.write);
-
-        userEntity.addAuthorities(readAuthorityEntity, writeAuthorityEntity);
         String savedUser = userRepository.save(userEntity).getUsername();
-        kafkaTemplate.send("users", new UserJson(savedUser));
-        LOG.info("### Kafka topic [users] sent message: " + savedUser);
+      //  kafkaTemplate.send("users", new UserJson(savedUser));
+        //LOG.info("### Kafka topic [users] sent message: " + savedUser);
         return savedUser;
     }
 }

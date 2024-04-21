@@ -16,11 +16,9 @@ public class RococoUserPrincipal implements UserDetails {
         this.user = user;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return user.getAuthorities().stream()
-                .map(a -> new SimpleGrantedAuthority(a.getAuthority().name()))
-                .collect(Collectors.toList());
+
+    @Override public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 
     @Override
@@ -33,19 +31,16 @@ public class RococoUserPrincipal implements UserDetails {
         return user.getUsername();
     }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return user.getAccountNonExpired();
+    @Override public boolean isAccountNonExpired() {
+        return true;
     }
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return user.getAccountNonLocked();
+    @Override public boolean isAccountNonLocked() {
+        return true;
     }
 
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return user.getCredentialsNonExpired();
+    @Override public boolean isCredentialsNonExpired() {
+        return true;
     }
 
     @Override

@@ -14,6 +14,12 @@ grpc:
     grpcArtistClient:
       address: 'static://localhost:8092'
       negotiationType: PLAINTEXT
+    grpcPaintingClient:
+      address: 'static://localhost:8093'
+      negotiationType: PLAINTEXT
+    grpcUserClient:
+      address: 'static://localhost:8094'
+      negotiationType: PLAINTEXT
 
 rococo-front:
   base-uri: 'http://127.0.0.1:3000'
