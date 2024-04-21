@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import com.google.protobuf.ByteString;
 import guru.qa.grpc.rococo.grpc.AllPaintingRequest;
 import guru.qa.grpc.rococo.grpc.Artist;
 import guru.qa.grpc.rococo.grpc.ArtistResponse;
@@ -11,6 +12,7 @@ import guru.qa.grpc.rococo.grpc.Painting;
 import guru.qa.grpc.rococo.grpc.PaintingIdRequest;
 import guru.qa.grpc.rococo.grpc.PaintingResponse;
 import guru.qa.grpc.rococo.grpc.RococoPaintingServiceGrpc;
+import guru.qa.rococopainting.data.entity.PaintingEntity;
 import guru.qa.rococopainting.model.ArtistDto;
 import guru.qa.rococopainting.model.PaintingDto;
 import io.grpc.stub.StreamObserver;
@@ -25,17 +27,16 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
     @Override
     public void getAllPainting(AllPaintingRequest request,
                                 StreamObserver<PaintingResponse> responseObserver) {
-        List<PaintingDto> list = new ArrayList<>();
-        list.add(new PaintingDto(UUID.randomUUID(), "title", "description", "content",
-                new ArtistDto(UUID.randomUUID(), "name", "biography", "photo")));
+        List<PaintingEntity> list = new ArrayList<>();
+
 
         PaintingResponse paintingResponse = PaintingResponse.newBuilder().addAllAllpainting(list.stream()
                         .map( painting -> Painting.newBuilder()
-                                .setId(painting.id().toString())
-                                .setTitle(painting.title())
-                                .setDescription(painting.description())
-                                .setContent(painting.content())
-                                .setArtist(toGrpcMessage(painting.artist()))
+                                .setId(painting.getId().toString())
+                                .setTitle(painting.getTitle())
+                                .setDescription(painting.getDescription())
+                                .setContent(ByteString.copyFrom(painting.getContent()))
+                                .setArtist(toGrpcMessage(painting.getArtist()))
                                 .build())
                         .toList())
                 .build();
@@ -46,15 +47,14 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
     @Override
     public void getPainting(PaintingIdRequest request,
                             StreamObserver<Painting> responseObserver) {
-        PaintingDto paintingDto = new PaintingDto(UUID.randomUUID(), "title", "description", "content",
-                new ArtistDto(UUID.randomUUID(), "name", "biography", "photo"));
+        PaintingEntity paintingEntity = new PaintingEntity();
 
         Painting painting = Painting.newBuilder()
-                .setId(paintingDto.id().toString())
-                .setTitle(paintingDto.title())
-                .setDescription(paintingDto.description())
-                .setContent(paintingDto.content())
-                .setArtist(toGrpcMessage(paintingDto.artist()))
+                .setId(paintingEntity.getId().toString())
+                .setTitle(paintingEntity.getTitle())
+                .setDescription(paintingEntity.getDescription())
+                .setContent(ByteString.copyFrom(paintingEntity.getContent()))
+                .setArtist(toGrpcMessage(paintingEntity.getArtist()))
                 .build();
 
         responseObserver.onNext(painting);

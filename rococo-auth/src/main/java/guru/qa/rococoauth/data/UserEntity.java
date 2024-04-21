@@ -16,6 +16,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.kafka.common.protocol.types.Field;
 import org.hibernate.proxy.HibernateProxy;
 
 import static jakarta.persistence.FetchType.EAGER;
@@ -27,11 +28,17 @@ import static jakarta.persistence.FetchType.EAGER;
 public class UserEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false, columnDefinition = "UUID default gen_random_uuid()")
+    @Column(name = "id", nullable = false)
     private UUID id;
 
     @Column(nullable = false, unique = true)
     private String username;
+
+    @Column()
+    private String lastName;
+
+    @Column()
+    private String firstName;
 
     @Column(nullable = false)
     private String password;
@@ -39,29 +46,8 @@ public class UserEntity implements Serializable {
     @Column(nullable = false)
     private Boolean enabled;
 
-    @Column(name = "account_non_expired", nullable = false)
-    private Boolean accountNonExpired;
-
-    @Column(name = "account_non_locked", nullable = false)
-    private Boolean accountNonLocked;
-
-    @Column(name = "credentials_non_expired", nullable = false)
-    private Boolean credentialsNonExpired;
-
-    @OneToMany(fetch = EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
-    private List<AuthorityEntity> authorities = new ArrayList<>();
-
-    public void addAuthorities(AuthorityEntity... authorities) {
-        for (AuthorityEntity authority : authorities) {
-            this.authorities.add(authority);
-            authority.setUser(this);
-        }
-    }
-
-    public void removeAuthority(AuthorityEntity authority) {
-        this.authorities.remove(authority);
-        authority.setUser(null);
-    }
+    @Column()
+    private String avatar;
 
     @Override
     public final boolean equals(Object o) {

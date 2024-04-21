@@ -20,7 +20,7 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 import static org.apache.kafka.clients.producer.ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG;
 import static org.apache.kafka.clients.producer.ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG;
 
-@Configuration
+//@Configuration
 public class RococoAuthProducerConfiguration {
 
     private final KafkaProperties kafkaProperties;

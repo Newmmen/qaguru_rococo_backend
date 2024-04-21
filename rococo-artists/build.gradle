@@ -20,7 +20,11 @@ dependencies {
     implementation "net.devh:grpc-server-spring-boot-starter:${project.ext.springGrpcVersion}"
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation "org.flywaydb:flyway-core:${project.ext.flywayVersion}"
+    implementation "org.flywaydb:flyway-mysql"
     runtimeOnly 'mysql:mysql-connector-java:8.0.33'
+    compileOnly "org.projectlombok:lombok:${project.ext.lombokVersion}"
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

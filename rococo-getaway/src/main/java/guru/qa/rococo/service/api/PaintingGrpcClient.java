@@ -17,8 +17,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
+@Component
 public class PaintingGrpcClient {
 
     private static final Logger LOG = LoggerFactory.getLogger(PaintingGrpcClient.class);
@@ -51,7 +53,7 @@ public class PaintingGrpcClient {
         try {
             List<PaintingDto> paintingDtos =
                     rococoPaintingServiceBlockingStub.getAllPainting(AllPaintingRequest.newBuilder()
-                                    .setName(name)
+                                    .setName(name == null ? " ": name)
                                     .setPageNumber(pageable.getPageNumber())
                                     .setPageSize(pageable.getPageSize()).build()
                             ).getAllpaintingList()
