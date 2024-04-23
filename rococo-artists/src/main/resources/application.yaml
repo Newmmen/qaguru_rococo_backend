@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8082
 
 spring:
   datasource:
@@ -11,18 +11,18 @@ spring:
     baseline-on-migrate: true
     baseline-version: 0
     locations: classpath:migration/artist-init
-    jpa:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
       hibernate:
-        ddl-auto: none
-      properties:
-        hibernate:
-          jdbc:
-            lob:
-              non_contextual_creation: true
-      database-platform: org.hibernate.dialect.MySQLDialect
-      show-sql: false
-      generate-ddl: true
-      open-in-view: false
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: false
+    generate-ddl: true
+    open-in-view: false
 
 
 grpc:

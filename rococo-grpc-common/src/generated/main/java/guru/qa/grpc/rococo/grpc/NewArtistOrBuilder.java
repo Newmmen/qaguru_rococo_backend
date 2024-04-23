@@ -3,21 +3,21 @@
 
 package guru.qa.grpc.rococo.grpc;
 
-public interface ArtistOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:guru.qa.grpc.rococo.grpc.Artist)
+public interface NewArtistOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:guru.qa.grpc.rococo.grpc.NewArtist)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string id = 1;</code>
-   * @return The id.
+   * <code>string biography = 1;</code>
+   * @return The biography.
    */
-  java.lang.String getId();
+  java.lang.String getBiography();
   /**
-   * <code>string id = 1;</code>
-   * @return The bytes for id.
+   * <code>string biography = 1;</code>
+   * @return The bytes for biography.
    */
   com.google.protobuf.ByteString
-      getIdBytes();
+      getBiographyBytes();
 
   /**
    * <code>string name = 2;</code>
@@ -32,24 +32,12 @@ public interface ArtistOrBuilder extends
       getNameBytes();
 
   /**
-   * <code>string biography = 3;</code>
-   * @return The biography.
-   */
-  java.lang.String getBiography();
-  /**
-   * <code>string biography = 3;</code>
-   * @return The bytes for biography.
-   */
-  com.google.protobuf.ByteString
-      getBiographyBytes();
-
-  /**
-   * <code>string photo = 4;</code>
+   * <code>string photo = 3;</code>
    * @return The photo.
    */
   java.lang.String getPhoto();
   /**
-   * <code>string photo = 4;</code>
+   * <code>string photo = 3;</code>
    * @return The bytes for photo.
    */
   com.google.protobuf.ByteString

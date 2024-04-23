@@ -32,8 +32,8 @@ public class ArtistEntity implements Serializable {
     @Column()
     private String biography;
 
-    @Column(name = "photo", columnDefinition = "photo")
-    private byte[] photo;
+    @Column(name = "photo", columnDefinition = "MEDIUMTEXT")
+    private String photo;
 
     @Override
     public final boolean equals(Object o) {

@@ -9,8 +9,8 @@ import jakarta.validation.constraints.NotNull;
 
 public record ArtistDto(UUID id, String name, String biography, String photo) {
 
-
     public static @NotNull Artist toGrpcMessage(@NotNull ArtistEntity artistEntity) {
+
         return Artist.newBuilder()
                 .setId(artistEntity.getId().toString())
                 .setName(artistEntity.getName())

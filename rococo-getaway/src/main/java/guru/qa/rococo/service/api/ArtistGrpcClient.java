@@ -3,11 +3,14 @@ package guru.qa.rococo.service.api;
 import java.util.List;
 import java.util.UUID;
 
+import com.google.protobuf.ByteString;
 import guru.qa.grpc.rococo.grpc.AllArtistRequest;
 import guru.qa.grpc.rococo.grpc.Artist;
 import guru.qa.grpc.rococo.grpc.ArtistIdRequest;
+import guru.qa.grpc.rococo.grpc.NewArtist;
 import guru.qa.grpc.rococo.grpc.RococoArtistServiceGrpc;
 import guru.qa.rococo.model.ArtistDto;
+import guru.qa.rococo.model.NewArtistDto;
 import io.grpc.StatusRuntimeException;
 import jakarta.annotation.Nonnull;
 import net.devh.boot.grpc.client.inject.GrpcClient;
@@ -52,10 +55,26 @@ public class ArtistGrpcClient {
     }
 
     public @Nonnull
+    ArtistDto createArtist(NewArtistDto artistDto) {
+        try {
+            Artist artist =
+                    rococoArtistServiceBlockingStub.createArtist(
+                            NewArtist.newBuilder()
+                                    .setBiography(artistDto.biography())
+                                    .setName(artistDto.name())
+                                    .setPhoto(artistDto.photo()).build());
+            return fromGrpcMessage(artist);
+        } catch (StatusRuntimeException e) {
+            LOG.error("### Error while calling gRPC server ", e);
+            throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "The gRPC operation was cancelled", e);
+        }
+    }
+
+    public @Nonnull
     Page<ArtistDto> getAllArtist(String name, Pageable pageable) {
         try {
              List<ArtistDto> artistDtos = rococoArtistServiceBlockingStub.getAllArtists(AllArtistRequest.newBuilder()
-                            .setName(name)
+                            .setName(name == null ? " ": name)
                             .setPageNumber(pageable.getPageNumber())
                             .setPageSize(pageable.getPageSize()).build()
                     ).getAllArtistsList()
