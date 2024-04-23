@@ -36,7 +36,7 @@ public class PaintingEntity implements Serializable {
     private byte[] content;
 
     @ManyToOne
-    @JoinColumn(name = "artist_id")
+    @JoinColumn(name = "artist_id", referencedColumnName = "id")
     private ArtistEntity artist;
 
     @Override

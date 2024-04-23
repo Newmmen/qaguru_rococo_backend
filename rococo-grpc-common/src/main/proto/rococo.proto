@@ -11,6 +11,7 @@ option java_outer_classname = "RococoServiceProto";
 service RococoArtistService {
   rpc GetAllArtists (AllArtistRequest) returns (ArtistResponse) {}
   rpc GetArtist (ArtistIdRequest) returns (Artist) {}
+  rpc CreateArtist (NewArtist) returns (Artist) {}
 }
 service RococoMuseumService {
   rpc GetAllMuseums (AllMuseumRequest) returns (MuseumResponse) {}
@@ -72,7 +73,12 @@ message Artist {
   string id = 1;
   string name = 2;
   string biography = 3;
-  bytes photo = 4;
+  string photo = 4;
+}
+message NewArtist {
+  string biography = 1;
+  string name = 2;
+  string photo = 3;
 }
 message Museum {
   string id = 1;

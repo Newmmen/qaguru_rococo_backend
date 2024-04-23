@@ -2,19 +2,14 @@ package guru.qa.rococopainting.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import com.google.protobuf.ByteString;
 import guru.qa.grpc.rococo.grpc.AllPaintingRequest;
-import guru.qa.grpc.rococo.grpc.Artist;
-import guru.qa.grpc.rococo.grpc.ArtistResponse;
 import guru.qa.grpc.rococo.grpc.Painting;
 import guru.qa.grpc.rococo.grpc.PaintingIdRequest;
 import guru.qa.grpc.rococo.grpc.PaintingResponse;
 import guru.qa.grpc.rococo.grpc.RococoPaintingServiceGrpc;
 import guru.qa.rococopainting.data.entity.PaintingEntity;
-import guru.qa.rococopainting.model.ArtistDto;
-import guru.qa.rococopainting.model.PaintingDto;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 
@@ -28,7 +23,6 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
     public void getAllPainting(AllPaintingRequest request,
                                 StreamObserver<PaintingResponse> responseObserver) {
         List<PaintingEntity> list = new ArrayList<>();
-
 
         PaintingResponse paintingResponse = PaintingResponse.newBuilder().addAllAllpainting(list.stream()
                         .map( painting -> Painting.newBuilder()
