@@ -45,6 +45,11 @@ public final class RococoServiceProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_guru_qa_grpc_rococo_grpc_AllPaintingRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_guru_qa_grpc_rococo_grpc_AllPaintingByAuthorRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_guru_qa_grpc_rococo_grpc_AllPaintingByAuthorRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_guru_qa_grpc_rococo_grpc_ArtistIdRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -75,10 +80,20 @@ public final class RococoServiceProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_guru_qa_grpc_rococo_grpc_NewArtist_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_guru_qa_grpc_rococo_grpc_NewPainting_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_guru_qa_grpc_rococo_grpc_NewPainting_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_guru_qa_grpc_rococo_grpc_Museum_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_guru_qa_grpc_rococo_grpc_Museum_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_guru_qa_grpc_rococo_grpc_CreatedPainting_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_guru_qa_grpc_rococo_grpc_CreatedPainting_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_guru_qa_grpc_rococo_grpc_Painting_descriptor;
   static final 
@@ -122,41 +137,60 @@ public final class RococoServiceProto {
       "equest\022\014\n\004name\030\001 \001(\t\022\023\n\013page_number\030\002 \001(" +
       "\005\022\021\n\tpage_size\030\003 \001(\005\"J\n\022AllPaintingReque" +
       "st\022\014\n\004name\030\001 \001(\t\022\023\n\013page_number\030\002 \001(\005\022\021\n" +
-      "\tpage_size\030\003 \001(\005\"\035\n\017ArtistIdRequest\022\n\n\002i" +
-      "d\030\001 \001(\t\"\035\n\017MuseumIdRequest\022\n\n\002id\030\001 \001(\t\"\037" +
-      "\n\021PaintingIdRequest\022\n\n\002id\030\001 \001(\t\"!\n\rUserI" +
-      "dRequest\022\020\n\010username\030\001 \001(\t\"D\n\006Artist\022\n\n\002" +
-      "id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\021\n\tbiography\030\003 \001(" +
-      "\t\022\r\n\005photo\030\004 \001(\t\";\n\tNewArtist\022\021\n\tbiograp" +
-      "hy\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\r\n\005photo\030\003 \001(\t\"s\n" +
-      "\006Museum\022\n\n\002id\030\001 \001(\t\022\r\n\005photo\030\002 \001(\014\022\r\n\005ti" +
-      "tle\030\003 \001(\t\022\023\n\013description\030\004 \001(\t\022*\n\003geo\030\005 " +
-      "\001(\0132\035.guru.qa.grpc.rococo.grpc.Geo\"}\n\010Pa" +
-      "inting\022\n\n\002id\030\001 \001(\t\022\r\n\005title\030\002 \001(\t\022\023\n\013des" +
-      "cription\030\003 \001(\t\022\017\n\007content\030\004 \001(\014\0220\n\006artis" +
-      "t\030\005 \001(\0132 .guru.qa.grpc.rococo.grpc.Artis" +
-      "t\"Y\n\004User\022\n\n\002id\030\001 \001(\t\022\020\n\010username\030\002 \001(\t\022" +
-      "\021\n\tfirstname\030\003 \001(\t\022\020\n\010lastname\030\004 \001(\t\022\016\n\006" +
-      "avatar\030\005 \001(\014\"G\n\003Geo\022\014\n\004city\030\001 \001(\t\0222\n\007cou" +
-      "ntry\030\002 \001(\0132!.guru.qa.grpc.rococo.grpc.Co" +
-      "untry\"#\n\007Country\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001" +
-      "(\t2\263\002\n\023RococoArtistService\022g\n\rGetAllArti" +
-      "sts\022*.guru.qa.grpc.rococo.grpc.AllArtist" +
-      "Request\032(.guru.qa.grpc.rococo.grpc.Artis" +
-      "tResponse\"\000\022Z\n\tGetArtist\022).guru.qa.grpc." +
-      "rococo.grpc.ArtistIdRequest\032 .guru.qa.gr" +
-      "pc.rococo.grpc.Artist\"\000\022W\n\014CreateArtist\022" +
-      "#.guru.qa.grpc.rococo.grpc.NewArtist\032 .g" +
-      "uru.qa.grpc.rococo.grpc.Artist\"\0002\332\001\n\023Roc" +
-      "ocoMuseumService\022g\n\rGetAllMuseums\022*.guru" +
-      ".qa.grpc.rococo.grpc.AllMuseumRequest\032(." +
-      "guru.qa.grpc.rococo.grpc.MuseumResponse\"" +
-      "\000\022Z\n\tGetMuseum\022).guru.qa.grpc.rococo.grp" +
-      "c.MuseumIdRequest\032 .guru.qa.grpc.rococo." +
-      "grpc.Museum\"\0002\347\001\n\025RococoPaintingService\022" +
-      "l\n\016GetAllPainting\022,.guru.qa.grpc.rococo." +
-      "grpc.AllPaintingRequest\032*.guru.qa.grpc.r" +
-      "ococo.grpc.PaintingResponse\"\000\022`\n\013GetPain" +
+      "\tpage_size\030\003 \001(\005\"P\n\032AllPaintingByAuthorR" +
+      "equest\022\n\n\002id\030\001 \001(\t\022\023\n\013page_number\030\002 \001(\005\022" +
+      "\021\n\tpage_size\030\003 \001(\005\"\035\n\017ArtistIdRequest\022\n\n" +
+      "\002id\030\001 \001(\t\"\035\n\017MuseumIdRequest\022\n\n\002id\030\001 \001(\t" +
+      "\"\037\n\021PaintingIdRequest\022\n\n\002id\030\001 \001(\t\"!\n\rUse" +
+      "rIdRequest\022\020\n\010username\030\001 \001(\t\"D\n\006Artist\022\n" +
+      "\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\021\n\tbiography\030\003 " +
+      "\001(\t\022\r\n\005photo\030\004 \001(\t\";\n\tNewArtist\022\021\n\tbiogr" +
+      "aphy\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\r\n\005photo\030\003 \001(\t\"" +
+      "\270\001\n\013NewPainting\0229\n\006artist\030\001 \001(\0132).guru.q" +
+      "a.grpc.rococo.grpc.ArtistIdRequest\022\017\n\007co" +
+      "ntent\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\0229\n\006muse" +
+      "um\030\004 \001(\0132).guru.qa.grpc.rococo.grpc.Muse" +
+      "umIdRequest\022\r\n\005title\030\005 \001(\t\"s\n\006Museum\022\n\n\002" +
+      "id\030\001 \001(\t\022\r\n\005photo\030\002 \001(\014\022\r\n\005title\030\003 \001(\t\022\023" +
+      "\n\013description\030\004 \001(\t\022*\n\003geo\030\005 \001(\0132\035.guru." +
+      "qa.grpc.rococo.grpc.Geo\"\266\001\n\017CreatedPaint" +
+      "ing\022\n\n\002id\030\001 \001(\t\022\r\n\005title\030\002 \001(\t\022\023\n\013descri" +
+      "ption\030\003 \001(\t\022\017\n\007content\030\004 \001(\t\0220\n\006museum\030\005" +
+      " \001(\0132 .guru.qa.grpc.rococo.grpc.Museum\0220" +
+      "\n\006artist\030\006 \001(\0132 .guru.qa.grpc.rococo.grp" +
+      "c.Artist\"}\n\010Painting\022\n\n\002id\030\001 \001(\t\022\r\n\005titl" +
+      "e\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\022\017\n\007content\030" +
+      "\004 \001(\t\0220\n\006artist\030\005 \001(\0132 .guru.qa.grpc.roc" +
+      "oco.grpc.Artist\"Y\n\004User\022\n\n\002id\030\001 \001(\t\022\020\n\010u" +
+      "sername\030\002 \001(\t\022\021\n\tfirstname\030\003 \001(\t\022\020\n\010last" +
+      "name\030\004 \001(\t\022\016\n\006avatar\030\005 \001(\014\"G\n\003Geo\022\014\n\004cit" +
+      "y\030\001 \001(\t\0222\n\007country\030\002 \001(\0132!.guru.qa.grpc." +
+      "rococo.grpc.Country\"#\n\007Country\022\n\n\002id\030\001 \001" +
+      "(\t\022\014\n\004name\030\002 \001(\t2\211\003\n\023RococoArtistService" +
+      "\022g\n\rGetAllArtists\022*.guru.qa.grpc.rococo." +
+      "grpc.AllArtistRequest\032(.guru.qa.grpc.roc" +
+      "oco.grpc.ArtistResponse\"\000\022Z\n\tGetArtist\022)" +
+      ".guru.qa.grpc.rococo.grpc.ArtistIdReques" +
+      "t\032 .guru.qa.grpc.rococo.grpc.Artist\"\000\022W\n" +
+      "\014CreateArtist\022#.guru.qa.grpc.rococo.grpc" +
+      ".NewArtist\032 .guru.qa.grpc.rococo.grpc.Ar" +
+      "tist\"\000\022T\n\014UpdateArtist\022 .guru.qa.grpc.ro" +
+      "coco.grpc.Artist\032 .guru.qa.grpc.rococo.g" +
+      "rpc.Artist\"\0002\332\001\n\023RococoMuseumService\022g\n\r" +
+      "GetAllMuseums\022*.guru.qa.grpc.rococo.grpc" +
+      ".AllMuseumRequest\032(.guru.qa.grpc.rococo." +
+      "grpc.MuseumResponse\"\000\022Z\n\tGetMuseum\022).gur" +
+      "u.qa.grpc.rococo.grpc.MuseumIdRequest\032 ." +
+      "guru.qa.grpc.rococo.grpc.Museum\"\0002\303\003\n\025Ro" +
+      "cocoPaintingService\022l\n\016GetAllPainting\022,." +
+      "guru.qa.grpc.rococo.grpc.AllPaintingRequ" +
+      "est\032*.guru.qa.grpc.rococo.grpc.PaintingR" +
+      "esponse\"\000\022t\n\016GetAllByAuthor\0224.guru.qa.gr" +
+      "pc.rococo.grpc.AllPaintingByAuthorReques" +
+      "t\032*.guru.qa.grpc.rococo.grpc.PaintingRes" +
+      "ponse\"\000\022d\n\016CreatePainting\022%.guru.qa.grpc" +
+      ".rococo.grpc.NewPainting\032).guru.qa.grpc." +
+      "rococo.grpc.CreatedPainting\"\000\022`\n\013GetPain" +
       "ting\022+.guru.qa.grpc.rococo.grpc.Painting" +
       "IdRequest\032\".guru.qa.grpc.rococo.grpc.Pai" +
       "nting\"\0002i\n\021RococoUserService\022T\n\007GetUser\022" +
@@ -206,68 +240,86 @@ public final class RococoServiceProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_guru_qa_grpc_rococo_grpc_AllPaintingRequest_descriptor,
         new java.lang.String[] { "Name", "PageNumber", "PageSize", });
-    internal_static_guru_qa_grpc_rococo_grpc_ArtistIdRequest_descriptor =
+    internal_static_guru_qa_grpc_rococo_grpc_AllPaintingByAuthorRequest_descriptor =
       getDescriptor().getMessageTypes().get(6);
+    internal_static_guru_qa_grpc_rococo_grpc_AllPaintingByAuthorRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_guru_qa_grpc_rococo_grpc_AllPaintingByAuthorRequest_descriptor,
+        new java.lang.String[] { "Id", "PageNumber", "PageSize", });
+    internal_static_guru_qa_grpc_rococo_grpc_ArtistIdRequest_descriptor =
+      getDescriptor().getMessageTypes().get(7);
     internal_static_guru_qa_grpc_rococo_grpc_ArtistIdRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_guru_qa_grpc_rococo_grpc_ArtistIdRequest_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_guru_qa_grpc_rococo_grpc_MuseumIdRequest_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_guru_qa_grpc_rococo_grpc_MuseumIdRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_guru_qa_grpc_rococo_grpc_MuseumIdRequest_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_guru_qa_grpc_rococo_grpc_PaintingIdRequest_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_guru_qa_grpc_rococo_grpc_PaintingIdRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_guru_qa_grpc_rococo_grpc_PaintingIdRequest_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_guru_qa_grpc_rococo_grpc_UserIdRequest_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_guru_qa_grpc_rococo_grpc_UserIdRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_guru_qa_grpc_rococo_grpc_UserIdRequest_descriptor,
         new java.lang.String[] { "Username", });
     internal_static_guru_qa_grpc_rococo_grpc_Artist_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_guru_qa_grpc_rococo_grpc_Artist_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_guru_qa_grpc_rococo_grpc_Artist_descriptor,
         new java.lang.String[] { "Id", "Name", "Biography", "Photo", });
     internal_static_guru_qa_grpc_rococo_grpc_NewArtist_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_guru_qa_grpc_rococo_grpc_NewArtist_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_guru_qa_grpc_rococo_grpc_NewArtist_descriptor,
         new java.lang.String[] { "Biography", "Name", "Photo", });
+    internal_static_guru_qa_grpc_rococo_grpc_NewPainting_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_guru_qa_grpc_rococo_grpc_NewPainting_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_guru_qa_grpc_rococo_grpc_NewPainting_descriptor,
+        new java.lang.String[] { "Artist", "Content", "Description", "Museum", "Title", });
     internal_static_guru_qa_grpc_rococo_grpc_Museum_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_guru_qa_grpc_rococo_grpc_Museum_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_guru_qa_grpc_rococo_grpc_Museum_descriptor,
         new java.lang.String[] { "Id", "Photo", "Title", "Description", "Geo", });
+    internal_static_guru_qa_grpc_rococo_grpc_CreatedPainting_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_guru_qa_grpc_rococo_grpc_CreatedPainting_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_guru_qa_grpc_rococo_grpc_CreatedPainting_descriptor,
+        new java.lang.String[] { "Id", "Title", "Description", "Content", "Museum", "Artist", });
     internal_static_guru_qa_grpc_rococo_grpc_Painting_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_guru_qa_grpc_rococo_grpc_Painting_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_guru_qa_grpc_rococo_grpc_Painting_descriptor,
         new java.lang.String[] { "Id", "Title", "Description", "Content", "Artist", });
     internal_static_guru_qa_grpc_rococo_grpc_User_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_guru_qa_grpc_rococo_grpc_User_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_guru_qa_grpc_rococo_grpc_User_descriptor,
         new java.lang.String[] { "Id", "Username", "Firstname", "Lastname", "Avatar", });
     internal_static_guru_qa_grpc_rococo_grpc_Geo_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_guru_qa_grpc_rococo_grpc_Geo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_guru_qa_grpc_rococo_grpc_Geo_descriptor,
         new java.lang.String[] { "City", "Country", });
     internal_static_guru_qa_grpc_rococo_grpc_Country_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_guru_qa_grpc_rococo_grpc_Country_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_guru_qa_grpc_rococo_grpc_Country_descriptor,

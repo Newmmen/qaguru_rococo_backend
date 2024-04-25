@@ -30,6 +30,7 @@ public class GrpcArtistService extends RococoArtistServiceGrpc.RococoArtistServi
     @Override
     public void getAllArtists(AllArtistRequest request, StreamObserver<ArtistResponse> responseObserver) {
         Page<ArtistEntity> list;
+        //todo разобраться с кейсом, когда getName().equals(" ")
         if (request.getName().equals(" ")) {
             list = artistRepository.findAll(PageRequest.of(request.getPageNumber(), request.getPageSize()));
         } else {
@@ -85,6 +86,25 @@ public class GrpcArtistService extends RococoArtistServiceGrpc.RococoArtistServi
                 .build();
         responseObserver.onNext(artistResponse);
         responseObserver.onCompleted();
+    }
 
+    @Override
+    public void updateArtist(Artist request, StreamObserver<Artist> responseObserver) {
+        ArtistEntity artistEntity = artistRepository.findById(UUID.fromString(request.getId()))
+                .orElseThrow(() -> new NotFoundException("Can't find artist"));
+
+        artistEntity.setBiography(request.getBiography());
+        artistEntity.setName(request.getName());
+        artistEntity.setPhoto(request.getPhoto());
+
+        ArtistEntity createdArtist = artistRepository.save(artistEntity);
+        Artist artistResponse = Artist.newBuilder()
+                .setId(createdArtist.getId().toString())
+                .setName(createdArtist.getName())
+                .setBiography(createdArtist.getBiography())
+                .setPhoto(createdArtist.getPhoto())
+                .build();
+        responseObserver.onNext(artistResponse);
+        responseObserver.onCompleted();
     }
 }

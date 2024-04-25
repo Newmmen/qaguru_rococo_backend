@@ -12,6 +12,7 @@ service RococoArtistService {
   rpc GetAllArtists (AllArtistRequest) returns (ArtistResponse) {}
   rpc GetArtist (ArtistIdRequest) returns (Artist) {}
   rpc CreateArtist (NewArtist) returns (Artist) {}
+  rpc UpdateArtist (Artist) returns (Artist) {}
 }
 service RococoMuseumService {
   rpc GetAllMuseums (AllMuseumRequest) returns (MuseumResponse) {}
@@ -19,6 +20,8 @@ service RococoMuseumService {
 }
 service RococoPaintingService {
   rpc GetAllPainting (AllPaintingRequest) returns (PaintingResponse) {}
+  rpc GetAllByAuthor (AllPaintingByAuthorRequest) returns (PaintingResponse) {}
+  rpc CreatePainting (NewPainting) returns (CreatedPainting) {}
   rpc GetPainting (PaintingIdRequest) returns (Painting) {}
 }
 service RococoUserService {
@@ -55,6 +58,11 @@ message AllPaintingRequest {
   int32 page_number = 2;
   int32 page_size = 3;
 }
+message AllPaintingByAuthorRequest {
+  string id = 1;
+  int32 page_number = 2;
+  int32 page_size = 3;
+}
 
 message ArtistIdRequest {
   string id = 1;
@@ -80,6 +88,13 @@ message NewArtist {
   string name = 2;
   string photo = 3;
 }
+message NewPainting {
+  ArtistIdRequest artist = 1;
+  string content = 2;
+  string description = 3;
+  MuseumIdRequest museum = 4;
+  string title = 5;
+}
 message Museum {
   string id = 1;
   bytes photo = 2;
@@ -87,11 +102,19 @@ message Museum {
   string description = 4;
   Geo geo = 5;
 }
+message CreatedPainting {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  string content = 4;
+  Museum museum = 5;
+  Artist artist = 6;
+}
 message Painting {
   string id = 1;
   string title = 2;
   string description = 3;
-  bytes content = 4;
+  string content = 4;
   Artist artist = 5;
 }
 message User {

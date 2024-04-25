@@ -46,6 +46,68 @@ public final class RococoPaintingServiceGrpc {
     return getGetAllPaintingMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.AllPaintingByAuthorRequest,
+      guru.qa.grpc.rococo.grpc.PaintingResponse> getGetAllByAuthorMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetAllByAuthor",
+      requestType = guru.qa.grpc.rococo.grpc.AllPaintingByAuthorRequest.class,
+      responseType = guru.qa.grpc.rococo.grpc.PaintingResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.AllPaintingByAuthorRequest,
+      guru.qa.grpc.rococo.grpc.PaintingResponse> getGetAllByAuthorMethod() {
+    io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.AllPaintingByAuthorRequest, guru.qa.grpc.rococo.grpc.PaintingResponse> getGetAllByAuthorMethod;
+    if ((getGetAllByAuthorMethod = RococoPaintingServiceGrpc.getGetAllByAuthorMethod) == null) {
+      synchronized (RococoPaintingServiceGrpc.class) {
+        if ((getGetAllByAuthorMethod = RococoPaintingServiceGrpc.getGetAllByAuthorMethod) == null) {
+          RococoPaintingServiceGrpc.getGetAllByAuthorMethod = getGetAllByAuthorMethod =
+              io.grpc.MethodDescriptor.<guru.qa.grpc.rococo.grpc.AllPaintingByAuthorRequest, guru.qa.grpc.rococo.grpc.PaintingResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetAllByAuthor"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.AllPaintingByAuthorRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.PaintingResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new RococoPaintingServiceMethodDescriptorSupplier("GetAllByAuthor"))
+              .build();
+        }
+      }
+    }
+    return getGetAllByAuthorMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.NewPainting,
+      guru.qa.grpc.rococo.grpc.CreatedPainting> getCreatePaintingMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CreatePainting",
+      requestType = guru.qa.grpc.rococo.grpc.NewPainting.class,
+      responseType = guru.qa.grpc.rococo.grpc.CreatedPainting.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.NewPainting,
+      guru.qa.grpc.rococo.grpc.CreatedPainting> getCreatePaintingMethod() {
+    io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.NewPainting, guru.qa.grpc.rococo.grpc.CreatedPainting> getCreatePaintingMethod;
+    if ((getCreatePaintingMethod = RococoPaintingServiceGrpc.getCreatePaintingMethod) == null) {
+      synchronized (RococoPaintingServiceGrpc.class) {
+        if ((getCreatePaintingMethod = RococoPaintingServiceGrpc.getCreatePaintingMethod) == null) {
+          RococoPaintingServiceGrpc.getCreatePaintingMethod = getCreatePaintingMethod =
+              io.grpc.MethodDescriptor.<guru.qa.grpc.rococo.grpc.NewPainting, guru.qa.grpc.rococo.grpc.CreatedPainting>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreatePainting"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.NewPainting.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.CreatedPainting.getDefaultInstance()))
+              .setSchemaDescriptor(new RococoPaintingServiceMethodDescriptorSupplier("CreatePainting"))
+              .build();
+        }
+      }
+    }
+    return getCreatePaintingMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.PaintingIdRequest,
       guru.qa.grpc.rococo.grpc.Painting> getGetPaintingMethod;
 
@@ -134,6 +196,20 @@ public final class RococoPaintingServiceGrpc {
 
     /**
      */
+    default void getAllByAuthor(guru.qa.grpc.rococo.grpc.AllPaintingByAuthorRequest request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.PaintingResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetAllByAuthorMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void createPainting(guru.qa.grpc.rococo.grpc.NewPainting request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.CreatedPainting> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreatePaintingMethod(), responseObserver);
+    }
+
+    /**
+     */
     default void getPainting(guru.qa.grpc.rococo.grpc.PaintingIdRequest request,
         io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.Painting> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetPaintingMethod(), responseObserver);
@@ -177,6 +253,22 @@ public final class RococoPaintingServiceGrpc {
 
     /**
      */
+    public void getAllByAuthor(guru.qa.grpc.rococo.grpc.AllPaintingByAuthorRequest request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.PaintingResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetAllByAuthorMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void createPainting(guru.qa.grpc.rococo.grpc.NewPainting request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.CreatedPainting> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCreatePaintingMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void getPainting(guru.qa.grpc.rococo.grpc.PaintingIdRequest request,
         io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.Painting> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
@@ -205,6 +297,20 @@ public final class RococoPaintingServiceGrpc {
     public guru.qa.grpc.rococo.grpc.PaintingResponse getAllPainting(guru.qa.grpc.rococo.grpc.AllPaintingRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetAllPaintingMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public guru.qa.grpc.rococo.grpc.PaintingResponse getAllByAuthor(guru.qa.grpc.rococo.grpc.AllPaintingByAuthorRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetAllByAuthorMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public guru.qa.grpc.rococo.grpc.CreatedPainting createPainting(guru.qa.grpc.rococo.grpc.NewPainting request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCreatePaintingMethod(), getCallOptions(), request);
     }
 
     /**
@@ -241,6 +347,22 @@ public final class RococoPaintingServiceGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<guru.qa.grpc.rococo.grpc.PaintingResponse> getAllByAuthor(
+        guru.qa.grpc.rococo.grpc.AllPaintingByAuthorRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetAllByAuthorMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<guru.qa.grpc.rococo.grpc.CreatedPainting> createPainting(
+        guru.qa.grpc.rococo.grpc.NewPainting request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCreatePaintingMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<guru.qa.grpc.rococo.grpc.Painting> getPainting(
         guru.qa.grpc.rococo.grpc.PaintingIdRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
@@ -249,7 +371,9 @@ public final class RococoPaintingServiceGrpc {
   }
 
   private static final int METHODID_GET_ALL_PAINTING = 0;
-  private static final int METHODID_GET_PAINTING = 1;
+  private static final int METHODID_GET_ALL_BY_AUTHOR = 1;
+  private static final int METHODID_CREATE_PAINTING = 2;
+  private static final int METHODID_GET_PAINTING = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -271,6 +395,14 @@ public final class RococoPaintingServiceGrpc {
         case METHODID_GET_ALL_PAINTING:
           serviceImpl.getAllPainting((guru.qa.grpc.rococo.grpc.AllPaintingRequest) request,
               (io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.PaintingResponse>) responseObserver);
+          break;
+        case METHODID_GET_ALL_BY_AUTHOR:
+          serviceImpl.getAllByAuthor((guru.qa.grpc.rococo.grpc.AllPaintingByAuthorRequest) request,
+              (io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.PaintingResponse>) responseObserver);
+          break;
+        case METHODID_CREATE_PAINTING:
+          serviceImpl.createPainting((guru.qa.grpc.rococo.grpc.NewPainting) request,
+              (io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.CreatedPainting>) responseObserver);
           break;
         case METHODID_GET_PAINTING:
           serviceImpl.getPainting((guru.qa.grpc.rococo.grpc.PaintingIdRequest) request,
@@ -301,6 +433,20 @@ public final class RococoPaintingServiceGrpc {
               guru.qa.grpc.rococo.grpc.AllPaintingRequest,
               guru.qa.grpc.rococo.grpc.PaintingResponse>(
                 service, METHODID_GET_ALL_PAINTING)))
+        .addMethod(
+          getGetAllByAuthorMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              guru.qa.grpc.rococo.grpc.AllPaintingByAuthorRequest,
+              guru.qa.grpc.rococo.grpc.PaintingResponse>(
+                service, METHODID_GET_ALL_BY_AUTHOR)))
+        .addMethod(
+          getCreatePaintingMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              guru.qa.grpc.rococo.grpc.NewPainting,
+              guru.qa.grpc.rococo.grpc.CreatedPainting>(
+                service, METHODID_CREATE_PAINTING)))
         .addMethod(
           getGetPaintingMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -357,6 +503,8 @@ public final class RococoPaintingServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new RococoPaintingServiceFileDescriptorSupplier())
               .addMethod(getGetAllPaintingMethod())
+              .addMethod(getGetAllByAuthorMethod())
+              .addMethod(getCreatePaintingMethod())
               .addMethod(getGetPaintingMethod())
               .build();
         }

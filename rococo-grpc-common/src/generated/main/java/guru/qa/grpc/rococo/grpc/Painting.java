@@ -19,7 +19,7 @@ private static final long serialVersionUID = 0L;
     id_ = "";
     title_ = "";
     description_ = "";
-    content_ = com.google.protobuf.ByteString.EMPTY;
+    content_ = "";
   }
 
   @java.lang.Override
@@ -161,14 +161,42 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int CONTENT_FIELD_NUMBER = 4;
-  private com.google.protobuf.ByteString content_ = com.google.protobuf.ByteString.EMPTY;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object content_ = "";
   /**
-   * <code>bytes content = 4;</code>
+   * <code>string content = 4;</code>
    * @return The content.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getContent() {
-    return content_;
+  public java.lang.String getContent() {
+    java.lang.Object ref = content_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      content_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string content = 4;</code>
+   * @return The bytes for content.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getContentBytes() {
+    java.lang.Object ref = content_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      content_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int ARTIST_FIELD_NUMBER = 5;
@@ -220,8 +248,8 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, description_);
     }
-    if (!content_.isEmpty()) {
-      output.writeBytes(4, content_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(content_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, content_);
     }
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(5, getArtist());
@@ -244,9 +272,8 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, description_);
     }
-    if (!content_.isEmpty()) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(4, content_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(content_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, content_);
     }
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
@@ -443,7 +470,7 @@ private static final long serialVersionUID = 0L;
       id_ = "";
       title_ = "";
       description_ = "";
-      content_ = com.google.protobuf.ByteString.EMPTY;
+      content_ = "";
       artist_ = null;
       if (artistBuilder_ != null) {
         artistBuilder_.dispose();
@@ -563,8 +590,10 @@ private static final long serialVersionUID = 0L;
         bitField0_ |= 0x00000004;
         onChanged();
       }
-      if (other.getContent() != com.google.protobuf.ByteString.EMPTY) {
-        setContent(other.getContent());
+      if (!other.getContent().isEmpty()) {
+        content_ = other.content_;
+        bitField0_ |= 0x00000008;
+        onChanged();
       }
       if (other.hasArtist()) {
         mergeArtist(other.getArtist());
@@ -611,7 +640,7 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 26
             case 34: {
-              content_ = input.readBytes();
+              content_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000008;
               break;
             } // case 34
@@ -855,21 +884,47 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.ByteString content_ = com.google.protobuf.ByteString.EMPTY;
+    private java.lang.Object content_ = "";
     /**
-     * <code>bytes content = 4;</code>
+     * <code>string content = 4;</code>
      * @return The content.
      */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getContent() {
-      return content_;
+    public java.lang.String getContent() {
+      java.lang.Object ref = content_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        content_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>bytes content = 4;</code>
+     * <code>string content = 4;</code>
+     * @return The bytes for content.
+     */
+    public com.google.protobuf.ByteString
+        getContentBytes() {
+      java.lang.Object ref = content_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        content_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string content = 4;</code>
      * @param value The content to set.
      * @return This builder for chaining.
      */
-    public Builder setContent(com.google.protobuf.ByteString value) {
+    public Builder setContent(
+        java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       content_ = value;
       bitField0_ |= 0x00000008;
@@ -877,12 +932,26 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>bytes content = 4;</code>
+     * <code>string content = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearContent() {
-      bitField0_ = (bitField0_ & ~0x00000008);
       content_ = getDefaultInstance().getContent();
+      bitField0_ = (bitField0_ & ~0x00000008);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string content = 4;</code>
+     * @param value The bytes for content to set.
+     * @return This builder for chaining.
+     */
+    public Builder setContentBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      content_ = value;
+      bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
