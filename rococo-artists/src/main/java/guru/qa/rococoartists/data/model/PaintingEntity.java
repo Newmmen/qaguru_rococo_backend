@@ -32,8 +32,8 @@ public class PaintingEntity implements Serializable {
     @Column()
     private String description;
 
-    @Column(name = "content", columnDefinition = "BLOB")
-    private byte[] content;
+    @Column(name = "content", columnDefinition = "MEDIUMTEXT")
+    private String content;
 
     @ManyToOne
     @JoinColumn(name = "artist_id", referencedColumnName = "id")

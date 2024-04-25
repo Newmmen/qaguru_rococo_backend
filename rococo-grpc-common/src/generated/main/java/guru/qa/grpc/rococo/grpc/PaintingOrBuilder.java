@@ -44,10 +44,16 @@ public interface PaintingOrBuilder extends
       getDescriptionBytes();
 
   /**
-   * <code>bytes content = 4;</code>
+   * <code>string content = 4;</code>
    * @return The content.
    */
-  com.google.protobuf.ByteString getContent();
+  java.lang.String getContent();
+  /**
+   * <code>string content = 4;</code>
+   * @return The bytes for content.
+   */
+  com.google.protobuf.ByteString
+      getContentBytes();
 
   /**
    * <code>.guru.qa.grpc.rococo.grpc.Artist artist = 5;</code>

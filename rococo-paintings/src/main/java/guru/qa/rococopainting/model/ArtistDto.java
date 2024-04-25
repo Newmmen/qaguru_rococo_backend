@@ -15,7 +15,7 @@ public record ArtistDto(UUID id, String name, String biography, String photo) {
                 .setId(artistEntity.getId().toString())
                 .setName(artistEntity.getName())
                 .setBiography(artistEntity.getBiography())
-                .setPhoto(ByteString.copyFrom(artistEntity.getPhoto()))
+                .setPhoto(artistEntity.getPhoto())
                 .build();
     }
 }

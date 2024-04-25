@@ -108,6 +108,37 @@ public final class RococoArtistServiceGrpc {
     return getCreateArtistMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.Artist,
+      guru.qa.grpc.rococo.grpc.Artist> getUpdateArtistMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "UpdateArtist",
+      requestType = guru.qa.grpc.rococo.grpc.Artist.class,
+      responseType = guru.qa.grpc.rococo.grpc.Artist.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.Artist,
+      guru.qa.grpc.rococo.grpc.Artist> getUpdateArtistMethod() {
+    io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.Artist, guru.qa.grpc.rococo.grpc.Artist> getUpdateArtistMethod;
+    if ((getUpdateArtistMethod = RococoArtistServiceGrpc.getUpdateArtistMethod) == null) {
+      synchronized (RococoArtistServiceGrpc.class) {
+        if ((getUpdateArtistMethod = RococoArtistServiceGrpc.getUpdateArtistMethod) == null) {
+          RococoArtistServiceGrpc.getUpdateArtistMethod = getUpdateArtistMethod =
+              io.grpc.MethodDescriptor.<guru.qa.grpc.rococo.grpc.Artist, guru.qa.grpc.rococo.grpc.Artist>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateArtist"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.Artist.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.Artist.getDefaultInstance()))
+              .setSchemaDescriptor(new RococoArtistServiceMethodDescriptorSupplier("UpdateArtist"))
+              .build();
+        }
+      }
+    }
+    return getUpdateArtistMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -176,6 +207,13 @@ public final class RococoArtistServiceGrpc {
         io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.Artist> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateArtistMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void updateArtist(guru.qa.grpc.rococo.grpc.Artist request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.Artist> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateArtistMethod(), responseObserver);
+    }
   }
 
   /**
@@ -228,6 +266,14 @@ public final class RococoArtistServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCreateArtistMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void updateArtist(guru.qa.grpc.rococo.grpc.Artist request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.Artist> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getUpdateArtistMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -265,6 +311,13 @@ public final class RococoArtistServiceGrpc {
     public guru.qa.grpc.rococo.grpc.Artist createArtist(guru.qa.grpc.rococo.grpc.NewArtist request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCreateArtistMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public guru.qa.grpc.rococo.grpc.Artist updateArtist(guru.qa.grpc.rococo.grpc.Artist request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUpdateArtistMethod(), getCallOptions(), request);
     }
   }
 
@@ -307,11 +360,20 @@ public final class RococoArtistServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCreateArtistMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<guru.qa.grpc.rococo.grpc.Artist> updateArtist(
+        guru.qa.grpc.rococo.grpc.Artist request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getUpdateArtistMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_ALL_ARTISTS = 0;
   private static final int METHODID_GET_ARTIST = 1;
   private static final int METHODID_CREATE_ARTIST = 2;
+  private static final int METHODID_UPDATE_ARTIST = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -340,6 +402,10 @@ public final class RococoArtistServiceGrpc {
           break;
         case METHODID_CREATE_ARTIST:
           serviceImpl.createArtist((guru.qa.grpc.rococo.grpc.NewArtist) request,
+              (io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.Artist>) responseObserver);
+          break;
+        case METHODID_UPDATE_ARTIST:
+          serviceImpl.updateArtist((guru.qa.grpc.rococo.grpc.Artist) request,
               (io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.Artist>) responseObserver);
           break;
         default:
@@ -381,6 +447,13 @@ public final class RococoArtistServiceGrpc {
               guru.qa.grpc.rococo.grpc.NewArtist,
               guru.qa.grpc.rococo.grpc.Artist>(
                 service, METHODID_CREATE_ARTIST)))
+        .addMethod(
+          getUpdateArtistMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              guru.qa.grpc.rococo.grpc.Artist,
+              guru.qa.grpc.rococo.grpc.Artist>(
+                service, METHODID_UPDATE_ARTIST)))
         .build();
   }
 
@@ -432,6 +505,7 @@ public final class RococoArtistServiceGrpc {
               .addMethod(getGetAllArtistsMethod())
               .addMethod(getGetArtistMethod())
               .addMethod(getCreateArtistMethod())
+              .addMethod(getUpdateArtistMethod())
               .build();
         }
       }

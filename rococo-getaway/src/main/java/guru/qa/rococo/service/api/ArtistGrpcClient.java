@@ -71,6 +71,23 @@ public class ArtistGrpcClient {
     }
 
     public @Nonnull
+    ArtistDto updateArtist(ArtistDto artistDto) {
+        try {
+            Artist artist =
+                    rococoArtistServiceBlockingStub.updateArtist(
+                            Artist.newBuilder()
+                                    .setId(artistDto.id().toString())
+                                    .setBiography(artistDto.biography())
+                                    .setName(artistDto.name())
+                                    .setPhoto(artistDto.photo()).build());
+            return fromGrpcMessage(artist);
+        } catch (StatusRuntimeException e) {
+            LOG.error("### Error while calling gRPC server ", e);
+            throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "The gRPC operation was cancelled", e);
+        }
+    }
+
+    public @Nonnull
     Page<ArtistDto> getAllArtist(String name, Pageable pageable) {
         try {
              List<ArtistDto> artistDtos = rococoArtistServiceBlockingStub.getAllArtists(AllArtistRequest.newBuilder()
