@@ -139,6 +139,130 @@ public final class RococoPaintingServiceGrpc {
     return getGetPaintingMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.AllMuseumRequest,
+      guru.qa.grpc.rococo.grpc.MuseumResponse> getGetAllMuseumsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetAllMuseums",
+      requestType = guru.qa.grpc.rococo.grpc.AllMuseumRequest.class,
+      responseType = guru.qa.grpc.rococo.grpc.MuseumResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.AllMuseumRequest,
+      guru.qa.grpc.rococo.grpc.MuseumResponse> getGetAllMuseumsMethod() {
+    io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.AllMuseumRequest, guru.qa.grpc.rococo.grpc.MuseumResponse> getGetAllMuseumsMethod;
+    if ((getGetAllMuseumsMethod = RococoPaintingServiceGrpc.getGetAllMuseumsMethod) == null) {
+      synchronized (RococoPaintingServiceGrpc.class) {
+        if ((getGetAllMuseumsMethod = RococoPaintingServiceGrpc.getGetAllMuseumsMethod) == null) {
+          RococoPaintingServiceGrpc.getGetAllMuseumsMethod = getGetAllMuseumsMethod =
+              io.grpc.MethodDescriptor.<guru.qa.grpc.rococo.grpc.AllMuseumRequest, guru.qa.grpc.rococo.grpc.MuseumResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetAllMuseums"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.AllMuseumRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.MuseumResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new RococoPaintingServiceMethodDescriptorSupplier("GetAllMuseums"))
+              .build();
+        }
+      }
+    }
+    return getGetAllMuseumsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.MuseumIdRequest,
+      guru.qa.grpc.rococo.grpc.Museum> getGetMuseumMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetMuseum",
+      requestType = guru.qa.grpc.rococo.grpc.MuseumIdRequest.class,
+      responseType = guru.qa.grpc.rococo.grpc.Museum.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.MuseumIdRequest,
+      guru.qa.grpc.rococo.grpc.Museum> getGetMuseumMethod() {
+    io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.MuseumIdRequest, guru.qa.grpc.rococo.grpc.Museum> getGetMuseumMethod;
+    if ((getGetMuseumMethod = RococoPaintingServiceGrpc.getGetMuseumMethod) == null) {
+      synchronized (RococoPaintingServiceGrpc.class) {
+        if ((getGetMuseumMethod = RococoPaintingServiceGrpc.getGetMuseumMethod) == null) {
+          RococoPaintingServiceGrpc.getGetMuseumMethod = getGetMuseumMethod =
+              io.grpc.MethodDescriptor.<guru.qa.grpc.rococo.grpc.MuseumIdRequest, guru.qa.grpc.rococo.grpc.Museum>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetMuseum"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.MuseumIdRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.Museum.getDefaultInstance()))
+              .setSchemaDescriptor(new RococoPaintingServiceMethodDescriptorSupplier("GetMuseum"))
+              .build();
+        }
+      }
+    }
+    return getGetMuseumMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.AllCountryIdRequest,
+      guru.qa.grpc.rococo.grpc.CountryResponse> getGetAllCountryMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetAllCountry",
+      requestType = guru.qa.grpc.rococo.grpc.AllCountryIdRequest.class,
+      responseType = guru.qa.grpc.rococo.grpc.CountryResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.AllCountryIdRequest,
+      guru.qa.grpc.rococo.grpc.CountryResponse> getGetAllCountryMethod() {
+    io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.AllCountryIdRequest, guru.qa.grpc.rococo.grpc.CountryResponse> getGetAllCountryMethod;
+    if ((getGetAllCountryMethod = RococoPaintingServiceGrpc.getGetAllCountryMethod) == null) {
+      synchronized (RococoPaintingServiceGrpc.class) {
+        if ((getGetAllCountryMethod = RococoPaintingServiceGrpc.getGetAllCountryMethod) == null) {
+          RococoPaintingServiceGrpc.getGetAllCountryMethod = getGetAllCountryMethod =
+              io.grpc.MethodDescriptor.<guru.qa.grpc.rococo.grpc.AllCountryIdRequest, guru.qa.grpc.rococo.grpc.CountryResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetAllCountry"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.AllCountryIdRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.CountryResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new RococoPaintingServiceMethodDescriptorSupplier("GetAllCountry"))
+              .build();
+        }
+      }
+    }
+    return getGetAllCountryMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.NewMuseum,
+      guru.qa.grpc.rococo.grpc.CreatedMuseum> getCreateMuseumMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CreateMuseum",
+      requestType = guru.qa.grpc.rococo.grpc.NewMuseum.class,
+      responseType = guru.qa.grpc.rococo.grpc.CreatedMuseum.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.NewMuseum,
+      guru.qa.grpc.rococo.grpc.CreatedMuseum> getCreateMuseumMethod() {
+    io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.NewMuseum, guru.qa.grpc.rococo.grpc.CreatedMuseum> getCreateMuseumMethod;
+    if ((getCreateMuseumMethod = RococoPaintingServiceGrpc.getCreateMuseumMethod) == null) {
+      synchronized (RococoPaintingServiceGrpc.class) {
+        if ((getCreateMuseumMethod = RococoPaintingServiceGrpc.getCreateMuseumMethod) == null) {
+          RococoPaintingServiceGrpc.getCreateMuseumMethod = getCreateMuseumMethod =
+              io.grpc.MethodDescriptor.<guru.qa.grpc.rococo.grpc.NewMuseum, guru.qa.grpc.rococo.grpc.CreatedMuseum>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateMuseum"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.NewMuseum.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.CreatedMuseum.getDefaultInstance()))
+              .setSchemaDescriptor(new RococoPaintingServiceMethodDescriptorSupplier("CreateMuseum"))
+              .build();
+        }
+      }
+    }
+    return getCreateMuseumMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -214,6 +338,34 @@ public final class RococoPaintingServiceGrpc {
         io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.Painting> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetPaintingMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void getAllMuseums(guru.qa.grpc.rococo.grpc.AllMuseumRequest request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.MuseumResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetAllMuseumsMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getMuseum(guru.qa.grpc.rococo.grpc.MuseumIdRequest request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.Museum> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetMuseumMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getAllCountry(guru.qa.grpc.rococo.grpc.AllCountryIdRequest request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.CountryResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetAllCountryMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void createMuseum(guru.qa.grpc.rococo.grpc.NewMuseum request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.CreatedMuseum> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateMuseumMethod(), responseObserver);
+    }
   }
 
   /**
@@ -274,6 +426,38 @@ public final class RococoPaintingServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetPaintingMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getAllMuseums(guru.qa.grpc.rococo.grpc.AllMuseumRequest request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.MuseumResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetAllMuseumsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getMuseum(guru.qa.grpc.rococo.grpc.MuseumIdRequest request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.Museum> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetMuseumMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getAllCountry(guru.qa.grpc.rococo.grpc.AllCountryIdRequest request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.CountryResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetAllCountryMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void createMuseum(guru.qa.grpc.rococo.grpc.NewMuseum request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.CreatedMuseum> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCreateMuseumMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -318,6 +502,34 @@ public final class RococoPaintingServiceGrpc {
     public guru.qa.grpc.rococo.grpc.Painting getPainting(guru.qa.grpc.rococo.grpc.PaintingIdRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetPaintingMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public guru.qa.grpc.rococo.grpc.MuseumResponse getAllMuseums(guru.qa.grpc.rococo.grpc.AllMuseumRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetAllMuseumsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public guru.qa.grpc.rococo.grpc.Museum getMuseum(guru.qa.grpc.rococo.grpc.MuseumIdRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetMuseumMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public guru.qa.grpc.rococo.grpc.CountryResponse getAllCountry(guru.qa.grpc.rococo.grpc.AllCountryIdRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetAllCountryMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public guru.qa.grpc.rococo.grpc.CreatedMuseum createMuseum(guru.qa.grpc.rococo.grpc.NewMuseum request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCreateMuseumMethod(), getCallOptions(), request);
     }
   }
 
@@ -368,12 +580,48 @@ public final class RococoPaintingServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetPaintingMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<guru.qa.grpc.rococo.grpc.MuseumResponse> getAllMuseums(
+        guru.qa.grpc.rococo.grpc.AllMuseumRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetAllMuseumsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<guru.qa.grpc.rococo.grpc.Museum> getMuseum(
+        guru.qa.grpc.rococo.grpc.MuseumIdRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetMuseumMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<guru.qa.grpc.rococo.grpc.CountryResponse> getAllCountry(
+        guru.qa.grpc.rococo.grpc.AllCountryIdRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetAllCountryMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<guru.qa.grpc.rococo.grpc.CreatedMuseum> createMuseum(
+        guru.qa.grpc.rococo.grpc.NewMuseum request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCreateMuseumMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_ALL_PAINTING = 0;
   private static final int METHODID_GET_ALL_BY_AUTHOR = 1;
   private static final int METHODID_CREATE_PAINTING = 2;
   private static final int METHODID_GET_PAINTING = 3;
+  private static final int METHODID_GET_ALL_MUSEUMS = 4;
+  private static final int METHODID_GET_MUSEUM = 5;
+  private static final int METHODID_GET_ALL_COUNTRY = 6;
+  private static final int METHODID_CREATE_MUSEUM = 7;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -407,6 +655,22 @@ public final class RococoPaintingServiceGrpc {
         case METHODID_GET_PAINTING:
           serviceImpl.getPainting((guru.qa.grpc.rococo.grpc.PaintingIdRequest) request,
               (io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.Painting>) responseObserver);
+          break;
+        case METHODID_GET_ALL_MUSEUMS:
+          serviceImpl.getAllMuseums((guru.qa.grpc.rococo.grpc.AllMuseumRequest) request,
+              (io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.MuseumResponse>) responseObserver);
+          break;
+        case METHODID_GET_MUSEUM:
+          serviceImpl.getMuseum((guru.qa.grpc.rococo.grpc.MuseumIdRequest) request,
+              (io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.Museum>) responseObserver);
+          break;
+        case METHODID_GET_ALL_COUNTRY:
+          serviceImpl.getAllCountry((guru.qa.grpc.rococo.grpc.AllCountryIdRequest) request,
+              (io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.CountryResponse>) responseObserver);
+          break;
+        case METHODID_CREATE_MUSEUM:
+          serviceImpl.createMuseum((guru.qa.grpc.rococo.grpc.NewMuseum) request,
+              (io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.CreatedMuseum>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -454,6 +718,34 @@ public final class RococoPaintingServiceGrpc {
               guru.qa.grpc.rococo.grpc.PaintingIdRequest,
               guru.qa.grpc.rococo.grpc.Painting>(
                 service, METHODID_GET_PAINTING)))
+        .addMethod(
+          getGetAllMuseumsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              guru.qa.grpc.rococo.grpc.AllMuseumRequest,
+              guru.qa.grpc.rococo.grpc.MuseumResponse>(
+                service, METHODID_GET_ALL_MUSEUMS)))
+        .addMethod(
+          getGetMuseumMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              guru.qa.grpc.rococo.grpc.MuseumIdRequest,
+              guru.qa.grpc.rococo.grpc.Museum>(
+                service, METHODID_GET_MUSEUM)))
+        .addMethod(
+          getGetAllCountryMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              guru.qa.grpc.rococo.grpc.AllCountryIdRequest,
+              guru.qa.grpc.rococo.grpc.CountryResponse>(
+                service, METHODID_GET_ALL_COUNTRY)))
+        .addMethod(
+          getCreateMuseumMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              guru.qa.grpc.rococo.grpc.NewMuseum,
+              guru.qa.grpc.rococo.grpc.CreatedMuseum>(
+                service, METHODID_CREATE_MUSEUM)))
         .build();
   }
 
@@ -506,6 +798,10 @@ public final class RococoPaintingServiceGrpc {
               .addMethod(getGetAllByAuthorMethod())
               .addMethod(getCreatePaintingMethod())
               .addMethod(getGetPaintingMethod())
+              .addMethod(getGetAllMuseumsMethod())
+              .addMethod(getGetMuseumMethod())
+              .addMethod(getGetAllCountryMethod())
+              .addMethod(getCreateMuseumMethod())
               .build();
         }
       }

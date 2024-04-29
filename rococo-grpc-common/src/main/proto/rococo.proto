@@ -14,15 +14,15 @@ service RococoArtistService {
   rpc CreateArtist (NewArtist) returns (Artist) {}
   rpc UpdateArtist (Artist) returns (Artist) {}
 }
-service RococoMuseumService {
-  rpc GetAllMuseums (AllMuseumRequest) returns (MuseumResponse) {}
-  rpc GetMuseum (MuseumIdRequest) returns (Museum) {}
-}
 service RococoPaintingService {
   rpc GetAllPainting (AllPaintingRequest) returns (PaintingResponse) {}
   rpc GetAllByAuthor (AllPaintingByAuthorRequest) returns (PaintingResponse) {}
   rpc CreatePainting (NewPainting) returns (CreatedPainting) {}
   rpc GetPainting (PaintingIdRequest) returns (Painting) {}
+  rpc GetAllMuseums (AllMuseumRequest) returns (MuseumResponse) {}
+  rpc GetMuseum (MuseumIdRequest) returns (Museum) {}
+  rpc GetAllCountry (AllCountryIdRequest) returns (CountryResponse) {}
+  rpc CreateMuseum (NewMuseum) returns (CreatedMuseum) {}
 }
 service RococoUserService {
   rpc GetUser (UserIdRequest) returns (User) {}
@@ -39,6 +39,10 @@ message MuseumResponse {
 }
 message PaintingResponse {
   repeated Painting allpainting = 1;
+  int32 total_count = 2;
+}
+message CountryResponse {
+  repeated Country allCountry = 1;
   int32 total_count = 2;
 }
 
@@ -63,6 +67,10 @@ message AllPaintingByAuthorRequest {
   int32 page_number = 2;
   int32 page_size = 3;
 }
+message AllCountryIdRequest {
+  int32 page_number = 1;
+  int32 page_size = 2;
+}
 
 message ArtistIdRequest {
   string id = 1;
@@ -75,6 +83,13 @@ message PaintingIdRequest {
 }
 message UserIdRequest {
   string username = 1;
+}
+message GeoIdRequest {
+  string city = 1;
+  CountryIdRequest country = 2;
+}
+message CountryIdRequest {
+  string id = 1;
 }
 
 message Artist {
@@ -95,9 +110,15 @@ message NewPainting {
   MuseumIdRequest museum = 4;
   string title = 5;
 }
+message NewMuseum {
+  string description = 1;
+  GeoIdRequest geo = 2;
+  string photo = 3;
+  string title = 4;
+}
 message Museum {
   string id = 1;
-  bytes photo = 2;
+  string photo = 2;
   string title = 3;
   string description = 4;
   Geo geo = 5;
@@ -109,6 +130,13 @@ message CreatedPainting {
   string content = 4;
   Museum museum = 5;
   Artist artist = 6;
+}
+message CreatedMuseum {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  string photo = 4;
+  Geo geo = 5;
 }
 message Painting {
   string id = 1;
