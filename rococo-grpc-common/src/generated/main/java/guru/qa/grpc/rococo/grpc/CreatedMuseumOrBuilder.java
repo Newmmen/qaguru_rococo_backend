@@ -3,8 +3,8 @@
 
 package guru.qa.grpc.rococo.grpc;
 
-public interface MuseumOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:guru.qa.grpc.rococo.grpc.Museum)
+public interface CreatedMuseumOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:guru.qa.grpc.rococo.grpc.CreatedMuseum)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -20,40 +20,40 @@ public interface MuseumOrBuilder extends
       getIdBytes();
 
   /**
-   * <code>string photo = 2;</code>
-   * @return The photo.
-   */
-  java.lang.String getPhoto();
-  /**
-   * <code>string photo = 2;</code>
-   * @return The bytes for photo.
-   */
-  com.google.protobuf.ByteString
-      getPhotoBytes();
-
-  /**
-   * <code>string title = 3;</code>
+   * <code>string title = 2;</code>
    * @return The title.
    */
   java.lang.String getTitle();
   /**
-   * <code>string title = 3;</code>
+   * <code>string title = 2;</code>
    * @return The bytes for title.
    */
   com.google.protobuf.ByteString
       getTitleBytes();
 
   /**
-   * <code>string description = 4;</code>
+   * <code>string description = 3;</code>
    * @return The description.
    */
   java.lang.String getDescription();
   /**
-   * <code>string description = 4;</code>
+   * <code>string description = 3;</code>
    * @return The bytes for description.
    */
   com.google.protobuf.ByteString
       getDescriptionBytes();
+
+  /**
+   * <code>string photo = 4;</code>
+   * @return The photo.
+   */
+  java.lang.String getPhoto();
+  /**
+   * <code>string photo = 4;</code>
+   * @return The bytes for photo.
+   */
+  com.google.protobuf.ByteString
+      getPhotoBytes();
 
   /**
    * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>

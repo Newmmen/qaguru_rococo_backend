@@ -3,6 +3,5 @@ include 'rococo-artists'
 include 'rococo-getaway'
 include 'rococo-auth'
 include 'rococo-paintings'
-include 'rococo-museums'
 include ':rococo-grpc-common'
 

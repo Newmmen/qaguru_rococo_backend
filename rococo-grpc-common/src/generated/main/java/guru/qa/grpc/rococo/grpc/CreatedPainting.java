@@ -4,42 +4,42 @@
 package guru.qa.grpc.rococo.grpc;
 
 /**
- * Protobuf type {@code guru.qa.grpc.rococo.grpc.Museum}
+ * Protobuf type {@code guru.qa.grpc.rococo.grpc.CreatedPainting}
  */
-public final class Museum extends
+public final class CreatedPainting extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:guru.qa.grpc.rococo.grpc.Museum)
-    MuseumOrBuilder {
+    // @@protoc_insertion_point(message_implements:guru.qa.grpc.rococo.grpc.CreatedPainting)
+    CreatedPaintingOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use Museum.newBuilder() to construct.
-  private Museum(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use CreatedPainting.newBuilder() to construct.
+  private CreatedPainting(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private Museum() {
+  private CreatedPainting() {
     id_ = "";
-    photo_ = "";
     title_ = "";
     description_ = "";
+    content_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new Museum();
+    return new CreatedPainting();
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_Museum_descriptor;
+    return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_CreatedPainting_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_Museum_fieldAccessorTable
+    return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_CreatedPainting_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            guru.qa.grpc.rococo.grpc.Museum.class, guru.qa.grpc.rococo.grpc.Museum.Builder.class);
+            guru.qa.grpc.rococo.grpc.CreatedPainting.class, guru.qa.grpc.rococo.grpc.CreatedPainting.Builder.class);
   }
 
   private int bitField0_;
@@ -82,50 +82,11 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int PHOTO_FIELD_NUMBER = 2;
-  @SuppressWarnings("serial")
-  private volatile java.lang.Object photo_ = "";
-  /**
-   * <code>string photo = 2;</code>
-   * @return The photo.
-   */
-  @java.lang.Override
-  public java.lang.String getPhoto() {
-    java.lang.Object ref = photo_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      photo_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string photo = 2;</code>
-   * @return The bytes for photo.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getPhotoBytes() {
-    java.lang.Object ref = photo_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      photo_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int TITLE_FIELD_NUMBER = 3;
+  public static final int TITLE_FIELD_NUMBER = 2;
   @SuppressWarnings("serial")
   private volatile java.lang.Object title_ = "";
   /**
-   * <code>string title = 3;</code>
+   * <code>string title = 2;</code>
    * @return The title.
    */
   @java.lang.Override
@@ -142,7 +103,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string title = 3;</code>
+   * <code>string title = 2;</code>
    * @return The bytes for title.
    */
   @java.lang.Override
@@ -160,11 +121,11 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int DESCRIPTION_FIELD_NUMBER = 4;
+  public static final int DESCRIPTION_FIELD_NUMBER = 3;
   @SuppressWarnings("serial")
   private volatile java.lang.Object description_ = "";
   /**
-   * <code>string description = 4;</code>
+   * <code>string description = 3;</code>
    * @return The description.
    */
   @java.lang.Override
@@ -181,7 +142,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string description = 4;</code>
+   * <code>string description = 3;</code>
    * @return The bytes for description.
    */
   @java.lang.Override
@@ -199,30 +160,95 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int GEO_FIELD_NUMBER = 5;
-  private guru.qa.grpc.rococo.grpc.Geo geo_;
+  public static final int CONTENT_FIELD_NUMBER = 4;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object content_ = "";
   /**
-   * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
-   * @return Whether the geo field is set.
+   * <code>string content = 4;</code>
+   * @return The content.
    */
   @java.lang.Override
-  public boolean hasGeo() {
+  public java.lang.String getContent() {
+    java.lang.Object ref = content_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      content_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string content = 4;</code>
+   * @return The bytes for content.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getContentBytes() {
+    java.lang.Object ref = content_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      content_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int MUSEUM_FIELD_NUMBER = 5;
+  private guru.qa.grpc.rococo.grpc.Museum museum_;
+  /**
+   * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 5;</code>
+   * @return Whether the museum field is set.
+   */
+  @java.lang.Override
+  public boolean hasMuseum() {
     return ((bitField0_ & 0x00000001) != 0);
   }
   /**
-   * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
-   * @return The geo.
+   * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 5;</code>
+   * @return The museum.
    */
   @java.lang.Override
-  public guru.qa.grpc.rococo.grpc.Geo getGeo() {
-    return geo_ == null ? guru.qa.grpc.rococo.grpc.Geo.getDefaultInstance() : geo_;
+  public guru.qa.grpc.rococo.grpc.Museum getMuseum() {
+    return museum_ == null ? guru.qa.grpc.rococo.grpc.Museum.getDefaultInstance() : museum_;
   }
   /**
-   * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+   * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 5;</code>
    */
   @java.lang.Override
-  public guru.qa.grpc.rococo.grpc.GeoOrBuilder getGeoOrBuilder() {
-    return geo_ == null ? guru.qa.grpc.rococo.grpc.Geo.getDefaultInstance() : geo_;
+  public guru.qa.grpc.rococo.grpc.MuseumOrBuilder getMuseumOrBuilder() {
+    return museum_ == null ? guru.qa.grpc.rococo.grpc.Museum.getDefaultInstance() : museum_;
+  }
+
+  public static final int ARTIST_FIELD_NUMBER = 6;
+  private guru.qa.grpc.rococo.grpc.Artist artist_;
+  /**
+   * <code>.guru.qa.grpc.rococo.grpc.Artist artist = 6;</code>
+   * @return Whether the artist field is set.
+   */
+  @java.lang.Override
+  public boolean hasArtist() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <code>.guru.qa.grpc.rococo.grpc.Artist artist = 6;</code>
+   * @return The artist.
+   */
+  @java.lang.Override
+  public guru.qa.grpc.rococo.grpc.Artist getArtist() {
+    return artist_ == null ? guru.qa.grpc.rococo.grpc.Artist.getDefaultInstance() : artist_;
+  }
+  /**
+   * <code>.guru.qa.grpc.rococo.grpc.Artist artist = 6;</code>
+   */
+  @java.lang.Override
+  public guru.qa.grpc.rococo.grpc.ArtistOrBuilder getArtistOrBuilder() {
+    return artist_ == null ? guru.qa.grpc.rococo.grpc.Artist.getDefaultInstance() : artist_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -242,17 +268,20 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(photo_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, photo_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(title_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, title_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, title_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, description_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, description_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(content_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, content_);
     }
     if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeMessage(5, getGeo());
+      output.writeMessage(5, getMuseum());
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      output.writeMessage(6, getArtist());
     }
     getUnknownFields().writeTo(output);
   }
@@ -266,18 +295,22 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(photo_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, photo_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(title_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, title_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, title_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, description_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, description_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(content_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, content_);
     }
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, getGeo());
+        .computeMessageSize(5, getMuseum());
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(6, getArtist());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -289,23 +322,28 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof guru.qa.grpc.rococo.grpc.Museum)) {
+    if (!(obj instanceof guru.qa.grpc.rococo.grpc.CreatedPainting)) {
       return super.equals(obj);
     }
-    guru.qa.grpc.rococo.grpc.Museum other = (guru.qa.grpc.rococo.grpc.Museum) obj;
+    guru.qa.grpc.rococo.grpc.CreatedPainting other = (guru.qa.grpc.rococo.grpc.CreatedPainting) obj;
 
     if (!getId()
         .equals(other.getId())) return false;
-    if (!getPhoto()
-        .equals(other.getPhoto())) return false;
     if (!getTitle()
         .equals(other.getTitle())) return false;
     if (!getDescription()
         .equals(other.getDescription())) return false;
-    if (hasGeo() != other.hasGeo()) return false;
-    if (hasGeo()) {
-      if (!getGeo()
-          .equals(other.getGeo())) return false;
+    if (!getContent()
+        .equals(other.getContent())) return false;
+    if (hasMuseum() != other.hasMuseum()) return false;
+    if (hasMuseum()) {
+      if (!getMuseum()
+          .equals(other.getMuseum())) return false;
+    }
+    if (hasArtist() != other.hasArtist()) return false;
+    if (hasArtist()) {
+      if (!getArtist()
+          .equals(other.getArtist())) return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -320,59 +358,63 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + getId().hashCode();
-    hash = (37 * hash) + PHOTO_FIELD_NUMBER;
-    hash = (53 * hash) + getPhoto().hashCode();
     hash = (37 * hash) + TITLE_FIELD_NUMBER;
     hash = (53 * hash) + getTitle().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
     hash = (53 * hash) + getDescription().hashCode();
-    if (hasGeo()) {
-      hash = (37 * hash) + GEO_FIELD_NUMBER;
-      hash = (53 * hash) + getGeo().hashCode();
+    hash = (37 * hash) + CONTENT_FIELD_NUMBER;
+    hash = (53 * hash) + getContent().hashCode();
+    if (hasMuseum()) {
+      hash = (37 * hash) + MUSEUM_FIELD_NUMBER;
+      hash = (53 * hash) + getMuseum().hashCode();
+    }
+    if (hasArtist()) {
+      hash = (37 * hash) + ARTIST_FIELD_NUMBER;
+      hash = (53 * hash) + getArtist().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedPainting parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedPainting parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedPainting parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedPainting parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(byte[] data)
+  public static guru.qa.grpc.rococo.grpc.CreatedPainting parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedPainting parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(java.io.InputStream input)
+  public static guru.qa.grpc.rococo.grpc.CreatedPainting parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedPainting parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -380,26 +422,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static guru.qa.grpc.rococo.grpc.Museum parseDelimitedFrom(java.io.InputStream input)
+  public static guru.qa.grpc.rococo.grpc.CreatedPainting parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static guru.qa.grpc.rococo.grpc.Museum parseDelimitedFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedPainting parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedPainting parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedPainting parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -412,7 +454,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(guru.qa.grpc.rococo.grpc.Museum prototype) {
+  public static Builder newBuilder(guru.qa.grpc.rococo.grpc.CreatedPainting prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -428,26 +470,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code guru.qa.grpc.rococo.grpc.Museum}
+   * Protobuf type {@code guru.qa.grpc.rococo.grpc.CreatedPainting}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:guru.qa.grpc.rococo.grpc.Museum)
-      guru.qa.grpc.rococo.grpc.MuseumOrBuilder {
+      // @@protoc_insertion_point(builder_implements:guru.qa.grpc.rococo.grpc.CreatedPainting)
+      guru.qa.grpc.rococo.grpc.CreatedPaintingOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_Museum_descriptor;
+      return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_CreatedPainting_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_Museum_fieldAccessorTable
+      return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_CreatedPainting_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              guru.qa.grpc.rococo.grpc.Museum.class, guru.qa.grpc.rococo.grpc.Museum.Builder.class);
+              guru.qa.grpc.rococo.grpc.CreatedPainting.class, guru.qa.grpc.rococo.grpc.CreatedPainting.Builder.class);
     }
 
-    // Construct using guru.qa.grpc.rococo.grpc.Museum.newBuilder()
+    // Construct using guru.qa.grpc.rococo.grpc.CreatedPainting.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -460,7 +502,8 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getGeoFieldBuilder();
+        getMuseumFieldBuilder();
+        getArtistFieldBuilder();
       }
     }
     @java.lang.Override
@@ -468,13 +511,18 @@ private static final long serialVersionUID = 0L;
       super.clear();
       bitField0_ = 0;
       id_ = "";
-      photo_ = "";
       title_ = "";
       description_ = "";
-      geo_ = null;
-      if (geoBuilder_ != null) {
-        geoBuilder_.dispose();
-        geoBuilder_ = null;
+      content_ = "";
+      museum_ = null;
+      if (museumBuilder_ != null) {
+        museumBuilder_.dispose();
+        museumBuilder_ = null;
+      }
+      artist_ = null;
+      if (artistBuilder_ != null) {
+        artistBuilder_.dispose();
+        artistBuilder_ = null;
       }
       return this;
     }
@@ -482,17 +530,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_Museum_descriptor;
+      return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_CreatedPainting_descriptor;
     }
 
     @java.lang.Override
-    public guru.qa.grpc.rococo.grpc.Museum getDefaultInstanceForType() {
-      return guru.qa.grpc.rococo.grpc.Museum.getDefaultInstance();
+    public guru.qa.grpc.rococo.grpc.CreatedPainting getDefaultInstanceForType() {
+      return guru.qa.grpc.rococo.grpc.CreatedPainting.getDefaultInstance();
     }
 
     @java.lang.Override
-    public guru.qa.grpc.rococo.grpc.Museum build() {
-      guru.qa.grpc.rococo.grpc.Museum result = buildPartial();
+    public guru.qa.grpc.rococo.grpc.CreatedPainting build() {
+      guru.qa.grpc.rococo.grpc.CreatedPainting result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -500,33 +548,39 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public guru.qa.grpc.rococo.grpc.Museum buildPartial() {
-      guru.qa.grpc.rococo.grpc.Museum result = new guru.qa.grpc.rococo.grpc.Museum(this);
+    public guru.qa.grpc.rococo.grpc.CreatedPainting buildPartial() {
+      guru.qa.grpc.rococo.grpc.CreatedPainting result = new guru.qa.grpc.rococo.grpc.CreatedPainting(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(guru.qa.grpc.rococo.grpc.Museum result) {
+    private void buildPartial0(guru.qa.grpc.rococo.grpc.CreatedPainting result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.id_ = id_;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.photo_ = photo_;
-      }
-      if (((from_bitField0_ & 0x00000004) != 0)) {
         result.title_ = title_;
       }
-      if (((from_bitField0_ & 0x00000008) != 0)) {
+      if (((from_bitField0_ & 0x00000004) != 0)) {
         result.description_ = description_;
+      }
+      if (((from_bitField0_ & 0x00000008) != 0)) {
+        result.content_ = content_;
       }
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.geo_ = geoBuilder_ == null
-            ? geo_
-            : geoBuilder_.build();
+        result.museum_ = museumBuilder_ == null
+            ? museum_
+            : museumBuilder_.build();
         to_bitField0_ |= 0x00000001;
+      }
+      if (((from_bitField0_ & 0x00000020) != 0)) {
+        result.artist_ = artistBuilder_ == null
+            ? artist_
+            : artistBuilder_.build();
+        to_bitField0_ |= 0x00000002;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -565,38 +619,41 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof guru.qa.grpc.rococo.grpc.Museum) {
-        return mergeFrom((guru.qa.grpc.rococo.grpc.Museum)other);
+      if (other instanceof guru.qa.grpc.rococo.grpc.CreatedPainting) {
+        return mergeFrom((guru.qa.grpc.rococo.grpc.CreatedPainting)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(guru.qa.grpc.rococo.grpc.Museum other) {
-      if (other == guru.qa.grpc.rococo.grpc.Museum.getDefaultInstance()) return this;
+    public Builder mergeFrom(guru.qa.grpc.rococo.grpc.CreatedPainting other) {
+      if (other == guru.qa.grpc.rococo.grpc.CreatedPainting.getDefaultInstance()) return this;
       if (!other.getId().isEmpty()) {
         id_ = other.id_;
         bitField0_ |= 0x00000001;
         onChanged();
       }
-      if (!other.getPhoto().isEmpty()) {
-        photo_ = other.photo_;
-        bitField0_ |= 0x00000002;
-        onChanged();
-      }
       if (!other.getTitle().isEmpty()) {
         title_ = other.title_;
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         onChanged();
       }
       if (!other.getDescription().isEmpty()) {
         description_ = other.description_;
+        bitField0_ |= 0x00000004;
+        onChanged();
+      }
+      if (!other.getContent().isEmpty()) {
+        content_ = other.content_;
         bitField0_ |= 0x00000008;
         onChanged();
       }
-      if (other.hasGeo()) {
-        mergeGeo(other.getGeo());
+      if (other.hasMuseum()) {
+        mergeMuseum(other.getMuseum());
+      }
+      if (other.hasArtist()) {
+        mergeArtist(other.getArtist());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -630,27 +687,34 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 10
             case 18: {
-              photo_ = input.readStringRequireUtf8();
+              title_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000002;
               break;
             } // case 18
             case 26: {
-              title_ = input.readStringRequireUtf8();
+              description_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000004;
               break;
             } // case 26
             case 34: {
-              description_ = input.readStringRequireUtf8();
+              content_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000008;
               break;
             } // case 34
             case 42: {
               input.readMessage(
-                  getGeoFieldBuilder().getBuilder(),
+                  getMuseumFieldBuilder().getBuilder(),
                   extensionRegistry);
               bitField0_ |= 0x00000010;
               break;
             } // case 42
+            case 50: {
+              input.readMessage(
+                  getArtistFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 50
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -740,81 +804,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object photo_ = "";
-    /**
-     * <code>string photo = 2;</code>
-     * @return The photo.
-     */
-    public java.lang.String getPhoto() {
-      java.lang.Object ref = photo_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        photo_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string photo = 2;</code>
-     * @return The bytes for photo.
-     */
-    public com.google.protobuf.ByteString
-        getPhotoBytes() {
-      java.lang.Object ref = photo_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        photo_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string photo = 2;</code>
-     * @param value The photo to set.
-     * @return This builder for chaining.
-     */
-    public Builder setPhoto(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      photo_ = value;
-      bitField0_ |= 0x00000002;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string photo = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearPhoto() {
-      photo_ = getDefaultInstance().getPhoto();
-      bitField0_ = (bitField0_ & ~0x00000002);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string photo = 2;</code>
-     * @param value The bytes for photo to set.
-     * @return This builder for chaining.
-     */
-    public Builder setPhotoBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
-      photo_ = value;
-      bitField0_ |= 0x00000002;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object title_ = "";
     /**
-     * <code>string title = 3;</code>
+     * <code>string title = 2;</code>
      * @return The title.
      */
     public java.lang.String getTitle() {
@@ -830,7 +822,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string title = 3;</code>
+     * <code>string title = 2;</code>
      * @return The bytes for title.
      */
     public com.google.protobuf.ByteString
@@ -847,7 +839,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string title = 3;</code>
+     * <code>string title = 2;</code>
      * @param value The title to set.
      * @return This builder for chaining.
      */
@@ -855,22 +847,22 @@ private static final long serialVersionUID = 0L;
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       title_ = value;
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
     /**
-     * <code>string title = 3;</code>
+     * <code>string title = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearTitle() {
       title_ = getDefaultInstance().getTitle();
-      bitField0_ = (bitField0_ & ~0x00000004);
+      bitField0_ = (bitField0_ & ~0x00000002);
       onChanged();
       return this;
     }
     /**
-     * <code>string title = 3;</code>
+     * <code>string title = 2;</code>
      * @param value The bytes for title to set.
      * @return This builder for chaining.
      */
@@ -879,14 +871,14 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       title_ = value;
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
 
     private java.lang.Object description_ = "";
     /**
-     * <code>string description = 4;</code>
+     * <code>string description = 3;</code>
      * @return The description.
      */
     public java.lang.String getDescription() {
@@ -902,7 +894,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string description = 4;</code>
+     * <code>string description = 3;</code>
      * @return The bytes for description.
      */
     public com.google.protobuf.ByteString
@@ -919,7 +911,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string description = 4;</code>
+     * <code>string description = 3;</code>
      * @param value The description to set.
      * @return This builder for chaining.
      */
@@ -927,22 +919,22 @@ private static final long serialVersionUID = 0L;
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       description_ = value;
-      bitField0_ |= 0x00000008;
+      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
     /**
-     * <code>string description = 4;</code>
+     * <code>string description = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearDescription() {
       description_ = getDefaultInstance().getDescription();
-      bitField0_ = (bitField0_ & ~0x00000008);
+      bitField0_ = (bitField0_ & ~0x00000004);
       onChanged();
       return this;
     }
     /**
-     * <code>string description = 4;</code>
+     * <code>string description = 3;</code>
      * @param value The bytes for description to set.
      * @return This builder for chaining.
      */
@@ -951,130 +943,323 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       description_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object content_ = "";
+    /**
+     * <code>string content = 4;</code>
+     * @return The content.
+     */
+    public java.lang.String getContent() {
+      java.lang.Object ref = content_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        content_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string content = 4;</code>
+     * @return The bytes for content.
+     */
+    public com.google.protobuf.ByteString
+        getContentBytes() {
+      java.lang.Object ref = content_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        content_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string content = 4;</code>
+     * @param value The content to set.
+     * @return This builder for chaining.
+     */
+    public Builder setContent(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      content_ = value;
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string content = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearContent() {
+      content_ = getDefaultInstance().getContent();
+      bitField0_ = (bitField0_ & ~0x00000008);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string content = 4;</code>
+     * @param value The bytes for content to set.
+     * @return This builder for chaining.
+     */
+    public Builder setContentBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      content_ = value;
       bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
 
-    private guru.qa.grpc.rococo.grpc.Geo geo_;
+    private guru.qa.grpc.rococo.grpc.Museum museum_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        guru.qa.grpc.rococo.grpc.Geo, guru.qa.grpc.rococo.grpc.Geo.Builder, guru.qa.grpc.rococo.grpc.GeoOrBuilder> geoBuilder_;
+        guru.qa.grpc.rococo.grpc.Museum, guru.qa.grpc.rococo.grpc.Museum.Builder, guru.qa.grpc.rococo.grpc.MuseumOrBuilder> museumBuilder_;
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
-     * @return Whether the geo field is set.
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 5;</code>
+     * @return Whether the museum field is set.
      */
-    public boolean hasGeo() {
+    public boolean hasMuseum() {
       return ((bitField0_ & 0x00000010) != 0);
     }
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
-     * @return The geo.
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 5;</code>
+     * @return The museum.
      */
-    public guru.qa.grpc.rococo.grpc.Geo getGeo() {
-      if (geoBuilder_ == null) {
-        return geo_ == null ? guru.qa.grpc.rococo.grpc.Geo.getDefaultInstance() : geo_;
+    public guru.qa.grpc.rococo.grpc.Museum getMuseum() {
+      if (museumBuilder_ == null) {
+        return museum_ == null ? guru.qa.grpc.rococo.grpc.Museum.getDefaultInstance() : museum_;
       } else {
-        return geoBuilder_.getMessage();
+        return museumBuilder_.getMessage();
       }
     }
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 5;</code>
      */
-    public Builder setGeo(guru.qa.grpc.rococo.grpc.Geo value) {
-      if (geoBuilder_ == null) {
+    public Builder setMuseum(guru.qa.grpc.rococo.grpc.Museum value) {
+      if (museumBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        geo_ = value;
+        museum_ = value;
       } else {
-        geoBuilder_.setMessage(value);
+        museumBuilder_.setMessage(value);
       }
       bitField0_ |= 0x00000010;
       onChanged();
       return this;
     }
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 5;</code>
      */
-    public Builder setGeo(
-        guru.qa.grpc.rococo.grpc.Geo.Builder builderForValue) {
-      if (geoBuilder_ == null) {
-        geo_ = builderForValue.build();
+    public Builder setMuseum(
+        guru.qa.grpc.rococo.grpc.Museum.Builder builderForValue) {
+      if (museumBuilder_ == null) {
+        museum_ = builderForValue.build();
       } else {
-        geoBuilder_.setMessage(builderForValue.build());
+        museumBuilder_.setMessage(builderForValue.build());
       }
       bitField0_ |= 0x00000010;
       onChanged();
       return this;
     }
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 5;</code>
      */
-    public Builder mergeGeo(guru.qa.grpc.rococo.grpc.Geo value) {
-      if (geoBuilder_ == null) {
+    public Builder mergeMuseum(guru.qa.grpc.rococo.grpc.Museum value) {
+      if (museumBuilder_ == null) {
         if (((bitField0_ & 0x00000010) != 0) &&
-          geo_ != null &&
-          geo_ != guru.qa.grpc.rococo.grpc.Geo.getDefaultInstance()) {
-          getGeoBuilder().mergeFrom(value);
+          museum_ != null &&
+          museum_ != guru.qa.grpc.rococo.grpc.Museum.getDefaultInstance()) {
+          getMuseumBuilder().mergeFrom(value);
         } else {
-          geo_ = value;
+          museum_ = value;
         }
       } else {
-        geoBuilder_.mergeFrom(value);
+        museumBuilder_.mergeFrom(value);
       }
-      if (geo_ != null) {
+      if (museum_ != null) {
         bitField0_ |= 0x00000010;
         onChanged();
       }
       return this;
     }
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 5;</code>
      */
-    public Builder clearGeo() {
+    public Builder clearMuseum() {
       bitField0_ = (bitField0_ & ~0x00000010);
-      geo_ = null;
-      if (geoBuilder_ != null) {
-        geoBuilder_.dispose();
-        geoBuilder_ = null;
+      museum_ = null;
+      if (museumBuilder_ != null) {
+        museumBuilder_.dispose();
+        museumBuilder_ = null;
       }
       onChanged();
       return this;
     }
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 5;</code>
      */
-    public guru.qa.grpc.rococo.grpc.Geo.Builder getGeoBuilder() {
+    public guru.qa.grpc.rococo.grpc.Museum.Builder getMuseumBuilder() {
       bitField0_ |= 0x00000010;
       onChanged();
-      return getGeoFieldBuilder().getBuilder();
+      return getMuseumFieldBuilder().getBuilder();
     }
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 5;</code>
      */
-    public guru.qa.grpc.rococo.grpc.GeoOrBuilder getGeoOrBuilder() {
-      if (geoBuilder_ != null) {
-        return geoBuilder_.getMessageOrBuilder();
+    public guru.qa.grpc.rococo.grpc.MuseumOrBuilder getMuseumOrBuilder() {
+      if (museumBuilder_ != null) {
+        return museumBuilder_.getMessageOrBuilder();
       } else {
-        return geo_ == null ?
-            guru.qa.grpc.rococo.grpc.Geo.getDefaultInstance() : geo_;
+        return museum_ == null ?
+            guru.qa.grpc.rococo.grpc.Museum.getDefaultInstance() : museum_;
       }
     }
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 5;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        guru.qa.grpc.rococo.grpc.Geo, guru.qa.grpc.rococo.grpc.Geo.Builder, guru.qa.grpc.rococo.grpc.GeoOrBuilder> 
-        getGeoFieldBuilder() {
-      if (geoBuilder_ == null) {
-        geoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            guru.qa.grpc.rococo.grpc.Geo, guru.qa.grpc.rococo.grpc.Geo.Builder, guru.qa.grpc.rococo.grpc.GeoOrBuilder>(
-                getGeo(),
+        guru.qa.grpc.rococo.grpc.Museum, guru.qa.grpc.rococo.grpc.Museum.Builder, guru.qa.grpc.rococo.grpc.MuseumOrBuilder> 
+        getMuseumFieldBuilder() {
+      if (museumBuilder_ == null) {
+        museumBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            guru.qa.grpc.rococo.grpc.Museum, guru.qa.grpc.rococo.grpc.Museum.Builder, guru.qa.grpc.rococo.grpc.MuseumOrBuilder>(
+                getMuseum(),
                 getParentForChildren(),
                 isClean());
-        geo_ = null;
+        museum_ = null;
       }
-      return geoBuilder_;
+      return museumBuilder_;
+    }
+
+    private guru.qa.grpc.rococo.grpc.Artist artist_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        guru.qa.grpc.rococo.grpc.Artist, guru.qa.grpc.rococo.grpc.Artist.Builder, guru.qa.grpc.rococo.grpc.ArtistOrBuilder> artistBuilder_;
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Artist artist = 6;</code>
+     * @return Whether the artist field is set.
+     */
+    public boolean hasArtist() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Artist artist = 6;</code>
+     * @return The artist.
+     */
+    public guru.qa.grpc.rococo.grpc.Artist getArtist() {
+      if (artistBuilder_ == null) {
+        return artist_ == null ? guru.qa.grpc.rococo.grpc.Artist.getDefaultInstance() : artist_;
+      } else {
+        return artistBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Artist artist = 6;</code>
+     */
+    public Builder setArtist(guru.qa.grpc.rococo.grpc.Artist value) {
+      if (artistBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        artist_ = value;
+      } else {
+        artistBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Artist artist = 6;</code>
+     */
+    public Builder setArtist(
+        guru.qa.grpc.rococo.grpc.Artist.Builder builderForValue) {
+      if (artistBuilder_ == null) {
+        artist_ = builderForValue.build();
+      } else {
+        artistBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Artist artist = 6;</code>
+     */
+    public Builder mergeArtist(guru.qa.grpc.rococo.grpc.Artist value) {
+      if (artistBuilder_ == null) {
+        if (((bitField0_ & 0x00000020) != 0) &&
+          artist_ != null &&
+          artist_ != guru.qa.grpc.rococo.grpc.Artist.getDefaultInstance()) {
+          getArtistBuilder().mergeFrom(value);
+        } else {
+          artist_ = value;
+        }
+      } else {
+        artistBuilder_.mergeFrom(value);
+      }
+      if (artist_ != null) {
+        bitField0_ |= 0x00000020;
+        onChanged();
+      }
+      return this;
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Artist artist = 6;</code>
+     */
+    public Builder clearArtist() {
+      bitField0_ = (bitField0_ & ~0x00000020);
+      artist_ = null;
+      if (artistBuilder_ != null) {
+        artistBuilder_.dispose();
+        artistBuilder_ = null;
+      }
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Artist artist = 6;</code>
+     */
+    public guru.qa.grpc.rococo.grpc.Artist.Builder getArtistBuilder() {
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return getArtistFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Artist artist = 6;</code>
+     */
+    public guru.qa.grpc.rococo.grpc.ArtistOrBuilder getArtistOrBuilder() {
+      if (artistBuilder_ != null) {
+        return artistBuilder_.getMessageOrBuilder();
+      } else {
+        return artist_ == null ?
+            guru.qa.grpc.rococo.grpc.Artist.getDefaultInstance() : artist_;
+      }
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Artist artist = 6;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        guru.qa.grpc.rococo.grpc.Artist, guru.qa.grpc.rococo.grpc.Artist.Builder, guru.qa.grpc.rococo.grpc.ArtistOrBuilder> 
+        getArtistFieldBuilder() {
+      if (artistBuilder_ == null) {
+        artistBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            guru.qa.grpc.rococo.grpc.Artist, guru.qa.grpc.rococo.grpc.Artist.Builder, guru.qa.grpc.rococo.grpc.ArtistOrBuilder>(
+                getArtist(),
+                getParentForChildren(),
+                isClean());
+        artist_ = null;
+      }
+      return artistBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
@@ -1089,23 +1274,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:guru.qa.grpc.rococo.grpc.Museum)
+    // @@protoc_insertion_point(builder_scope:guru.qa.grpc.rococo.grpc.CreatedPainting)
   }
 
-  // @@protoc_insertion_point(class_scope:guru.qa.grpc.rococo.grpc.Museum)
-  private static final guru.qa.grpc.rococo.grpc.Museum DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:guru.qa.grpc.rococo.grpc.CreatedPainting)
+  private static final guru.qa.grpc.rococo.grpc.CreatedPainting DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new guru.qa.grpc.rococo.grpc.Museum();
+    DEFAULT_INSTANCE = new guru.qa.grpc.rococo.grpc.CreatedPainting();
   }
 
-  public static guru.qa.grpc.rococo.grpc.Museum getDefaultInstance() {
+  public static guru.qa.grpc.rococo.grpc.CreatedPainting getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Museum>
-      PARSER = new com.google.protobuf.AbstractParser<Museum>() {
+  private static final com.google.protobuf.Parser<CreatedPainting>
+      PARSER = new com.google.protobuf.AbstractParser<CreatedPainting>() {
     @java.lang.Override
-    public Museum parsePartialFrom(
+    public CreatedPainting parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1124,17 +1309,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<Museum> parser() {
+  public static com.google.protobuf.Parser<CreatedPainting> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<Museum> getParserForType() {
+  public com.google.protobuf.Parser<CreatedPainting> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public guru.qa.grpc.rococo.grpc.Museum getDefaultInstanceForType() {
+  public guru.qa.grpc.rococo.grpc.CreatedPainting getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

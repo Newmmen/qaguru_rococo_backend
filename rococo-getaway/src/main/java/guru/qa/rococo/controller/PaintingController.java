@@ -2,12 +2,10 @@ package guru.qa.rococo.controller;
 
 import java.util.UUID;
 
-import guru.qa.rococo.model.ArtistDto;
 import guru.qa.rococo.model.CreatedPaintingDto;
-import guru.qa.rococo.model.MuseumDto;
 import guru.qa.rococo.model.NewPaintingDto;
 import guru.qa.rococo.model.PaintingDto;
-import guru.qa.rococo.service.api.PaintingGrpcClient;
+import guru.qa.rococo.service.api.PaintingMuseumGrpcClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,10 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/")
 public class PaintingController {
-    public PaintingGrpcClient paintingGrpcClient;
+    public PaintingMuseumGrpcClient paintingGrpcClient;
 
     @Autowired
-    public PaintingController(PaintingGrpcClient paintingGrpcClient) {
+    public PaintingController(PaintingMuseumGrpcClient paintingGrpcClient) {
         this.paintingGrpcClient = paintingGrpcClient;
     }
 

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
+import guru.qa.grpc.rococo.grpc.Museum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.proxy.HibernateProxy;
@@ -19,8 +21,8 @@ import org.hibernate.proxy.HibernateProxy;
 @Getter
 @Setter
 @Entity
-@Table(name = "\"painting\"")
-public class PaintingEntity implements Serializable {
+@Table(name = "\"museum\"")
+public class MuseumEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -33,15 +35,11 @@ public class PaintingEntity implements Serializable {
     private String description;
 
     @Column(name = "content", columnDefinition = "MEDIUMTEXT")
-    private String content;
+    private String photo;
 
     @ManyToOne
-    @JoinColumn(name = "artist_id") //todo передалать на айди (а не сущность)
-    private ArtistEntity artist;
-
-    @ManyToOne
-    @JoinColumn(name = "museum_id") //todo передалать на айди (а не сущность)
-    private MuseumEntity museum;
+    @JoinColumn(name = "geolocation_id") //todo передалать на айди (а не сущность)
+    private GeolocationEntity geolocationEntity;
 
     @Override
     public final boolean equals(Object o) {
@@ -57,5 +55,16 @@ public class PaintingEntity implements Serializable {
     @Override
     public final int hashCode() {
         return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
+    }
+
+    public static @NotNull Museum toGrpcMessage(@NotNull MuseumEntity museumEntity) {
+
+        return Museum.newBuilder()
+                .setId(museumEntity.getId().toString())
+                .setTitle(museumEntity.getTitle())
+                .setPhoto(museumEntity.getPhoto())
+                .setDescription(museumEntity.getDescription())
+                .setGeo(GeolocationEntity.toGrpcMessage(museumEntity.getGeolocationEntity()))
+                .build();
     }
 }

@@ -4,42 +4,42 @@
 package guru.qa.grpc.rococo.grpc;
 
 /**
- * Protobuf type {@code guru.qa.grpc.rococo.grpc.Museum}
+ * Protobuf type {@code guru.qa.grpc.rococo.grpc.CreatedMuseum}
  */
-public final class Museum extends
+public final class CreatedMuseum extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:guru.qa.grpc.rococo.grpc.Museum)
-    MuseumOrBuilder {
+    // @@protoc_insertion_point(message_implements:guru.qa.grpc.rococo.grpc.CreatedMuseum)
+    CreatedMuseumOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use Museum.newBuilder() to construct.
-  private Museum(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use CreatedMuseum.newBuilder() to construct.
+  private CreatedMuseum(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private Museum() {
+  private CreatedMuseum() {
     id_ = "";
-    photo_ = "";
     title_ = "";
     description_ = "";
+    photo_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new Museum();
+    return new CreatedMuseum();
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_Museum_descriptor;
+    return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_CreatedMuseum_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_Museum_fieldAccessorTable
+    return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_CreatedMuseum_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            guru.qa.grpc.rococo.grpc.Museum.class, guru.qa.grpc.rococo.grpc.Museum.Builder.class);
+            guru.qa.grpc.rococo.grpc.CreatedMuseum.class, guru.qa.grpc.rococo.grpc.CreatedMuseum.Builder.class);
   }
 
   private int bitField0_;
@@ -82,50 +82,11 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int PHOTO_FIELD_NUMBER = 2;
-  @SuppressWarnings("serial")
-  private volatile java.lang.Object photo_ = "";
-  /**
-   * <code>string photo = 2;</code>
-   * @return The photo.
-   */
-  @java.lang.Override
-  public java.lang.String getPhoto() {
-    java.lang.Object ref = photo_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      photo_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string photo = 2;</code>
-   * @return The bytes for photo.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getPhotoBytes() {
-    java.lang.Object ref = photo_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      photo_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int TITLE_FIELD_NUMBER = 3;
+  public static final int TITLE_FIELD_NUMBER = 2;
   @SuppressWarnings("serial")
   private volatile java.lang.Object title_ = "";
   /**
-   * <code>string title = 3;</code>
+   * <code>string title = 2;</code>
    * @return The title.
    */
   @java.lang.Override
@@ -142,7 +103,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string title = 3;</code>
+   * <code>string title = 2;</code>
    * @return The bytes for title.
    */
   @java.lang.Override
@@ -160,11 +121,11 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int DESCRIPTION_FIELD_NUMBER = 4;
+  public static final int DESCRIPTION_FIELD_NUMBER = 3;
   @SuppressWarnings("serial")
   private volatile java.lang.Object description_ = "";
   /**
-   * <code>string description = 4;</code>
+   * <code>string description = 3;</code>
    * @return The description.
    */
   @java.lang.Override
@@ -181,7 +142,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string description = 4;</code>
+   * <code>string description = 3;</code>
    * @return The bytes for description.
    */
   @java.lang.Override
@@ -193,6 +154,45 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
       description_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int PHOTO_FIELD_NUMBER = 4;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object photo_ = "";
+  /**
+   * <code>string photo = 4;</code>
+   * @return The photo.
+   */
+  @java.lang.Override
+  public java.lang.String getPhoto() {
+    java.lang.Object ref = photo_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      photo_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string photo = 4;</code>
+   * @return The bytes for photo.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getPhotoBytes() {
+    java.lang.Object ref = photo_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      photo_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -242,14 +242,14 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(photo_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, photo_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(title_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, title_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, title_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, description_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, description_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(photo_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, photo_);
     }
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(5, getGeo());
@@ -266,14 +266,14 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(photo_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, photo_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(title_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, title_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, title_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, description_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, description_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(photo_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, photo_);
     }
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
@@ -289,19 +289,19 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof guru.qa.grpc.rococo.grpc.Museum)) {
+    if (!(obj instanceof guru.qa.grpc.rococo.grpc.CreatedMuseum)) {
       return super.equals(obj);
     }
-    guru.qa.grpc.rococo.grpc.Museum other = (guru.qa.grpc.rococo.grpc.Museum) obj;
+    guru.qa.grpc.rococo.grpc.CreatedMuseum other = (guru.qa.grpc.rococo.grpc.CreatedMuseum) obj;
 
     if (!getId()
         .equals(other.getId())) return false;
-    if (!getPhoto()
-        .equals(other.getPhoto())) return false;
     if (!getTitle()
         .equals(other.getTitle())) return false;
     if (!getDescription()
         .equals(other.getDescription())) return false;
+    if (!getPhoto()
+        .equals(other.getPhoto())) return false;
     if (hasGeo() != other.hasGeo()) return false;
     if (hasGeo()) {
       if (!getGeo()
@@ -320,12 +320,12 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + getId().hashCode();
-    hash = (37 * hash) + PHOTO_FIELD_NUMBER;
-    hash = (53 * hash) + getPhoto().hashCode();
     hash = (37 * hash) + TITLE_FIELD_NUMBER;
     hash = (53 * hash) + getTitle().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
     hash = (53 * hash) + getDescription().hashCode();
+    hash = (37 * hash) + PHOTO_FIELD_NUMBER;
+    hash = (53 * hash) + getPhoto().hashCode();
     if (hasGeo()) {
       hash = (37 * hash) + GEO_FIELD_NUMBER;
       hash = (53 * hash) + getGeo().hashCode();
@@ -335,44 +335,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedMuseum parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedMuseum parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedMuseum parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedMuseum parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(byte[] data)
+  public static guru.qa.grpc.rococo.grpc.CreatedMuseum parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedMuseum parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(java.io.InputStream input)
+  public static guru.qa.grpc.rococo.grpc.CreatedMuseum parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedMuseum parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -380,26 +380,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static guru.qa.grpc.rococo.grpc.Museum parseDelimitedFrom(java.io.InputStream input)
+  public static guru.qa.grpc.rococo.grpc.CreatedMuseum parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static guru.qa.grpc.rococo.grpc.Museum parseDelimitedFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedMuseum parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedMuseum parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static guru.qa.grpc.rococo.grpc.Museum parseFrom(
+  public static guru.qa.grpc.rococo.grpc.CreatedMuseum parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -412,7 +412,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(guru.qa.grpc.rococo.grpc.Museum prototype) {
+  public static Builder newBuilder(guru.qa.grpc.rococo.grpc.CreatedMuseum prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -428,26 +428,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code guru.qa.grpc.rococo.grpc.Museum}
+   * Protobuf type {@code guru.qa.grpc.rococo.grpc.CreatedMuseum}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:guru.qa.grpc.rococo.grpc.Museum)
-      guru.qa.grpc.rococo.grpc.MuseumOrBuilder {
+      // @@protoc_insertion_point(builder_implements:guru.qa.grpc.rococo.grpc.CreatedMuseum)
+      guru.qa.grpc.rococo.grpc.CreatedMuseumOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_Museum_descriptor;
+      return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_CreatedMuseum_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_Museum_fieldAccessorTable
+      return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_CreatedMuseum_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              guru.qa.grpc.rococo.grpc.Museum.class, guru.qa.grpc.rococo.grpc.Museum.Builder.class);
+              guru.qa.grpc.rococo.grpc.CreatedMuseum.class, guru.qa.grpc.rococo.grpc.CreatedMuseum.Builder.class);
     }
 
-    // Construct using guru.qa.grpc.rococo.grpc.Museum.newBuilder()
+    // Construct using guru.qa.grpc.rococo.grpc.CreatedMuseum.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -468,9 +468,9 @@ private static final long serialVersionUID = 0L;
       super.clear();
       bitField0_ = 0;
       id_ = "";
-      photo_ = "";
       title_ = "";
       description_ = "";
+      photo_ = "";
       geo_ = null;
       if (geoBuilder_ != null) {
         geoBuilder_.dispose();
@@ -482,17 +482,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_Museum_descriptor;
+      return guru.qa.grpc.rococo.grpc.RococoServiceProto.internal_static_guru_qa_grpc_rococo_grpc_CreatedMuseum_descriptor;
     }
 
     @java.lang.Override
-    public guru.qa.grpc.rococo.grpc.Museum getDefaultInstanceForType() {
-      return guru.qa.grpc.rococo.grpc.Museum.getDefaultInstance();
+    public guru.qa.grpc.rococo.grpc.CreatedMuseum getDefaultInstanceForType() {
+      return guru.qa.grpc.rococo.grpc.CreatedMuseum.getDefaultInstance();
     }
 
     @java.lang.Override
-    public guru.qa.grpc.rococo.grpc.Museum build() {
-      guru.qa.grpc.rococo.grpc.Museum result = buildPartial();
+    public guru.qa.grpc.rococo.grpc.CreatedMuseum build() {
+      guru.qa.grpc.rococo.grpc.CreatedMuseum result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -500,26 +500,26 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public guru.qa.grpc.rococo.grpc.Museum buildPartial() {
-      guru.qa.grpc.rococo.grpc.Museum result = new guru.qa.grpc.rococo.grpc.Museum(this);
+    public guru.qa.grpc.rococo.grpc.CreatedMuseum buildPartial() {
+      guru.qa.grpc.rococo.grpc.CreatedMuseum result = new guru.qa.grpc.rococo.grpc.CreatedMuseum(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(guru.qa.grpc.rococo.grpc.Museum result) {
+    private void buildPartial0(guru.qa.grpc.rococo.grpc.CreatedMuseum result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.id_ = id_;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.photo_ = photo_;
-      }
-      if (((from_bitField0_ & 0x00000004) != 0)) {
         result.title_ = title_;
       }
-      if (((from_bitField0_ & 0x00000008) != 0)) {
+      if (((from_bitField0_ & 0x00000004) != 0)) {
         result.description_ = description_;
+      }
+      if (((from_bitField0_ & 0x00000008) != 0)) {
+        result.photo_ = photo_;
       }
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000010) != 0)) {
@@ -565,33 +565,33 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof guru.qa.grpc.rococo.grpc.Museum) {
-        return mergeFrom((guru.qa.grpc.rococo.grpc.Museum)other);
+      if (other instanceof guru.qa.grpc.rococo.grpc.CreatedMuseum) {
+        return mergeFrom((guru.qa.grpc.rococo.grpc.CreatedMuseum)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(guru.qa.grpc.rococo.grpc.Museum other) {
-      if (other == guru.qa.grpc.rococo.grpc.Museum.getDefaultInstance()) return this;
+    public Builder mergeFrom(guru.qa.grpc.rococo.grpc.CreatedMuseum other) {
+      if (other == guru.qa.grpc.rococo.grpc.CreatedMuseum.getDefaultInstance()) return this;
       if (!other.getId().isEmpty()) {
         id_ = other.id_;
         bitField0_ |= 0x00000001;
         onChanged();
       }
-      if (!other.getPhoto().isEmpty()) {
-        photo_ = other.photo_;
-        bitField0_ |= 0x00000002;
-        onChanged();
-      }
       if (!other.getTitle().isEmpty()) {
         title_ = other.title_;
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         onChanged();
       }
       if (!other.getDescription().isEmpty()) {
         description_ = other.description_;
+        bitField0_ |= 0x00000004;
+        onChanged();
+      }
+      if (!other.getPhoto().isEmpty()) {
+        photo_ = other.photo_;
         bitField0_ |= 0x00000008;
         onChanged();
       }
@@ -630,17 +630,17 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 10
             case 18: {
-              photo_ = input.readStringRequireUtf8();
+              title_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000002;
               break;
             } // case 18
             case 26: {
-              title_ = input.readStringRequireUtf8();
+              description_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000004;
               break;
             } // case 26
             case 34: {
-              description_ = input.readStringRequireUtf8();
+              photo_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000008;
               break;
             } // case 34
@@ -740,81 +740,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object photo_ = "";
-    /**
-     * <code>string photo = 2;</code>
-     * @return The photo.
-     */
-    public java.lang.String getPhoto() {
-      java.lang.Object ref = photo_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        photo_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string photo = 2;</code>
-     * @return The bytes for photo.
-     */
-    public com.google.protobuf.ByteString
-        getPhotoBytes() {
-      java.lang.Object ref = photo_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        photo_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string photo = 2;</code>
-     * @param value The photo to set.
-     * @return This builder for chaining.
-     */
-    public Builder setPhoto(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      photo_ = value;
-      bitField0_ |= 0x00000002;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string photo = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearPhoto() {
-      photo_ = getDefaultInstance().getPhoto();
-      bitField0_ = (bitField0_ & ~0x00000002);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string photo = 2;</code>
-     * @param value The bytes for photo to set.
-     * @return This builder for chaining.
-     */
-    public Builder setPhotoBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
-      photo_ = value;
-      bitField0_ |= 0x00000002;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object title_ = "";
     /**
-     * <code>string title = 3;</code>
+     * <code>string title = 2;</code>
      * @return The title.
      */
     public java.lang.String getTitle() {
@@ -830,7 +758,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string title = 3;</code>
+     * <code>string title = 2;</code>
      * @return The bytes for title.
      */
     public com.google.protobuf.ByteString
@@ -847,7 +775,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string title = 3;</code>
+     * <code>string title = 2;</code>
      * @param value The title to set.
      * @return This builder for chaining.
      */
@@ -855,22 +783,22 @@ private static final long serialVersionUID = 0L;
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       title_ = value;
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
     /**
-     * <code>string title = 3;</code>
+     * <code>string title = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearTitle() {
       title_ = getDefaultInstance().getTitle();
-      bitField0_ = (bitField0_ & ~0x00000004);
+      bitField0_ = (bitField0_ & ~0x00000002);
       onChanged();
       return this;
     }
     /**
-     * <code>string title = 3;</code>
+     * <code>string title = 2;</code>
      * @param value The bytes for title to set.
      * @return This builder for chaining.
      */
@@ -879,14 +807,14 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       title_ = value;
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
 
     private java.lang.Object description_ = "";
     /**
-     * <code>string description = 4;</code>
+     * <code>string description = 3;</code>
      * @return The description.
      */
     public java.lang.String getDescription() {
@@ -902,7 +830,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string description = 4;</code>
+     * <code>string description = 3;</code>
      * @return The bytes for description.
      */
     public com.google.protobuf.ByteString
@@ -919,7 +847,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string description = 4;</code>
+     * <code>string description = 3;</code>
      * @param value The description to set.
      * @return This builder for chaining.
      */
@@ -927,22 +855,22 @@ private static final long serialVersionUID = 0L;
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       description_ = value;
-      bitField0_ |= 0x00000008;
+      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
     /**
-     * <code>string description = 4;</code>
+     * <code>string description = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearDescription() {
       description_ = getDefaultInstance().getDescription();
-      bitField0_ = (bitField0_ & ~0x00000008);
+      bitField0_ = (bitField0_ & ~0x00000004);
       onChanged();
       return this;
     }
     /**
-     * <code>string description = 4;</code>
+     * <code>string description = 3;</code>
      * @param value The bytes for description to set.
      * @return This builder for chaining.
      */
@@ -951,6 +879,78 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       description_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object photo_ = "";
+    /**
+     * <code>string photo = 4;</code>
+     * @return The photo.
+     */
+    public java.lang.String getPhoto() {
+      java.lang.Object ref = photo_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        photo_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string photo = 4;</code>
+     * @return The bytes for photo.
+     */
+    public com.google.protobuf.ByteString
+        getPhotoBytes() {
+      java.lang.Object ref = photo_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        photo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string photo = 4;</code>
+     * @param value The photo to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPhoto(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      photo_ = value;
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string photo = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPhoto() {
+      photo_ = getDefaultInstance().getPhoto();
+      bitField0_ = (bitField0_ & ~0x00000008);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string photo = 4;</code>
+     * @param value The bytes for photo to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPhotoBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      photo_ = value;
       bitField0_ |= 0x00000008;
       onChanged();
       return this;
@@ -1089,23 +1089,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:guru.qa.grpc.rococo.grpc.Museum)
+    // @@protoc_insertion_point(builder_scope:guru.qa.grpc.rococo.grpc.CreatedMuseum)
   }
 
-  // @@protoc_insertion_point(class_scope:guru.qa.grpc.rococo.grpc.Museum)
-  private static final guru.qa.grpc.rococo.grpc.Museum DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:guru.qa.grpc.rococo.grpc.CreatedMuseum)
+  private static final guru.qa.grpc.rococo.grpc.CreatedMuseum DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new guru.qa.grpc.rococo.grpc.Museum();
+    DEFAULT_INSTANCE = new guru.qa.grpc.rococo.grpc.CreatedMuseum();
   }
 
-  public static guru.qa.grpc.rococo.grpc.Museum getDefaultInstance() {
+  public static guru.qa.grpc.rococo.grpc.CreatedMuseum getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Museum>
-      PARSER = new com.google.protobuf.AbstractParser<Museum>() {
+  private static final com.google.protobuf.Parser<CreatedMuseum>
+      PARSER = new com.google.protobuf.AbstractParser<CreatedMuseum>() {
     @java.lang.Override
-    public Museum parsePartialFrom(
+    public CreatedMuseum parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1124,17 +1124,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<Museum> parser() {
+  public static com.google.protobuf.Parser<CreatedMuseum> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<Museum> getParserForType() {
+  public com.google.protobuf.Parser<CreatedMuseum> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public guru.qa.grpc.rococo.grpc.Museum getDefaultInstanceForType() {
+  public guru.qa.grpc.rococo.grpc.CreatedMuseum getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

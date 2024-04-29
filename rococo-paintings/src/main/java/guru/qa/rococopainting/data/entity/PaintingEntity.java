@@ -39,6 +39,10 @@ public class PaintingEntity implements Serializable {
     @JoinColumn(name = "artist_id") //todo передалать на айди (а не сущность)
     private ArtistEntity artist;
 
+    @ManyToOne
+    @JoinColumn(name = "museum_id") //todo передалать на айди (а не сущность)
+    private MuseumEntity museum;
+
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;

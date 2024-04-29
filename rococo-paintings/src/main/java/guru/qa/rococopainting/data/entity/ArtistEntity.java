@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
+import guru.qa.grpc.rococo.grpc.Artist;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.proxy.HibernateProxy;
@@ -54,5 +56,15 @@ public class ArtistEntity implements Serializable {
         return this instanceof HibernateProxy ?
                 ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() :
                 getClass().hashCode();
+    }
+
+    public static @NotNull Artist toGrpcMessage(@NotNull ArtistEntity artistEntity) {
+
+        return Artist.newBuilder()
+                .setId(artistEntity.getId().toString())
+                .setName(artistEntity.getName())
+                .setBiography(artistEntity.getBiography())
+                .setPhoto(artistEntity.getPhoto())
+                .build();
     }
 }
