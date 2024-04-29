@@ -23,6 +23,7 @@ service RococoPaintingService {
   rpc GetMuseum (MuseumIdRequest) returns (Museum) {}
   rpc GetAllCountry (AllCountryIdRequest) returns (CountryResponse) {}
   rpc CreateMuseum (NewMuseum) returns (CreatedMuseum) {}
+  rpc UpdateMuseum (Museum) returns (Museum) {}
 }
 service RococoUserService {
   rpc GetUser (UserIdRequest) returns (User) {}

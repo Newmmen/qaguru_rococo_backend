@@ -1,5 +1,7 @@
 package guru.qa.rococo.controller;
 
+import java.util.UUID;
+
 import guru.qa.rococo.model.CountryDto;
 import guru.qa.rococo.model.CreatedMuseumDto;
 import guru.qa.rococo.model.MuseumDto;
@@ -10,6 +12,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +35,16 @@ public class MuseumController {
     public Page<MuseumDto> getAll(@RequestParam(required = false) String title,
                                   @PageableDefault Pageable pageable) {
         return museumClient.getAllMuseums(title, pageable);
+    }
+
+    @GetMapping("/museum/{id}")
+    public MuseumDto get(@PathVariable UUID id) {
+        return museumClient.getMuseum(id);
+    }
+
+    @PatchMapping("/museum")
+    public MuseumDto update(@RequestBody MuseumDto museumDto) {
+        return museumClient.updateMuseum(museumDto);
     }
 
     @PostMapping("/museum")
