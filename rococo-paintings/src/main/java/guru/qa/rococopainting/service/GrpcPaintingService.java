@@ -11,6 +11,7 @@ import guru.qa.grpc.rococo.grpc.CountryResponse;
 import guru.qa.grpc.rococo.grpc.CreatedMuseum;
 import guru.qa.grpc.rococo.grpc.CreatedPainting;
 import guru.qa.grpc.rococo.grpc.Museum;
+import guru.qa.grpc.rococo.grpc.MuseumIdRequest;
 import guru.qa.grpc.rococo.grpc.MuseumResponse;
 import guru.qa.grpc.rococo.grpc.NewMuseum;
 import guru.qa.grpc.rococo.grpc.NewPainting;
@@ -179,6 +180,23 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
     }
 
     @Override
+    public void getMuseum(MuseumIdRequest request,
+                          StreamObserver<Museum> responseObserver) {
+        MuseumEntity museumEntity = fetchEntity(museumRepository.findById(UUID.fromString(request.getId())));
+
+        Museum museum = Museum.newBuilder()
+                .setId(museumEntity.getId().toString())
+                .setTitle(museumEntity.getTitle())
+                .setDescription(museumEntity.getDescription())
+                .setPhoto(museumEntity.getPhoto())
+                .setGeo(GeolocationEntity.toGrpcMessage(museumEntity.getGeolocationEntity()))
+                .build();
+
+        responseObserver.onNext(museum);
+        responseObserver.onCompleted();
+    }
+
+    @Override
     public void createPainting(NewPainting request,
                                StreamObserver<CreatedPainting> responseObserver) {
         ArtistEntity artistEntity =
@@ -237,6 +255,43 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
                 .setGeo(GeolocationEntity.toGrpcMessage(geolocationEntity))
                 .build();
         responseObserver.onNext(createdMuseum);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void updateMuseum(Museum request,
+                             StreamObserver<Museum> responseObserver) {
+
+        MuseumEntity museumEntity = fetchEntity(museumRepository.findById(UUID.fromString(request.getId())));
+
+
+        CountryEntity countryEntity =
+                fetchEntity(countryRepository.findById(UUID.fromString(request.getGeo().getCountry().getId())));
+        GeolocationEntity geolocationEntity = geoRepository.findByCity(request.getGeo().getCity())
+                .orElseGet(() -> {
+                            GeolocationEntity geo = new GeolocationEntity();
+                            geo.setCity(request.getGeo().getCity());
+                            geo.setCountryEntity(countryEntity);
+                            geoRepository.save(geo);
+                            return geo;
+                        }
+                );
+
+        museumEntity.setTitle(request.getTitle());
+        museumEntity.setDescription(request.getDescription());
+        museumEntity.setPhoto(request.getPhoto());
+        museumEntity.setGeolocationEntity(geolocationEntity);
+        MuseumEntity updatedMuseumEntity = museumRepository.save(museumEntity);
+
+        Museum museum = Museum.newBuilder()
+                .setId(updatedMuseumEntity.getId().toString())
+                .setTitle(updatedMuseumEntity.getTitle())
+                .setDescription(updatedMuseumEntity.getDescription())
+                .setPhoto(updatedMuseumEntity.getPhoto())
+                .setGeo(GeolocationEntity.toGrpcMessage(updatedMuseumEntity.getGeolocationEntity()))
+                .build();
+
+        responseObserver.onNext(museum);
         responseObserver.onCompleted();
     }
 }

@@ -219,7 +219,7 @@ public final class RococoServiceProto {
       "pc.NewArtist\032 .guru.qa.grpc.rococo.grpc." +
       "Artist\"\000\022T\n\014UpdateArtist\022 .guru.qa.grpc." +
       "rococo.grpc.Artist\032 .guru.qa.grpc.rococo" +
-      ".grpc.Artist\"\0002\325\006\n\025RococoPaintingService" +
+      ".grpc.Artist\"\0002\253\007\n\025RococoPaintingService" +
       "\022l\n\016GetAllPainting\022,.guru.qa.grpc.rococo" +
       ".grpc.AllPaintingRequest\032*.guru.qa.grpc." +
       "rococo.grpc.PaintingResponse\"\000\022t\n\016GetAll" +
@@ -240,11 +240,14 @@ public final class RococoServiceProto {
       "IdRequest\032).guru.qa.grpc.rococo.grpc.Cou" +
       "ntryResponse\"\000\022^\n\014CreateMuseum\022#.guru.qa" +
       ".grpc.rococo.grpc.NewMuseum\032\'.guru.qa.gr" +
-      "pc.rococo.grpc.CreatedMuseum\"\0002i\n\021Rococo" +
-      "UserService\022T\n\007GetUser\022\'.guru.qa.grpc.ro" +
-      "coco.grpc.UserIdRequest\032\036.guru.qa.grpc.r" +
-      "ococo.grpc.User\"\000B0\n\030guru.qa.grpc.rococo" +
-      ".grpcB\022RococoServiceProtoP\001b\006proto3"
+      "pc.rococo.grpc.CreatedMuseum\"\000\022T\n\014Update" +
+      "Museum\022 .guru.qa.grpc.rococo.grpc.Museum" +
+      "\032 .guru.qa.grpc.rococo.grpc.Museum\"\0002i\n\021" +
+      "RococoUserService\022T\n\007GetUser\022\'.guru.qa.g" +
+      "rpc.rococo.grpc.UserIdRequest\032\036.guru.qa." +
+      "grpc.rococo.grpc.User\"\000B0\n\030guru.qa.grpc." +
+      "rococo.grpcB\022RococoServiceProtoP\001b\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
