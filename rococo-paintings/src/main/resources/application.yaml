@@ -8,7 +8,6 @@ spring:
     baseline-on-migrate: true
     schemas: rococo
     baseline-version: 0
-    locations: classpath:migration/painting-init
   jpa:
     hibernate:
       ddl-auto: none
@@ -26,3 +25,5 @@ spring:
 grpc:
   server:
     port: 8093
+  GLOBAL:
+    max-inbound-message-size: 2147483647

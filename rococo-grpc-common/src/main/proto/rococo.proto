@@ -24,9 +24,11 @@ service RococoPaintingService {
   rpc GetAllCountry (AllCountryIdRequest) returns (CountryResponse) {}
   rpc CreateMuseum (NewMuseum) returns (CreatedMuseum) {}
   rpc UpdateMuseum (Museum) returns (Museum) {}
+  rpc UpdatePainting (Painting) returns (Painting) {}
 }
 service RococoUserService {
   rpc GetUser (UserIdRequest) returns (User) {}
+  rpc UpdateUser (User) returns (User) {}
 }
 
 message ArtistResponse {
@@ -145,13 +147,14 @@ message Painting {
   string description = 3;
   string content = 4;
   Artist artist = 5;
+  Museum museum = 6;
 }
 message User {
-  string id = 1;
-  string username = 2;
-  string firstname = 3;
-  string lastname = 4;
-  bytes avatar = 5;
+  optional string id = 1;
+  optional string username = 2;
+  optional string firstname = 3;
+  optional string lastname = 4;
+  optional string avatar = 5;
 }
 message Geo {
   string city = 1;

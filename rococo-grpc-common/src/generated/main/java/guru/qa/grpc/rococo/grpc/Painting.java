@@ -225,6 +225,32 @@ private static final long serialVersionUID = 0L;
     return artist_ == null ? guru.qa.grpc.rococo.grpc.Artist.getDefaultInstance() : artist_;
   }
 
+  public static final int MUSEUM_FIELD_NUMBER = 6;
+  private guru.qa.grpc.rococo.grpc.Museum museum_;
+  /**
+   * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 6;</code>
+   * @return Whether the museum field is set.
+   */
+  @java.lang.Override
+  public boolean hasMuseum() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 6;</code>
+   * @return The museum.
+   */
+  @java.lang.Override
+  public guru.qa.grpc.rococo.grpc.Museum getMuseum() {
+    return museum_ == null ? guru.qa.grpc.rococo.grpc.Museum.getDefaultInstance() : museum_;
+  }
+  /**
+   * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 6;</code>
+   */
+  @java.lang.Override
+  public guru.qa.grpc.rococo.grpc.MuseumOrBuilder getMuseumOrBuilder() {
+    return museum_ == null ? guru.qa.grpc.rococo.grpc.Museum.getDefaultInstance() : museum_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -254,6 +280,9 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(5, getArtist());
     }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      output.writeMessage(6, getMuseum());
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -278,6 +307,10 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(5, getArtist());
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(6, getMuseum());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -307,6 +340,11 @@ private static final long serialVersionUID = 0L;
       if (!getArtist()
           .equals(other.getArtist())) return false;
     }
+    if (hasMuseum() != other.hasMuseum()) return false;
+    if (hasMuseum()) {
+      if (!getMuseum()
+          .equals(other.getMuseum())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -329,6 +367,10 @@ private static final long serialVersionUID = 0L;
     if (hasArtist()) {
       hash = (37 * hash) + ARTIST_FIELD_NUMBER;
       hash = (53 * hash) + getArtist().hashCode();
+    }
+    if (hasMuseum()) {
+      hash = (37 * hash) + MUSEUM_FIELD_NUMBER;
+      hash = (53 * hash) + getMuseum().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -461,6 +503,7 @@ private static final long serialVersionUID = 0L;
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
         getArtistFieldBuilder();
+        getMuseumFieldBuilder();
       }
     }
     @java.lang.Override
@@ -475,6 +518,11 @@ private static final long serialVersionUID = 0L;
       if (artistBuilder_ != null) {
         artistBuilder_.dispose();
         artistBuilder_ = null;
+      }
+      museum_ = null;
+      if (museumBuilder_ != null) {
+        museumBuilder_.dispose();
+        museumBuilder_ = null;
       }
       return this;
     }
@@ -527,6 +575,12 @@ private static final long serialVersionUID = 0L;
             ? artist_
             : artistBuilder_.build();
         to_bitField0_ |= 0x00000001;
+      }
+      if (((from_bitField0_ & 0x00000020) != 0)) {
+        result.museum_ = museumBuilder_ == null
+            ? museum_
+            : museumBuilder_.build();
+        to_bitField0_ |= 0x00000002;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -598,6 +652,9 @@ private static final long serialVersionUID = 0L;
       if (other.hasArtist()) {
         mergeArtist(other.getArtist());
       }
+      if (other.hasMuseum()) {
+        mergeMuseum(other.getMuseum());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -651,6 +708,13 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000010;
               break;
             } // case 42
+            case 50: {
+              input.readMessage(
+                  getMuseumFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 50
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1075,6 +1139,127 @@ private static final long serialVersionUID = 0L;
         artist_ = null;
       }
       return artistBuilder_;
+    }
+
+    private guru.qa.grpc.rococo.grpc.Museum museum_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        guru.qa.grpc.rococo.grpc.Museum, guru.qa.grpc.rococo.grpc.Museum.Builder, guru.qa.grpc.rococo.grpc.MuseumOrBuilder> museumBuilder_;
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 6;</code>
+     * @return Whether the museum field is set.
+     */
+    public boolean hasMuseum() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 6;</code>
+     * @return The museum.
+     */
+    public guru.qa.grpc.rococo.grpc.Museum getMuseum() {
+      if (museumBuilder_ == null) {
+        return museum_ == null ? guru.qa.grpc.rococo.grpc.Museum.getDefaultInstance() : museum_;
+      } else {
+        return museumBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 6;</code>
+     */
+    public Builder setMuseum(guru.qa.grpc.rococo.grpc.Museum value) {
+      if (museumBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        museum_ = value;
+      } else {
+        museumBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 6;</code>
+     */
+    public Builder setMuseum(
+        guru.qa.grpc.rococo.grpc.Museum.Builder builderForValue) {
+      if (museumBuilder_ == null) {
+        museum_ = builderForValue.build();
+      } else {
+        museumBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 6;</code>
+     */
+    public Builder mergeMuseum(guru.qa.grpc.rococo.grpc.Museum value) {
+      if (museumBuilder_ == null) {
+        if (((bitField0_ & 0x00000020) != 0) &&
+          museum_ != null &&
+          museum_ != guru.qa.grpc.rococo.grpc.Museum.getDefaultInstance()) {
+          getMuseumBuilder().mergeFrom(value);
+        } else {
+          museum_ = value;
+        }
+      } else {
+        museumBuilder_.mergeFrom(value);
+      }
+      if (museum_ != null) {
+        bitField0_ |= 0x00000020;
+        onChanged();
+      }
+      return this;
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 6;</code>
+     */
+    public Builder clearMuseum() {
+      bitField0_ = (bitField0_ & ~0x00000020);
+      museum_ = null;
+      if (museumBuilder_ != null) {
+        museumBuilder_.dispose();
+        museumBuilder_ = null;
+      }
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 6;</code>
+     */
+    public guru.qa.grpc.rococo.grpc.Museum.Builder getMuseumBuilder() {
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return getMuseumFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 6;</code>
+     */
+    public guru.qa.grpc.rococo.grpc.MuseumOrBuilder getMuseumOrBuilder() {
+      if (museumBuilder_ != null) {
+        return museumBuilder_.getMessageOrBuilder();
+      } else {
+        return museum_ == null ?
+            guru.qa.grpc.rococo.grpc.Museum.getDefaultInstance() : museum_;
+      }
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 6;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        guru.qa.grpc.rococo.grpc.Museum, guru.qa.grpc.rococo.grpc.Museum.Builder, guru.qa.grpc.rococo.grpc.MuseumOrBuilder> 
+        getMuseumFieldBuilder() {
+      if (museumBuilder_ == null) {
+        museumBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            guru.qa.grpc.rococo.grpc.Museum, guru.qa.grpc.rococo.grpc.Museum.Builder, guru.qa.grpc.rococo.grpc.MuseumOrBuilder>(
+                getMuseum(),
+                getParentForChildren(),
+                isClean());
+        museum_ = null;
+      }
+      return museumBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

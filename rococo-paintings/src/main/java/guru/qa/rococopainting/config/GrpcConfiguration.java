@@ -1,6 +1,11 @@
 package guru.qa.rococopainting.config;
 
+import java.util.concurrent.TimeUnit;
+
+import io.grpc.netty.shaded.io.grpc.netty.NettyServerBuilder;
+import net.devh.boot.grpc.server.serverfactory.GrpcServerConfigurer;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -24,5 +29,17 @@ import org.springframework.context.annotation.Configuration;
         net.devh.boot.grpc.server.autoconfigure.GrpcServerTraceAutoConfiguration.class
 })
 public class GrpcConfiguration {
+
+    @Bean
+    public GrpcServerConfigurer keepAliveServerConfigurer() {
+        return serverBuilder -> {
+            if (serverBuilder instanceof NettyServerBuilder) {
+                ((NettyServerBuilder) serverBuilder)
+                        .keepAliveTime(30, TimeUnit.SECONDS)
+                        .keepAliveTimeout(10, TimeUnit.SECONDS)
+                        .permitKeepAliveWithoutCalls(true);
+            }
+        };
+    }
 
 }

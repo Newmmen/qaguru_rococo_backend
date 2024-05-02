@@ -42,7 +42,7 @@ create table if not exists country
 );
 
 
-insert into country(id, name) value (UUID_TO_BIN('20978936-400b-4450-9fde-30c327c9e4dd'), 'sfdcd');
+insert into rococo.country(id, name) value (UUID_TO_BIN('ebf46385-7b3b-490d-9693-62efd68fd724'), 'Канада');
 
 
 

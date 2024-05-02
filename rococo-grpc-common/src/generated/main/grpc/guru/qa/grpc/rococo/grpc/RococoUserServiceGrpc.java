@@ -46,6 +46,37 @@ public final class RococoUserServiceGrpc {
     return getGetUserMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.User,
+      guru.qa.grpc.rococo.grpc.User> getUpdateUserMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "UpdateUser",
+      requestType = guru.qa.grpc.rococo.grpc.User.class,
+      responseType = guru.qa.grpc.rococo.grpc.User.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.User,
+      guru.qa.grpc.rococo.grpc.User> getUpdateUserMethod() {
+    io.grpc.MethodDescriptor<guru.qa.grpc.rococo.grpc.User, guru.qa.grpc.rococo.grpc.User> getUpdateUserMethod;
+    if ((getUpdateUserMethod = RococoUserServiceGrpc.getUpdateUserMethod) == null) {
+      synchronized (RococoUserServiceGrpc.class) {
+        if ((getUpdateUserMethod = RococoUserServiceGrpc.getUpdateUserMethod) == null) {
+          RococoUserServiceGrpc.getUpdateUserMethod = getUpdateUserMethod =
+              io.grpc.MethodDescriptor.<guru.qa.grpc.rococo.grpc.User, guru.qa.grpc.rococo.grpc.User>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateUser"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.User.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  guru.qa.grpc.rococo.grpc.User.getDefaultInstance()))
+              .setSchemaDescriptor(new RococoUserServiceMethodDescriptorSupplier("UpdateUser"))
+              .build();
+        }
+      }
+    }
+    return getUpdateUserMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -100,6 +131,13 @@ public final class RococoUserServiceGrpc {
         io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.User> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetUserMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void updateUser(guru.qa.grpc.rococo.grpc.User request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.User> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateUserMethod(), responseObserver);
+    }
   }
 
   /**
@@ -136,6 +174,14 @@ public final class RococoUserServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetUserMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void updateUser(guru.qa.grpc.rococo.grpc.User request,
+        io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.User> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getUpdateUserMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -159,6 +205,13 @@ public final class RococoUserServiceGrpc {
     public guru.qa.grpc.rococo.grpc.User getUser(guru.qa.grpc.rococo.grpc.UserIdRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetUserMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public guru.qa.grpc.rococo.grpc.User updateUser(guru.qa.grpc.rococo.grpc.User request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUpdateUserMethod(), getCallOptions(), request);
     }
   }
 
@@ -185,9 +238,18 @@ public final class RococoUserServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetUserMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<guru.qa.grpc.rococo.grpc.User> updateUser(
+        guru.qa.grpc.rococo.grpc.User request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getUpdateUserMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_USER = 0;
+  private static final int METHODID_UPDATE_USER = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -208,6 +270,10 @@ public final class RococoUserServiceGrpc {
       switch (methodId) {
         case METHODID_GET_USER:
           serviceImpl.getUser((guru.qa.grpc.rococo.grpc.UserIdRequest) request,
+              (io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.User>) responseObserver);
+          break;
+        case METHODID_UPDATE_USER:
+          serviceImpl.updateUser((guru.qa.grpc.rococo.grpc.User) request,
               (io.grpc.stub.StreamObserver<guru.qa.grpc.rococo.grpc.User>) responseObserver);
           break;
         default:
@@ -235,6 +301,13 @@ public final class RococoUserServiceGrpc {
               guru.qa.grpc.rococo.grpc.UserIdRequest,
               guru.qa.grpc.rococo.grpc.User>(
                 service, METHODID_GET_USER)))
+        .addMethod(
+          getUpdateUserMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              guru.qa.grpc.rococo.grpc.User,
+              guru.qa.grpc.rococo.grpc.User>(
+                service, METHODID_UPDATE_USER)))
         .build();
   }
 
@@ -284,6 +357,7 @@ public final class RococoUserServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new RococoUserServiceFileDescriptorSupplier())
               .addMethod(getGetUserMethod())
+              .addMethod(getUpdateUserMethod())
               .build();
         }
       }

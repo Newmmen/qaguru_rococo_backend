@@ -7,6 +7,7 @@ import guru.qa.grpc.rococo.grpc.AllCountryIdRequest;
 import guru.qa.grpc.rococo.grpc.AllMuseumRequest;
 import guru.qa.grpc.rococo.grpc.AllPaintingByAuthorRequest;
 import guru.qa.grpc.rococo.grpc.AllPaintingRequest;
+import guru.qa.grpc.rococo.grpc.Artist;
 import guru.qa.grpc.rococo.grpc.ArtistIdRequest;
 import guru.qa.grpc.rococo.grpc.Country;
 import guru.qa.grpc.rococo.grpc.CountryIdRequest;
@@ -21,6 +22,7 @@ import guru.qa.grpc.rococo.grpc.NewPainting;
 import guru.qa.grpc.rococo.grpc.Painting;
 import guru.qa.grpc.rococo.grpc.PaintingIdRequest;
 import guru.qa.grpc.rococo.grpc.RococoPaintingServiceGrpc;
+import guru.qa.rococo.model.ArtistDto;
 import guru.qa.rococo.model.CountryDto;
 import guru.qa.rococo.model.CreatedMuseumDto;
 import guru.qa.rococo.model.CreatedPaintingDto;
@@ -73,8 +75,7 @@ public class PaintingMuseumGrpcClient {
         try {
             Museum museum =
                     rococoPaintingServiceBlockingStub.getMuseum(
-                            MuseumIdRequest.newBuilder().build().newBuilder()
-                                    .setId(String.valueOf(uuid)).build());
+                            MuseumIdRequest.newBuilder().setId(String.valueOf(uuid)).build());
             return MuseumDto.fromGrpcMessage(museum);
         } catch (StatusRuntimeException e) {
             LOG.error("### Error while calling gRPC server ", e);
@@ -83,18 +84,40 @@ public class PaintingMuseumGrpcClient {
     }
 
     public @Nonnull
+    //todo museum id может быть нал с фронта
     CreatedPaintingDto createPainting(NewPaintingDto newPaintingDto) {
         try {
             CreatedPainting painting =
                     rococoPaintingServiceBlockingStub.createPainting(NewPainting.newBuilder()
-                                    .setArtist(ArtistIdRequest.newBuilder().setId(String.valueOf(newPaintingDto.artistId())))
+                                    .setArtist(ArtistIdRequest.newBuilder().setId(String.valueOf(newPaintingDto.artist().id())))
                                     .setContent(newPaintingDto.content())
                                     .setDescription(newPaintingDto.description())
-                                    .setMuseum(MuseumIdRequest.newBuilder().setId(String.valueOf(newPaintingDto.museumId())).build())
+                                    .setMuseum(MuseumIdRequest.newBuilder().setId(String.valueOf(newPaintingDto.museum().id())).build())
                                     .setTitle(newPaintingDto.title())
                                     .build());
 
             return CreatedPaintingDto.fromGrpcMessage(painting);
+        } catch (StatusRuntimeException e) {
+            LOG.error("### Error while calling gRPC server ", e);
+            throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "The gRPC operation was cancelled", e);
+        }
+    }
+
+
+    public @Nonnull
+    PaintingDto updatePainting(PaintingDto paintingDto) {
+        try {
+            Painting painting =
+                    rococoPaintingServiceBlockingStub.updatePainting(Painting.newBuilder()
+                                    .setId(paintingDto.id().toString())
+                                    .setTitle(paintingDto.title())
+                                    .setDescription(paintingDto.description())
+                                    .setContent(paintingDto.content())
+                                    .setArtist(Artist.newBuilder().setId(paintingDto.artist().id().toString()).build())
+                                    .setMuseum(Museum.newBuilder().setId(paintingDto.museum().id().toString()).build())
+                                    .build());
+
+            return PaintingDto.fromGrpcMessage(painting);
         } catch (StatusRuntimeException e) {
             LOG.error("### Error while calling gRPC server ", e);
             throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "The gRPC operation was cancelled", e);

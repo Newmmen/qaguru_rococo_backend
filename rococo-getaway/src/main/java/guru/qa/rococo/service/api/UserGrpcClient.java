@@ -24,6 +24,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
+import static com.google.common.base.Strings.nullToEmpty;
 import static guru.qa.rococo.model.ArtistDto.fromGrpcMessage;
 
 @Component
@@ -33,7 +34,8 @@ public class UserGrpcClient {
 
 
     @GrpcClient("grpcUserClient")
-    public void setRococoUserServiceBlockingStub( RococoUserServiceGrpc.RococoUserServiceBlockingStub rococoUserServiceBlockingStub) {
+    public void setRococoUserServiceBlockingStub(
+            RococoUserServiceGrpc.RococoUserServiceBlockingStub rococoUserServiceBlockingStub) {
         this.rococoUserServiceBlockingStub = rococoUserServiceBlockingStub;
     }
 
@@ -46,6 +48,36 @@ public class UserGrpcClient {
             User user =
                     rococoUserServiceBlockingStub.getUser(
                             UserIdRequest.newBuilder().setUsername(userName).build());
+            return UserDto.fromGrpcMessage(user);
+        } catch (StatusRuntimeException e) {
+            LOG.error("### Error while calling gRPC server ", e);
+            throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "The gRPC operation was cancelled", e);
+        }
+    }
+
+    public @Nonnull
+    UserDto updateUser(UserDto userDto) {
+        User.Builder userBuilder = User.newBuilder();
+
+
+        if (!nullToEmpty(userDto.firstName()).trim().isEmpty()) {
+            userBuilder.setFirstname(userDto.firstName());
+        }
+        if (!nullToEmpty(userDto.lastName()).trim().isEmpty()) {
+            userBuilder.setLastname(userDto.lastName());
+        }
+        if (!nullToEmpty(userDto.avatar()).trim().isEmpty()) {
+            userBuilder.setAvatar(userDto.avatar());
+        }
+
+        User createdUser = userBuilder
+                .setUsername(userDto.userName())
+                .setId(userDto.id().toString())
+                .build();
+
+        try {
+            User user =
+                    rococoUserServiceBlockingStub.updateUser(createdUser);
             return UserDto.fromGrpcMessage(user);
         } catch (StatusRuntimeException e) {
             LOG.error("### Error while calling gRPC server ", e);
