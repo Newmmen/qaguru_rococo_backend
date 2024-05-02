@@ -20,7 +20,7 @@ private static final long serialVersionUID = 0L;
     username_ = "";
     firstname_ = "";
     lastname_ = "";
-    avatar_ = com.google.protobuf.ByteString.EMPTY;
+    avatar_ = "";
   }
 
   @java.lang.Override
@@ -43,11 +43,20 @@ private static final long serialVersionUID = 0L;
             guru.qa.grpc.rococo.grpc.User.class, guru.qa.grpc.rococo.grpc.User.Builder.class);
   }
 
+  private int bitField0_;
   public static final int ID_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
   private volatile java.lang.Object id_ = "";
   /**
-   * <code>string id = 1;</code>
+   * <code>optional string id = 1;</code>
+   * @return Whether the id field is set.
+   */
+  @java.lang.Override
+  public boolean hasId() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   * <code>optional string id = 1;</code>
    * @return The id.
    */
   @java.lang.Override
@@ -64,7 +73,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string id = 1;</code>
+   * <code>optional string id = 1;</code>
    * @return The bytes for id.
    */
   @java.lang.Override
@@ -86,7 +95,15 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private volatile java.lang.Object username_ = "";
   /**
-   * <code>string username = 2;</code>
+   * <code>optional string username = 2;</code>
+   * @return Whether the username field is set.
+   */
+  @java.lang.Override
+  public boolean hasUsername() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <code>optional string username = 2;</code>
    * @return The username.
    */
   @java.lang.Override
@@ -103,7 +120,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string username = 2;</code>
+   * <code>optional string username = 2;</code>
    * @return The bytes for username.
    */
   @java.lang.Override
@@ -125,7 +142,15 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private volatile java.lang.Object firstname_ = "";
   /**
-   * <code>string firstname = 3;</code>
+   * <code>optional string firstname = 3;</code>
+   * @return Whether the firstname field is set.
+   */
+  @java.lang.Override
+  public boolean hasFirstname() {
+    return ((bitField0_ & 0x00000004) != 0);
+  }
+  /**
+   * <code>optional string firstname = 3;</code>
    * @return The firstname.
    */
   @java.lang.Override
@@ -142,7 +167,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string firstname = 3;</code>
+   * <code>optional string firstname = 3;</code>
    * @return The bytes for firstname.
    */
   @java.lang.Override
@@ -164,7 +189,15 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private volatile java.lang.Object lastname_ = "";
   /**
-   * <code>string lastname = 4;</code>
+   * <code>optional string lastname = 4;</code>
+   * @return Whether the lastname field is set.
+   */
+  @java.lang.Override
+  public boolean hasLastname() {
+    return ((bitField0_ & 0x00000008) != 0);
+  }
+  /**
+   * <code>optional string lastname = 4;</code>
    * @return The lastname.
    */
   @java.lang.Override
@@ -181,7 +214,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string lastname = 4;</code>
+   * <code>optional string lastname = 4;</code>
    * @return The bytes for lastname.
    */
   @java.lang.Override
@@ -200,14 +233,50 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int AVATAR_FIELD_NUMBER = 5;
-  private com.google.protobuf.ByteString avatar_ = com.google.protobuf.ByteString.EMPTY;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object avatar_ = "";
   /**
-   * <code>bytes avatar = 5;</code>
+   * <code>optional string avatar = 5;</code>
+   * @return Whether the avatar field is set.
+   */
+  @java.lang.Override
+  public boolean hasAvatar() {
+    return ((bitField0_ & 0x00000010) != 0);
+  }
+  /**
+   * <code>optional string avatar = 5;</code>
    * @return The avatar.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getAvatar() {
-    return avatar_;
+  public java.lang.String getAvatar() {
+    java.lang.Object ref = avatar_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      avatar_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string avatar = 5;</code>
+   * @return The bytes for avatar.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getAvatarBytes() {
+    java.lang.Object ref = avatar_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      avatar_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -224,20 +293,20 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(username_)) {
+    if (((bitField0_ & 0x00000002) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, username_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(firstname_)) {
+    if (((bitField0_ & 0x00000004) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, firstname_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(lastname_)) {
+    if (((bitField0_ & 0x00000008) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, lastname_);
     }
-    if (!avatar_.isEmpty()) {
-      output.writeBytes(5, avatar_);
+    if (((bitField0_ & 0x00000010) != 0)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, avatar_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -248,21 +317,20 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(username_)) {
+    if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, username_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(firstname_)) {
+    if (((bitField0_ & 0x00000004) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, firstname_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(lastname_)) {
+    if (((bitField0_ & 0x00000008) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, lastname_);
     }
-    if (!avatar_.isEmpty()) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(5, avatar_);
+    if (((bitField0_ & 0x00000010) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, avatar_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -279,16 +347,31 @@ private static final long serialVersionUID = 0L;
     }
     guru.qa.grpc.rococo.grpc.User other = (guru.qa.grpc.rococo.grpc.User) obj;
 
-    if (!getId()
-        .equals(other.getId())) return false;
-    if (!getUsername()
-        .equals(other.getUsername())) return false;
-    if (!getFirstname()
-        .equals(other.getFirstname())) return false;
-    if (!getLastname()
-        .equals(other.getLastname())) return false;
-    if (!getAvatar()
-        .equals(other.getAvatar())) return false;
+    if (hasId() != other.hasId()) return false;
+    if (hasId()) {
+      if (!getId()
+          .equals(other.getId())) return false;
+    }
+    if (hasUsername() != other.hasUsername()) return false;
+    if (hasUsername()) {
+      if (!getUsername()
+          .equals(other.getUsername())) return false;
+    }
+    if (hasFirstname() != other.hasFirstname()) return false;
+    if (hasFirstname()) {
+      if (!getFirstname()
+          .equals(other.getFirstname())) return false;
+    }
+    if (hasLastname() != other.hasLastname()) return false;
+    if (hasLastname()) {
+      if (!getLastname()
+          .equals(other.getLastname())) return false;
+    }
+    if (hasAvatar() != other.hasAvatar()) return false;
+    if (hasAvatar()) {
+      if (!getAvatar()
+          .equals(other.getAvatar())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -300,16 +383,26 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + ID_FIELD_NUMBER;
-    hash = (53 * hash) + getId().hashCode();
-    hash = (37 * hash) + USERNAME_FIELD_NUMBER;
-    hash = (53 * hash) + getUsername().hashCode();
-    hash = (37 * hash) + FIRSTNAME_FIELD_NUMBER;
-    hash = (53 * hash) + getFirstname().hashCode();
-    hash = (37 * hash) + LASTNAME_FIELD_NUMBER;
-    hash = (53 * hash) + getLastname().hashCode();
-    hash = (37 * hash) + AVATAR_FIELD_NUMBER;
-    hash = (53 * hash) + getAvatar().hashCode();
+    if (hasId()) {
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+    }
+    if (hasUsername()) {
+      hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getUsername().hashCode();
+    }
+    if (hasFirstname()) {
+      hash = (37 * hash) + FIRSTNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getFirstname().hashCode();
+    }
+    if (hasLastname()) {
+      hash = (37 * hash) + LASTNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getLastname().hashCode();
+    }
+    if (hasAvatar()) {
+      hash = (37 * hash) + AVATAR_FIELD_NUMBER;
+      hash = (53 * hash) + getAvatar().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -445,7 +538,7 @@ private static final long serialVersionUID = 0L;
       username_ = "";
       firstname_ = "";
       lastname_ = "";
-      avatar_ = com.google.protobuf.ByteString.EMPTY;
+      avatar_ = "";
       return this;
     }
 
@@ -479,21 +572,28 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(guru.qa.grpc.rococo.grpc.User result) {
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.id_ = id_;
+        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.username_ = username_;
+        to_bitField0_ |= 0x00000002;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.firstname_ = firstname_;
+        to_bitField0_ |= 0x00000004;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
         result.lastname_ = lastname_;
+        to_bitField0_ |= 0x00000008;
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
         result.avatar_ = avatar_;
+        to_bitField0_ |= 0x00000010;
       }
+      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -540,28 +640,30 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(guru.qa.grpc.rococo.grpc.User other) {
       if (other == guru.qa.grpc.rococo.grpc.User.getDefaultInstance()) return this;
-      if (!other.getId().isEmpty()) {
+      if (other.hasId()) {
         id_ = other.id_;
         bitField0_ |= 0x00000001;
         onChanged();
       }
-      if (!other.getUsername().isEmpty()) {
+      if (other.hasUsername()) {
         username_ = other.username_;
         bitField0_ |= 0x00000002;
         onChanged();
       }
-      if (!other.getFirstname().isEmpty()) {
+      if (other.hasFirstname()) {
         firstname_ = other.firstname_;
         bitField0_ |= 0x00000004;
         onChanged();
       }
-      if (!other.getLastname().isEmpty()) {
+      if (other.hasLastname()) {
         lastname_ = other.lastname_;
         bitField0_ |= 0x00000008;
         onChanged();
       }
-      if (other.getAvatar() != com.google.protobuf.ByteString.EMPTY) {
-        setAvatar(other.getAvatar());
+      if (other.hasAvatar()) {
+        avatar_ = other.avatar_;
+        bitField0_ |= 0x00000010;
+        onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -610,7 +712,7 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 34
             case 42: {
-              avatar_ = input.readBytes();
+              avatar_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000010;
               break;
             } // case 42
@@ -633,7 +735,14 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object id_ = "";
     /**
-     * <code>string id = 1;</code>
+     * <code>optional string id = 1;</code>
+     * @return Whether the id field is set.
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional string id = 1;</code>
      * @return The id.
      */
     public java.lang.String getId() {
@@ -649,7 +758,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string id = 1;</code>
+     * <code>optional string id = 1;</code>
      * @return The bytes for id.
      */
     public com.google.protobuf.ByteString
@@ -666,7 +775,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string id = 1;</code>
+     * <code>optional string id = 1;</code>
      * @param value The id to set.
      * @return This builder for chaining.
      */
@@ -679,7 +788,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string id = 1;</code>
+     * <code>optional string id = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearId() {
@@ -689,7 +798,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string id = 1;</code>
+     * <code>optional string id = 1;</code>
      * @param value The bytes for id to set.
      * @return This builder for chaining.
      */
@@ -705,7 +814,14 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object username_ = "";
     /**
-     * <code>string username = 2;</code>
+     * <code>optional string username = 2;</code>
+     * @return Whether the username field is set.
+     */
+    public boolean hasUsername() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional string username = 2;</code>
      * @return The username.
      */
     public java.lang.String getUsername() {
@@ -721,7 +837,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string username = 2;</code>
+     * <code>optional string username = 2;</code>
      * @return The bytes for username.
      */
     public com.google.protobuf.ByteString
@@ -738,7 +854,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string username = 2;</code>
+     * <code>optional string username = 2;</code>
      * @param value The username to set.
      * @return This builder for chaining.
      */
@@ -751,7 +867,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string username = 2;</code>
+     * <code>optional string username = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearUsername() {
@@ -761,7 +877,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string username = 2;</code>
+     * <code>optional string username = 2;</code>
      * @param value The bytes for username to set.
      * @return This builder for chaining.
      */
@@ -777,7 +893,14 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object firstname_ = "";
     /**
-     * <code>string firstname = 3;</code>
+     * <code>optional string firstname = 3;</code>
+     * @return Whether the firstname field is set.
+     */
+    public boolean hasFirstname() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional string firstname = 3;</code>
      * @return The firstname.
      */
     public java.lang.String getFirstname() {
@@ -793,7 +916,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string firstname = 3;</code>
+     * <code>optional string firstname = 3;</code>
      * @return The bytes for firstname.
      */
     public com.google.protobuf.ByteString
@@ -810,7 +933,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string firstname = 3;</code>
+     * <code>optional string firstname = 3;</code>
      * @param value The firstname to set.
      * @return This builder for chaining.
      */
@@ -823,7 +946,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string firstname = 3;</code>
+     * <code>optional string firstname = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearFirstname() {
@@ -833,7 +956,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string firstname = 3;</code>
+     * <code>optional string firstname = 3;</code>
      * @param value The bytes for firstname to set.
      * @return This builder for chaining.
      */
@@ -849,7 +972,14 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object lastname_ = "";
     /**
-     * <code>string lastname = 4;</code>
+     * <code>optional string lastname = 4;</code>
+     * @return Whether the lastname field is set.
+     */
+    public boolean hasLastname() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>optional string lastname = 4;</code>
      * @return The lastname.
      */
     public java.lang.String getLastname() {
@@ -865,7 +995,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string lastname = 4;</code>
+     * <code>optional string lastname = 4;</code>
      * @return The bytes for lastname.
      */
     public com.google.protobuf.ByteString
@@ -882,7 +1012,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string lastname = 4;</code>
+     * <code>optional string lastname = 4;</code>
      * @param value The lastname to set.
      * @return This builder for chaining.
      */
@@ -895,7 +1025,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string lastname = 4;</code>
+     * <code>optional string lastname = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearLastname() {
@@ -905,7 +1035,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string lastname = 4;</code>
+     * <code>optional string lastname = 4;</code>
      * @param value The bytes for lastname to set.
      * @return This builder for chaining.
      */
@@ -919,21 +1049,54 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.ByteString avatar_ = com.google.protobuf.ByteString.EMPTY;
+    private java.lang.Object avatar_ = "";
     /**
-     * <code>bytes avatar = 5;</code>
-     * @return The avatar.
+     * <code>optional string avatar = 5;</code>
+     * @return Whether the avatar field is set.
      */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getAvatar() {
-      return avatar_;
+    public boolean hasAvatar() {
+      return ((bitField0_ & 0x00000010) != 0);
     }
     /**
-     * <code>bytes avatar = 5;</code>
+     * <code>optional string avatar = 5;</code>
+     * @return The avatar.
+     */
+    public java.lang.String getAvatar() {
+      java.lang.Object ref = avatar_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        avatar_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string avatar = 5;</code>
+     * @return The bytes for avatar.
+     */
+    public com.google.protobuf.ByteString
+        getAvatarBytes() {
+      java.lang.Object ref = avatar_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        avatar_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string avatar = 5;</code>
      * @param value The avatar to set.
      * @return This builder for chaining.
      */
-    public Builder setAvatar(com.google.protobuf.ByteString value) {
+    public Builder setAvatar(
+        java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       avatar_ = value;
       bitField0_ |= 0x00000010;
@@ -941,12 +1104,26 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>bytes avatar = 5;</code>
+     * <code>optional string avatar = 5;</code>
      * @return This builder for chaining.
      */
     public Builder clearAvatar() {
-      bitField0_ = (bitField0_ & ~0x00000010);
       avatar_ = getDefaultInstance().getAvatar();
+      bitField0_ = (bitField0_ & ~0x00000010);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string avatar = 5;</code>
+     * @param value The bytes for avatar to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAvatarBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      avatar_ = value;
+      bitField0_ |= 0x00000010;
       onChanged();
       return this;
     }

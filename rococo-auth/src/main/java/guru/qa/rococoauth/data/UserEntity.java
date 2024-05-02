@@ -46,7 +46,7 @@ public class UserEntity implements Serializable {
     @Column(nullable = false)
     private Boolean enabled;
 
-    @Column()
+    @Column(name = "avatar", columnDefinition = "MEDIUMTEXT")
     private String avatar;
 
     @Override

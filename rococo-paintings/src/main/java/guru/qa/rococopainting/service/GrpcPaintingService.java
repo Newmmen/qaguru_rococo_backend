@@ -83,6 +83,7 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
                                 .setDescription(painting.getDescription())
                                 .setContent(painting.getContent())
                                 .setArtist(toGrpcMessage(painting.getArtist()))
+                                .setMuseum(MuseumEntity.toGrpcMessage(painting.getMuseum()))
                                 .build())
                         .toList())
                 .build();
@@ -155,6 +156,7 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
                                 .setDescription(painting.getDescription())
                                 .setContent(painting.getContent())
                                 .setArtist(toGrpcMessage(painting.getArtist()))
+                                .setMuseum(MuseumEntity.toGrpcMessage(painting.getMuseum()))
                                 .build())
                         .toList())
                 .build();
@@ -173,6 +175,7 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
                 .setDescription(paintingEntity.getDescription())
                 .setContent(paintingEntity.getContent())
                 .setArtist(toGrpcMessage(paintingEntity.getArtist()))
+                .setMuseum(MuseumEntity.toGrpcMessage(paintingEntity.getMuseum()))
                 .build();
 
         responseObserver.onNext(painting);
@@ -224,6 +227,34 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
         responseObserver.onCompleted();
     }
 
+    @Override
+    public void updatePainting(Painting request,
+                               StreamObserver<Painting> responseObserver) {
+        ArtistEntity artistEntity =
+                fetchEntity(artistRepository.findById(UUID.fromString(request.getArtist().getId())));
+        MuseumEntity museumEntity =
+                fetchEntity(museumRepository.findById(UUID.fromString(request.getMuseum().getId())));
+        PaintingEntity paintingEntity = new PaintingEntity();
+        paintingEntity.setTitle(request.getTitle());
+        paintingEntity.setDescription(request.getDescription());
+        paintingEntity.setContent(request.getContent());
+        paintingEntity.setArtist(artistEntity);
+        paintingEntity.setMuseum(museumEntity);
+        paintingEntity = paintingRepository.save(paintingEntity);
+
+
+        Painting painting = Painting.newBuilder()
+                .setId(paintingEntity.getId().toString())
+                .setTitle(paintingEntity.getTitle())
+                .setDescription(paintingEntity.getDescription())
+                .setContent(paintingEntity.getContent())
+                .setArtist(ArtistEntity.toGrpcMessage(paintingEntity.getArtist()))
+                .setMuseum(MuseumEntity.toGrpcMessage(paintingEntity.getMuseum()))
+                .build();
+        responseObserver.onNext(painting);
+        responseObserver.onCompleted();
+    }
+
     @Transactional
     @Override
     public void createMuseum(NewMuseum request,
@@ -237,8 +268,8 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
                             GeolocationEntity geo = new GeolocationEntity();
                             geo.setCity(request.getGeo().getCity());
                             geo.setCountryEntity(countryEntity);
-                            geoRepository.save(geo);
-                            return geo;
+                            return geoRepository.save(geo);
+
                         }
                 );
         museumEntity.setTitle(request.getTitle());

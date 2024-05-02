@@ -69,4 +69,19 @@ public interface PaintingOrBuilder extends
    * <code>.guru.qa.grpc.rococo.grpc.Artist artist = 5;</code>
    */
   guru.qa.grpc.rococo.grpc.ArtistOrBuilder getArtistOrBuilder();
+
+  /**
+   * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 6;</code>
+   * @return Whether the museum field is set.
+   */
+  boolean hasMuseum();
+  /**
+   * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 6;</code>
+   * @return The museum.
+   */
+  guru.qa.grpc.rococo.grpc.Museum getMuseum();
+  /**
+   * <code>.guru.qa.grpc.rococo.grpc.Museum museum = 6;</code>
+   */
+  guru.qa.grpc.rococo.grpc.MuseumOrBuilder getMuseumOrBuilder();
 }

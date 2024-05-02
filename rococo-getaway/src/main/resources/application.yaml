@@ -11,6 +11,8 @@ spring:
 
 grpc:
   client:
+    GLOBAL:
+      max-inbound-message-size: 2147483647
     grpcArtistClient:
       address: 'static://localhost:8092'
       negotiationType: PLAINTEXT

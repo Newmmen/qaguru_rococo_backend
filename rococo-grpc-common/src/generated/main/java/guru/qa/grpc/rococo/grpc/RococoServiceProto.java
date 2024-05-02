@@ -201,53 +201,60 @@ public final class RococoServiceProto {
       "Artist\"z\n\rCreatedMuseum\022\n\n\002id\030\001 \001(\t\022\r\n\005t" +
       "itle\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\022\r\n\005photo" +
       "\030\004 \001(\t\022*\n\003geo\030\005 \001(\0132\035.guru.qa.grpc.rococ" +
-      "o.grpc.Geo\"}\n\010Painting\022\n\n\002id\030\001 \001(\t\022\r\n\005ti" +
-      "tle\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\022\017\n\007conten" +
-      "t\030\004 \001(\t\0220\n\006artist\030\005 \001(\0132 .guru.qa.grpc.r" +
-      "ococo.grpc.Artist\"Y\n\004User\022\n\n\002id\030\001 \001(\t\022\020\n" +
-      "\010username\030\002 \001(\t\022\021\n\tfirstname\030\003 \001(\t\022\020\n\010la" +
-      "stname\030\004 \001(\t\022\016\n\006avatar\030\005 \001(\014\"G\n\003Geo\022\014\n\004c" +
-      "ity\030\001 \001(\t\0222\n\007country\030\002 \001(\0132!.guru.qa.grp" +
-      "c.rococo.grpc.Country\"#\n\007Country\022\n\n\002id\030\001" +
-      " \001(\t\022\014\n\004name\030\002 \001(\t2\211\003\n\023RococoArtistServi" +
-      "ce\022g\n\rGetAllArtists\022*.guru.qa.grpc.rococ" +
-      "o.grpc.AllArtistRequest\032(.guru.qa.grpc.r" +
-      "ococo.grpc.ArtistResponse\"\000\022Z\n\tGetArtist" +
-      "\022).guru.qa.grpc.rococo.grpc.ArtistIdRequ" +
-      "est\032 .guru.qa.grpc.rococo.grpc.Artist\"\000\022" +
-      "W\n\014CreateArtist\022#.guru.qa.grpc.rococo.gr" +
-      "pc.NewArtist\032 .guru.qa.grpc.rococo.grpc." +
-      "Artist\"\000\022T\n\014UpdateArtist\022 .guru.qa.grpc." +
-      "rococo.grpc.Artist\032 .guru.qa.grpc.rococo" +
-      ".grpc.Artist\"\0002\253\007\n\025RococoPaintingService" +
-      "\022l\n\016GetAllPainting\022,.guru.qa.grpc.rococo" +
-      ".grpc.AllPaintingRequest\032*.guru.qa.grpc." +
-      "rococo.grpc.PaintingResponse\"\000\022t\n\016GetAll" +
-      "ByAuthor\0224.guru.qa.grpc.rococo.grpc.AllP" +
-      "aintingByAuthorRequest\032*.guru.qa.grpc.ro" +
-      "coco.grpc.PaintingResponse\"\000\022d\n\016CreatePa" +
-      "inting\022%.guru.qa.grpc.rococo.grpc.NewPai" +
-      "nting\032).guru.qa.grpc.rococo.grpc.Created" +
-      "Painting\"\000\022`\n\013GetPainting\022+.guru.qa.grpc" +
-      ".rococo.grpc.PaintingIdRequest\032\".guru.qa" +
-      ".grpc.rococo.grpc.Painting\"\000\022g\n\rGetAllMu" +
-      "seums\022*.guru.qa.grpc.rococo.grpc.AllMuse" +
-      "umRequest\032(.guru.qa.grpc.rococo.grpc.Mus" +
-      "eumResponse\"\000\022Z\n\tGetMuseum\022).guru.qa.grp" +
-      "c.rococo.grpc.MuseumIdRequest\032 .guru.qa." +
-      "grpc.rococo.grpc.Museum\"\000\022k\n\rGetAllCount" +
-      "ry\022-.guru.qa.grpc.rococo.grpc.AllCountry" +
-      "IdRequest\032).guru.qa.grpc.rococo.grpc.Cou" +
-      "ntryResponse\"\000\022^\n\014CreateMuseum\022#.guru.qa" +
-      ".grpc.rococo.grpc.NewMuseum\032\'.guru.qa.gr" +
-      "pc.rococo.grpc.CreatedMuseum\"\000\022T\n\014Update" +
-      "Museum\022 .guru.qa.grpc.rococo.grpc.Museum" +
-      "\032 .guru.qa.grpc.rococo.grpc.Museum\"\0002i\n\021" +
-      "RococoUserService\022T\n\007GetUser\022\'.guru.qa.g" +
-      "rpc.rococo.grpc.UserIdRequest\032\036.guru.qa." +
-      "grpc.rococo.grpc.User\"\000B0\n\030guru.qa.grpc." +
-      "rococo.grpcB\022RococoServiceProtoP\001b\006proto" +
-      "3"
+      "o.grpc.Geo\"\257\001\n\010Painting\022\n\n\002id\030\001 \001(\t\022\r\n\005t" +
+      "itle\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\022\017\n\007conte" +
+      "nt\030\004 \001(\t\0220\n\006artist\030\005 \001(\0132 .guru.qa.grpc." +
+      "rococo.grpc.Artist\0220\n\006museum\030\006 \001(\0132 .gur" +
+      "u.qa.grpc.rococo.grpc.Museum\"\254\001\n\004User\022\017\n" +
+      "\002id\030\001 \001(\tH\000\210\001\001\022\025\n\010username\030\002 \001(\tH\001\210\001\001\022\026\n" +
+      "\tfirstname\030\003 \001(\tH\002\210\001\001\022\025\n\010lastname\030\004 \001(\tH" +
+      "\003\210\001\001\022\023\n\006avatar\030\005 \001(\tH\004\210\001\001B\005\n\003_idB\013\n\t_use" +
+      "rnameB\014\n\n_firstnameB\013\n\t_lastnameB\t\n\007_ava" +
+      "tar\"G\n\003Geo\022\014\n\004city\030\001 \001(\t\0222\n\007country\030\002 \001(" +
+      "\0132!.guru.qa.grpc.rococo.grpc.Country\"#\n\007" +
+      "Country\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t2\211\003\n\023Ro" +
+      "cocoArtistService\022g\n\rGetAllArtists\022*.gur" +
+      "u.qa.grpc.rococo.grpc.AllArtistRequest\032(" +
+      ".guru.qa.grpc.rococo.grpc.ArtistResponse" +
+      "\"\000\022Z\n\tGetArtist\022).guru.qa.grpc.rococo.gr" +
+      "pc.ArtistIdRequest\032 .guru.qa.grpc.rococo" +
+      ".grpc.Artist\"\000\022W\n\014CreateArtist\022#.guru.qa" +
+      ".grpc.rococo.grpc.NewArtist\032 .guru.qa.gr" +
+      "pc.rococo.grpc.Artist\"\000\022T\n\014UpdateArtist\022" +
+      " .guru.qa.grpc.rococo.grpc.Artist\032 .guru" +
+      ".qa.grpc.rococo.grpc.Artist\"\0002\207\010\n\025Rococo" +
+      "PaintingService\022l\n\016GetAllPainting\022,.guru" +
+      ".qa.grpc.rococo.grpc.AllPaintingRequest\032" +
+      "*.guru.qa.grpc.rococo.grpc.PaintingRespo" +
+      "nse\"\000\022t\n\016GetAllByAuthor\0224.guru.qa.grpc.r" +
+      "ococo.grpc.AllPaintingByAuthorRequest\032*." +
+      "guru.qa.grpc.rococo.grpc.PaintingRespons" +
+      "e\"\000\022d\n\016CreatePainting\022%.guru.qa.grpc.roc" +
+      "oco.grpc.NewPainting\032).guru.qa.grpc.roco" +
+      "co.grpc.CreatedPainting\"\000\022`\n\013GetPainting" +
+      "\022+.guru.qa.grpc.rococo.grpc.PaintingIdRe" +
+      "quest\032\".guru.qa.grpc.rococo.grpc.Paintin" +
+      "g\"\000\022g\n\rGetAllMuseums\022*.guru.qa.grpc.roco" +
+      "co.grpc.AllMuseumRequest\032(.guru.qa.grpc." +
+      "rococo.grpc.MuseumResponse\"\000\022Z\n\tGetMuseu" +
+      "m\022).guru.qa.grpc.rococo.grpc.MuseumIdReq" +
+      "uest\032 .guru.qa.grpc.rococo.grpc.Museum\"\000" +
+      "\022k\n\rGetAllCountry\022-.guru.qa.grpc.rococo." +
+      "grpc.AllCountryIdRequest\032).guru.qa.grpc." +
+      "rococo.grpc.CountryResponse\"\000\022^\n\014CreateM" +
+      "useum\022#.guru.qa.grpc.rococo.grpc.NewMuse" +
+      "um\032\'.guru.qa.grpc.rococo.grpc.CreatedMus" +
+      "eum\"\000\022T\n\014UpdateMuseum\022 .guru.qa.grpc.roc" +
+      "oco.grpc.Museum\032 .guru.qa.grpc.rococo.gr" +
+      "pc.Museum\"\000\022Z\n\016UpdatePainting\022\".guru.qa." +
+      "grpc.rococo.grpc.Painting\032\".guru.qa.grpc" +
+      ".rococo.grpc.Painting\"\0002\271\001\n\021RococoUserSe" +
+      "rvice\022T\n\007GetUser\022\'.guru.qa.grpc.rococo.g" +
+      "rpc.UserIdRequest\032\036.guru.qa.grpc.rococo." +
+      "grpc.User\"\000\022N\n\nUpdateUser\022\036.guru.qa.grpc" +
+      ".rococo.grpc.User\032\036.guru.qa.grpc.rococo." +
+      "grpc.User\"\000B0\n\030guru.qa.grpc.rococo.grpcB" +
+      "\022RococoServiceProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -391,13 +398,13 @@ public final class RococoServiceProto {
     internal_static_guru_qa_grpc_rococo_grpc_Painting_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_guru_qa_grpc_rococo_grpc_Painting_descriptor,
-        new java.lang.String[] { "Id", "Title", "Description", "Content", "Artist", });
+        new java.lang.String[] { "Id", "Title", "Description", "Content", "Artist", "Museum", });
     internal_static_guru_qa_grpc_rococo_grpc_User_descriptor =
       getDescriptor().getMessageTypes().get(23);
     internal_static_guru_qa_grpc_rococo_grpc_User_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_guru_qa_grpc_rococo_grpc_User_descriptor,
-        new java.lang.String[] { "Id", "Username", "Firstname", "Lastname", "Avatar", });
+        new java.lang.String[] { "Id", "Username", "Firstname", "Lastname", "Avatar", "Id", "Username", "Firstname", "Lastname", "Avatar", });
     internal_static_guru_qa_grpc_rococo_grpc_Geo_descriptor =
       getDescriptor().getMessageTypes().get(24);
     internal_static_guru_qa_grpc_rococo_grpc_Geo_fieldAccessorTable = new

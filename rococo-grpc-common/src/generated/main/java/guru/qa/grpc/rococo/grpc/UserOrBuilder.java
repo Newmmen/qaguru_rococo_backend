@@ -8,56 +8,87 @@ public interface UserOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string id = 1;</code>
+   * <code>optional string id = 1;</code>
+   * @return Whether the id field is set.
+   */
+  boolean hasId();
+  /**
+   * <code>optional string id = 1;</code>
    * @return The id.
    */
   java.lang.String getId();
   /**
-   * <code>string id = 1;</code>
+   * <code>optional string id = 1;</code>
    * @return The bytes for id.
    */
   com.google.protobuf.ByteString
       getIdBytes();
 
   /**
-   * <code>string username = 2;</code>
+   * <code>optional string username = 2;</code>
+   * @return Whether the username field is set.
+   */
+  boolean hasUsername();
+  /**
+   * <code>optional string username = 2;</code>
    * @return The username.
    */
   java.lang.String getUsername();
   /**
-   * <code>string username = 2;</code>
+   * <code>optional string username = 2;</code>
    * @return The bytes for username.
    */
   com.google.protobuf.ByteString
       getUsernameBytes();
 
   /**
-   * <code>string firstname = 3;</code>
+   * <code>optional string firstname = 3;</code>
+   * @return Whether the firstname field is set.
+   */
+  boolean hasFirstname();
+  /**
+   * <code>optional string firstname = 3;</code>
    * @return The firstname.
    */
   java.lang.String getFirstname();
   /**
-   * <code>string firstname = 3;</code>
+   * <code>optional string firstname = 3;</code>
    * @return The bytes for firstname.
    */
   com.google.protobuf.ByteString
       getFirstnameBytes();
 
   /**
-   * <code>string lastname = 4;</code>
+   * <code>optional string lastname = 4;</code>
+   * @return Whether the lastname field is set.
+   */
+  boolean hasLastname();
+  /**
+   * <code>optional string lastname = 4;</code>
    * @return The lastname.
    */
   java.lang.String getLastname();
   /**
-   * <code>string lastname = 4;</code>
+   * <code>optional string lastname = 4;</code>
    * @return The bytes for lastname.
    */
   com.google.protobuf.ByteString
       getLastnameBytes();
 
   /**
-   * <code>bytes avatar = 5;</code>
+   * <code>optional string avatar = 5;</code>
+   * @return Whether the avatar field is set.
+   */
+  boolean hasAvatar();
+  /**
+   * <code>optional string avatar = 5;</code>
    * @return The avatar.
    */
-  com.google.protobuf.ByteString getAvatar();
+  java.lang.String getAvatar();
+  /**
+   * <code>optional string avatar = 5;</code>
+   * @return The bytes for avatar.
+   */
+  com.google.protobuf.ByteString
+      getAvatarBytes();
 }
