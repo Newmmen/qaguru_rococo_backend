@@ -5,6 +5,7 @@ import java.util.UUID;
 import guru.qa.rococo.model.ArtistDto;
 import guru.qa.rococo.model.NewArtistDto;
 import guru.qa.rococo.service.api.ArtistGrpcClient;
+import org.springdoc.core.converters.models.PageableAsQueryParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,22 +31,23 @@ public class ArtistController {
     }
 
     @GetMapping("/artist/{id}")
-    public ArtistDto get(@PathVariable("id")UUID id) {
+    public ArtistDto getArtist(@PathVariable("id")UUID id) {
         return artistClient.getArtist(id);
     }
 
     @PostMapping("/artist")
-    public ArtistDto create(@RequestBody NewArtistDto artistDto) {
+    public ArtistDto createArtist(@RequestBody NewArtistDto artistDto) {
         return artistClient.createArtist(artistDto);
     }
 
     @PatchMapping("/artist")
-    public ArtistDto update(@RequestBody ArtistDto artistDto) {
+    public ArtistDto updateArtist(@RequestBody ArtistDto artistDto) {
         return artistClient.updateArtist(artistDto);
     }
 
     @GetMapping("/artist")
-    public Page<ArtistDto> getAll(@RequestParam(required = false) String name,
+    @PageableAsQueryParam
+    public Page<ArtistDto> getAllArtists(@RequestParam(required = false) String name,
                                   @PageableDefault Pageable pageable) {
         return artistClient.getAllArtist(name, pageable);
     }

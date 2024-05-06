@@ -1,17 +1,12 @@
 package guru.qa.rococoauth.service;
 
 
-import java.util.UUID;
-
 import guru.qa.rococoauth.data.UserEntity;
 import guru.qa.rococoauth.data.repository.UserRepository;
-
-import guru.qa.rococoauth.model.UserJson;
 import jakarta.annotation.Nonnull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,15 +18,12 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final KafkaTemplate<String, UserJson> kafkaTemplate;
 
     @Autowired
     public UserService(UserRepository userRepository,
-                       PasswordEncoder passwordEncoder,
-                       KafkaTemplate<String, UserJson> kafkaTemplate) {
+                       PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-        this.kafkaTemplate = kafkaTemplate;
     }
 
     @Transactional
@@ -43,8 +35,6 @@ public class UserService {
         userEntity.setPassword(passwordEncoder.encode(password));
 
         String savedUser = userRepository.save(userEntity).getUsername();
-      //  kafkaTemplate.send("users", new UserJson(savedUser));
-        //LOG.info("### Kafka topic [users] sent message: " + savedUser);
         return savedUser;
     }
 }

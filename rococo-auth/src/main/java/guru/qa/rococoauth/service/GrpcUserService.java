@@ -30,8 +30,6 @@ public class GrpcUserService extends RococoUserServiceGrpc.RococoUserServiceImpl
 
         User user = User.newBuilder()
                 .setId(userEntity.getId().toString())
-                //  .setFirstname(userEntity.getFirstName())
-                //  .setLastname(userEntity.getLastName())
                 .setUsername(userEntity.getUsername())
                 .build();
 

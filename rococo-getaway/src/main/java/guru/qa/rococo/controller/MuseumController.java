@@ -32,23 +32,23 @@ public class MuseumController {
 
 
     @GetMapping("/museum")
-    public Page<MuseumDto> getAll(@RequestParam(required = false) String title,
+    public Page<MuseumDto> getAllMuseums(@RequestParam(required = false) String title,
                                   @PageableDefault Pageable pageable) {
         return museumClient.getAllMuseums(title, pageable);
     }
 
     @GetMapping("/museum/{id}")
-    public MuseumDto get(@PathVariable UUID id) {
+    public MuseumDto getMuseum(@PathVariable UUID id) {
         return museumClient.getMuseum(id);
     }
 
     @PatchMapping("/museum")
-    public MuseumDto update(@RequestBody MuseumDto museumDto) {
+    public MuseumDto updateMuseum(@RequestBody MuseumDto museumDto) {
         return museumClient.updateMuseum(museumDto);
     }
 
     @PostMapping("/museum")
-    public CreatedMuseumDto create(@RequestBody NewMuseumDto newMuseumDto) {
+    public CreatedMuseumDto createMuseum(@RequestBody NewMuseumDto newMuseumDto) {
         return museumClient.createMuseum(newMuseumDto);
     }
 
