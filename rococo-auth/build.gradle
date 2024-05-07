@@ -26,7 +26,7 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-api:2.3.0'
     implementation "org.springframework.security:spring-security-oauth2-authorization-server:${project.ext.oauth2AuthorizationServerVersion}"
     implementation "org.flywaydb:flyway-core:${project.ext.flywayVersion}"
-    implementation "org.flywaydb:flyway-mysql"
+    implementation "org.flywaydb:flyway-mysql:${project.ext.flywayVersion}"
     implementation "net.devh:grpc-server-spring-boot-starter:${project.ext.springGrpcVersion}"
     implementation "org.springframework.kafka:spring-kafka:${project.ext.springKafkaVersion}"
     annotationProcessor "org.projectlombok:lombok:${project.ext.lombokVersion}"

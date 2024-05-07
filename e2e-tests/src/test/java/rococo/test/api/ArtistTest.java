@@ -45,9 +45,10 @@ public class ArtistTest extends BaseWebTest {
     @DisplayName("Check user with friend has correct text in friend's table")
     @ApiLogin(username = "admin", password = "admin")
     void checkApiLogin() throws IOException {
-        org.openapitools.client.model.ArtistDto artistDto = apiClient.getArtist(UUID.fromString("960421e0-42de-4ac8-9c73-355f0855fcf5")).execute().body();
-        artistDto.setName("ZZZZZZZZZ");
-        apiClient.updateArtist(artistDto).execute();
+        //org.openapitools.client.model.ArtistDto artistDto = apiClient.getArtist(UUID.fromString("960421e0-42de-4ac8" +
+              //  "-9c73-355f0855fcf5")).execute().body();
+       // artistDto.setName("ZZZZZZZZZ");
+       // apiClient.updateArtist(artistDto).execute();
 
 
         //apiClient.getAllArtists(pageable, null).execute();

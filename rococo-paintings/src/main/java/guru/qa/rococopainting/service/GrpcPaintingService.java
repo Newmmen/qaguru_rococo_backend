@@ -131,7 +131,7 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
         CountryResponse countryResponse = CountryResponse.newBuilder().addAllAllCountry(list.stream()
                         .map(country -> Country.newBuilder()
                                 .setId(country.getId().toString())
-                                .setName(country.getName())
+                                .setName(country.getCity())
                                 .build())
                         .toList())
                 .build();

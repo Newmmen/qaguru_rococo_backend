@@ -6,7 +6,10 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-public class LoginPage {
+public class LoginPage extends BasePage<LoginPage> {
+    public static final String URL = CFG.frontUrl();
+
+
 
     @Step("Do login with data")
     public LoginPage doUiLoginWithData(String username, String password) {
@@ -31,5 +34,9 @@ public class LoginPage {
     public LoginPage closeBrowser() {
         Selenide.closeWebDriver();
         return this;
+    }
+
+    @Override public LoginPage waitForPageLoaded() {
+        return null;
     }
 }

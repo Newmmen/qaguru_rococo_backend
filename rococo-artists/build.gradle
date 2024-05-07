@@ -23,7 +23,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation "org.flywaydb:flyway-core:${project.ext.flywayVersion}"
-    implementation "org.flywaydb:flyway-mysql"
+    implementation "org.flywaydb:flyway-mysql:${project.ext.flywayVersion}"
     runtimeOnly 'mysql:mysql-connector-java:8.0.33'
     compileOnly "org.projectlombok:lombok:${project.ext.lombokVersion}"
 

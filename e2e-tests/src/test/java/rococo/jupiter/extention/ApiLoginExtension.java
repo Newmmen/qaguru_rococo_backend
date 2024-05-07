@@ -68,7 +68,7 @@ public class ApiLoginExtension implements BeforeEachCallback, AfterTestExecution
       WebDriverRunner.getWebDriver().manage().addCookie(
           jsessionCookie()
       );
-      Selenide.refresh();
+      //Selenide.refresh();
     }
   }
 

@@ -14,7 +14,7 @@ public interface PaintingRepository extends JpaRepository<PaintingEntity, UUID> 
 
     @Nonnull
     Page<PaintingEntity> findAllByTitleContainsIgnoreCase(
-            @Nonnull String name,
+            @Nonnull String title,
             @Nonnull Pageable pageable
     ); //todo проверить будет ли работь с пустым нейм без метода findall
 
