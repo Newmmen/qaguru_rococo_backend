@@ -19,8 +19,7 @@ public interface MuseumRepository extends JpaRepository<MuseumEntity, UUID> {
     ); //todo проверить будет ли работь с пустым нейм без метода findall
 
     @Nonnull
-    Page<MuseumEntity> findAll(
-                               @Nonnull Pageable pageable
+    Page<MuseumEntity> findAll(@Nonnull Pageable pageable
     );
 
 

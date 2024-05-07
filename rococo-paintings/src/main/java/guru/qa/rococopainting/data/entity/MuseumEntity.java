@@ -29,10 +29,10 @@ public class MuseumEntity implements Serializable {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @Column(nullable = false)
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column()
+    @Column(name = "description")
     private String description;
 
     @Column(name = "content", columnDefinition = "MEDIUMTEXT")
