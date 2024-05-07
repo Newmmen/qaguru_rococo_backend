@@ -1,0 +1,636 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8083
+  description: Generated server url
+paths:
+  /api/painting:
+    get:
+      tags:
+      - painting-controller
+      operationId: getAllPaintings
+      parameters:
+      - name: name
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: pageable
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PagePaintingDto'
+    post:
+      tags:
+      - painting-controller
+      operationId: createPainting
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewPaintingDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CreatedPaintingDto'
+    patch:
+      tags:
+      - painting-controller
+      operationId: updatePainting
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaintingDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PaintingDto'
+  /api/museum:
+    get:
+      tags:
+      - museum-controller
+      operationId: getAllMuseums
+      parameters:
+      - name: title
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: pageable
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PageMuseumDto'
+    post:
+      tags:
+      - museum-controller
+      operationId: createMuseum
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewMuseumDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CreatedMuseumDto'
+    patch:
+      tags:
+      - museum-controller
+      operationId: updateMuseum
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MuseumDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MuseumDto'
+  /api/artist:
+    get:
+      tags:
+      - artist-controller
+      operationId: getAllArtists
+      parameters:
+      - name: name
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: pageable
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PageArtistDto'
+    post:
+      tags:
+      - artist-controller
+      operationId: createArtist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewArtistDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtistDto'
+    patch:
+      tags:
+      - artist-controller
+      operationId: updateArtist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArtistDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtistDto'
+  /api/user:
+    get:
+      tags:
+      - user-controller
+      operationId: getCurrentUser
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDto'
+    patch:
+      tags:
+      - user-controller
+      operationId: updateUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDto'
+  /session:
+    get:
+      tags:
+      - session-controller
+      operationId: session
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SessionDto'
+  /api/painting/{id}:
+    get:
+      tags:
+      - painting-controller
+      operationId: getPainting
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PaintingDto'
+  /api/painting/author/{id}:
+    get:
+      tags:
+      - painting-controller
+      operationId: getByAuthorId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: pageable
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PagePaintingDto'
+  /api/museum/{id}:
+    get:
+      tags:
+      - museum-controller
+      operationId: getMuseum
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MuseumDto'
+  /api/country:
+    get:
+      tags:
+      - museum-controller
+      operationId: getAllCountries
+      parameters:
+      - name: pageable
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PageCountryDto'
+  /api/artist/{id}:
+    get:
+      tags:
+      - artist-controller
+      operationId: getArtist
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ArtistDto'
+components:
+  schemas:
+    ArtistDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        biography:
+          type: string
+        photo:
+          type: string
+    CountryDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+    GeolocationDto:
+      type: object
+      properties:
+        city:
+          type: string
+        country:
+          $ref: '#/components/schemas/CountryDto'
+    MuseumDto:
+      type: object
+      properties:
+        geo:
+          $ref: '#/components/schemas/GeolocationDto'
+        id:
+          type: string
+          format: uuid
+        photo:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+    NewPaintingDto:
+      type: object
+      properties:
+        artist:
+          $ref: '#/components/schemas/ArtistDto'
+        content:
+          type: string
+        description:
+          type: string
+        museum:
+          $ref: '#/components/schemas/MuseumDto'
+        title:
+          type: string
+    CreatedPaintingDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+        content:
+          type: string
+        museumDto:
+          $ref: '#/components/schemas/MuseumDto'
+        artistDto:
+          $ref: '#/components/schemas/ArtistDto'
+    NewMuseumDto:
+      type: object
+      properties:
+        description:
+          type: string
+        geo:
+          $ref: '#/components/schemas/GeolocationDto'
+        photo:
+          type: string
+        title:
+          type: string
+    CreatedMuseumDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+        photo:
+          type: string
+        geo:
+          $ref: '#/components/schemas/GeolocationDto'
+    NewArtistDto:
+      type: object
+      properties:
+        biography:
+          type: string
+        name:
+          type: string
+        photo:
+          type: string
+    UserDto:
+      type: object
+      properties:
+        username:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        id:
+          type: string
+          format: uuid
+        avatar:
+          type: string
+    PaintingDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        description:
+          type: string
+        content:
+          type: string
+        artist:
+          $ref: '#/components/schemas/ArtistDto'
+        museum:
+          $ref: '#/components/schemas/MuseumDto'
+    SessionDto:
+      type: object
+      properties:
+        username:
+          type: string
+        issuedAt:
+          type: string
+          format: date-time
+        expiresAt:
+          type: string
+          format: date-time
+    Pageable:
+      type: object
+      properties:
+        page:
+          minimum: 0
+          type: integer
+          format: int32
+        size:
+          minimum: 1
+          type: integer
+          format: int32
+        sort:
+          type: array
+          items:
+            type: string
+    PagePaintingDto:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+          format: int32
+        totalElements:
+          type: integer
+          format: int64
+        first:
+          type: boolean
+        last:
+          type: boolean
+        size:
+          type: integer
+          format: int32
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaintingDto'
+        number:
+          type: integer
+          format: int32
+        sort:
+          $ref: '#/components/schemas/SortObject'
+        pageable:
+          $ref: '#/components/schemas/PageableObject'
+        numberOfElements:
+          type: integer
+          format: int32
+        empty:
+          type: boolean
+    PageableObject:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int64
+        sort:
+          $ref: '#/components/schemas/SortObject'
+        unpaged:
+          type: boolean
+        paged:
+          type: boolean
+        pageNumber:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+    SortObject:
+      type: object
+      properties:
+        empty:
+          type: boolean
+        sorted:
+          type: boolean
+        unsorted:
+          type: boolean
+    PageMuseumDto:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+          format: int32
+        totalElements:
+          type: integer
+          format: int64
+        first:
+          type: boolean
+        last:
+          type: boolean
+        size:
+          type: integer
+          format: int32
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/MuseumDto'
+        number:
+          type: integer
+          format: int32
+        sort:
+          $ref: '#/components/schemas/SortObject'
+        pageable:
+          $ref: '#/components/schemas/PageableObject'
+        numberOfElements:
+          type: integer
+          format: int32
+        empty:
+          type: boolean
+    PageCountryDto:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+          format: int32
+        totalElements:
+          type: integer
+          format: int64
+        first:
+          type: boolean
+        last:
+          type: boolean
+        size:
+          type: integer
+          format: int32
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/CountryDto'
+        number:
+          type: integer
+          format: int32
+        sort:
+          $ref: '#/components/schemas/SortObject'
+        pageable:
+          $ref: '#/components/schemas/PageableObject'
+        numberOfElements:
+          type: integer
+          format: int32
+        empty:
+          type: boolean
+    PageArtistDto:
+      type: object
+      properties:
+        totalPages:
+          type: integer
+          format: int32
+        totalElements:
+          type: integer
+          format: int64
+        first:
+          type: boolean
+        last:
+          type: boolean
+        size:
+          type: integer
+          format: int32
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/ArtistDto'
+        number:
+          type: integer
+          format: int32
+        sort:
+          $ref: '#/components/schemas/SortObject'
+        pageable:
+          $ref: '#/components/schemas/PageableObject'
+        numberOfElements:
+          type: integer
+          format: int32
+        empty:
+          type: boolean

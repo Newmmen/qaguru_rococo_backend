@@ -1,7 +1,7 @@
 rootProject.name = 'rococo_backend'
+include 'e2e-tests'
 include 'rococo-artists'
 include 'rococo-getaway'
 include 'rococo-auth'
 include 'rococo-paintings'
 include ':rococo-grpc-common'
-

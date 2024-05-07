@@ -30,17 +30,17 @@ public class PaintingController {
     }
 
     @GetMapping("/painting/{id}")
-    public PaintingDto get(@PathVariable("id") UUID id) {
+    public PaintingDto getPainting(@PathVariable("id") UUID id) {
         return paintingGrpcClient.getPainting(id);
     }
 
     @PostMapping("/painting")
-    public CreatedPaintingDto create(@RequestBody NewPaintingDto newPaintingDto) {
+    public CreatedPaintingDto createPainting(@RequestBody NewPaintingDto newPaintingDto) {
         return paintingGrpcClient.createPainting(newPaintingDto);
     }
 
     @PatchMapping("/painting")
-    public  PaintingDto update(@RequestBody PaintingDto paintingDto) {
+    public  PaintingDto updatePainting(@RequestBody PaintingDto paintingDto) {
         return paintingGrpcClient.updatePainting(paintingDto);
     }
 
@@ -50,7 +50,7 @@ public class PaintingController {
     }
 
     @GetMapping("/painting")
-    public Page<PaintingDto> getAll(@RequestParam(required = false) String name,
+    public Page<PaintingDto> getAllPaintings(@RequestParam(required = false) String name,
                                     @PageableDefault Pageable pageable) {
         return paintingGrpcClient.getAllPaintings(name, pageable);
     }
