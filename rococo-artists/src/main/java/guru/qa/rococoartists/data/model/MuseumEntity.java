@@ -48,7 +48,7 @@ public class MuseumEntity implements Serializable {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        ArtistEntity that = (ArtistEntity) o;
+        MuseumEntity that = (MuseumEntity) o;
         return getId() != null && Objects.equals(getId(), that.getId());
     }
 
