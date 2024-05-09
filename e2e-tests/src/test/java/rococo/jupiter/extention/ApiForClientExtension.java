@@ -1,36 +1,37 @@
 package rococo.jupiter.extention;
 
 import java.util.Map;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-import com.codeborne.selenide.LocalStorage;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.platform.commons.support.AnnotationSupport;
-import org.openqa.selenium.Cookie;
-import rococo.api.AuthApiClient;
+import rococo.api.AuthApiForClient;
 import rococo.api.cookie.ThreadSafeCookieManager;
-import rococo.config.Config;
 import rococo.db.model.UserAuthEntity;
-import rococo.jupiter.annotation.ApiLogin;
+import rococo.jupiter.annotation.ApiForClientLogin;
+import rococo.model.CredsDto;
+import rococo.model.UserType;
 import rococo.utils.OauthUtils;
 
-public class ApiLoginExtension implements BeforeEachCallback, AfterTestExecutionCallback {
+public class ApiForClientExtension implements BeforeEachCallback, AfterTestExecutionCallback {
 
-    private static final Config CFG = Config.getInstance();
-    private final AuthApiClient authApiClient = new AuthApiClient();
+    private final AuthApiForClient authApiClient = new AuthApiForClient();
 
     public static final ExtensionContext.Namespace NAMESPACE =
-            ExtensionContext.Namespace.create(ApiLoginExtension.class);
+            ExtensionContext.Namespace.create(ApiForClientExtension.class);
+
+
 
 
     @Override
     public void beforeEach(ExtensionContext extensionContext) throws Exception {
-        ApiLogin apiLogin = AnnotationSupport.findAnnotation(
+        ApiForClientLogin apiLogin = AnnotationSupport.findAnnotation(
                 extensionContext.getRequiredTestMethod(),
-                ApiLogin.class
+                ApiForClientLogin.class
         ).orElse(null);
 
         if (apiLogin != null) {
@@ -52,26 +53,7 @@ public class ApiLoginExtension implements BeforeEachCallback, AfterTestExecution
             setCodeVerifier(extensionContext, codeVerifier);
             setCodChallenge(extensionContext, codeChallenge);
             authApiClient.doLogin(extensionContext, userName, password);
-
-            Selenide.open(CFG.frontUrl());
-            LocalStorage localStorage = Selenide.localStorage();
-
-            localStorage.setItem(
-                    "codeChallenge", getCodChallenge(extensionContext)
-            );
-            localStorage.setItem(
-                    "id_token", getToken(extensionContext)
-            );
-            localStorage.setItem(
-                    "codeVerifier", getCodeVerifier(extensionContext)
-            );
-
-            WebDriverRunner.getWebDriver().manage().addCookie(
-                    jsessionCookie()
-            );
             BearerStorage.storeBearer(getToken(extensionContext));
-
-            Selenide.refresh();
         }
     }
 
@@ -81,46 +63,38 @@ public class ApiLoginExtension implements BeforeEachCallback, AfterTestExecution
     }
 
     public static void setCodeVerifier(ExtensionContext context, String codeVerifier) {
-        context.getStore(ApiLoginExtension.NAMESPACE).put("code_verifier", codeVerifier);
+        context.getStore(ApiForClientExtension.NAMESPACE).put("code_verifier", codeVerifier);
     }
 
     public static void setCodChallenge(ExtensionContext context, String codeChallenge) {
-        context.getStore(ApiLoginExtension.NAMESPACE).put("code_challenge", codeChallenge);
+        context.getStore(ApiForClientExtension.NAMESPACE).put("code_challenge", codeChallenge);
     }
 
     public static void setCode(ExtensionContext context, String code) {
-        context.getStore(ApiLoginExtension.NAMESPACE).put("code", code);
+        context.getStore(ApiForClientExtension.NAMESPACE).put("code", code);
     }
 
     public static void setToken(ExtensionContext context, String token) {
-        context.getStore(ApiLoginExtension.NAMESPACE).put("token", token);
+        context.getStore(ApiForClientExtension.NAMESPACE).put("token", token);
     }
 
     public static String getCodeVerifier(ExtensionContext context) {
-        return context.getStore(ApiLoginExtension.NAMESPACE).get("code_verifier", String.class);
+        return context.getStore(ApiForClientExtension.NAMESPACE).get("code_verifier", String.class);
     }
 
     public static String getCodChallenge(ExtensionContext context) {
-        return context.getStore(ApiLoginExtension.NAMESPACE).get("code_challenge", String.class);
+        return context.getStore(ApiForClientExtension.NAMESPACE).get("code_challenge", String.class);
     }
 
     public static String getCode(ExtensionContext context) {
-        return context.getStore(ApiLoginExtension.NAMESPACE).get("code", String.class);
+        return context.getStore(ApiForClientExtension.NAMESPACE).get("code", String.class);
     }
 
     public static String getToken(ExtensionContext context) {
-        return context.getStore(ApiLoginExtension.NAMESPACE).get("token", String.class);
+        return context.getStore(ApiForClientExtension.NAMESPACE).get("token", String.class);
     }
 
     public static String getCsrfToken() {
         return ThreadSafeCookieManager.INSTANCE.getCookieValue("XSRF-TOKEN");
     }
-
-    public Cookie jsessionCookie() {
-        return new Cookie(
-                "JSESSIONID",
-                ThreadSafeCookieManager.INSTANCE.getCookieValue("JSESSIONID")
-        );
-    }
-
 }
