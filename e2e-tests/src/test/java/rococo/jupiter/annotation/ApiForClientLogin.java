@@ -7,14 +7,11 @@ import java.lang.annotation.Target;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import rococo.jupiter.extention.ApiForClientExtension;
+import rococo.model.UserType;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface ApiForClientLogin {
 
-  String username() default "apilogin";
-
-  String password() default "admin";
-
-  DbUser user() default @DbUser(runnable = false);
+    UserType userType() default UserType.DEFAULT;
 }

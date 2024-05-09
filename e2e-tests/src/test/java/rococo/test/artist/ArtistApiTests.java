@@ -25,6 +25,7 @@ import rococo.pages.ArtistPage;
 import rococo.pages.LoginPage;
 import rococo.pages.MainPage;
 
+import static rococo.utils.DataUtils.getAnotherSamplePhoto;
 import static rococo.utils.DataUtils.getSamplePhoto;
 
 
@@ -53,8 +54,36 @@ public class ArtistApiTests {
 
         ArtistDto createdArtist = artistApiStep.createArtist(artistDto);
 
-        Assertions.assertEquals(createdArtist.getName(), artistDto.getName());
-        Assertions.assertEquals(createdArtist.getBiography(), artistDto.getBiography());
-        Assertions.assertEquals(createdArtist.getPhoto(), photo);
+        Assertions.assertAll("Assert artists are equal",
+                () -> Assertions.assertEquals(artistDto.getName(), createdArtist.getName()),
+                () -> Assertions.assertEquals(artistDto.getBiography(), createdArtist.getBiography()),
+                () -> Assertions.assertEquals(photo, createdArtist.getPhoto())
+        );
+
+    }
+
+    @Test
+    @ApiForClientLogin
+    @DisplayName("check updated artist equals expected")
+    void createAndUpdateArtist() throws IOException {
+        String photo = getSamplePhoto();
+        NewArtistDto artistDto = new NewArtistDto();
+        artistDto.setName("ArtistName");
+        artistDto.setPhoto(photo);
+        artistDto.setBiography("ArtistBiography");
+
+        ArtistDto createdArtist = artistApiStep.createArtist(artistDto);
+
+        createdArtist.setName("New name");
+        createdArtist.setBiography("New biograthy info");
+        createdArtist.setPhoto(getAnotherSamplePhoto());
+
+        ArtistDto updatedArtist = artistApiStep.updateArtist(createdArtist);
+
+        Assertions.assertAll("Assert artists are equal",
+                () -> Assertions.assertEquals(createdArtist.getName(), updatedArtist.getName()),
+                () -> Assertions.assertEquals(createdArtist.getBiography(), updatedArtist.getBiography()),
+                () -> Assertions.assertEquals(createdArtist.getPhoto(), updatedArtist.getPhoto())
+        );
     }
 }

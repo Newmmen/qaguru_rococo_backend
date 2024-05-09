@@ -19,7 +19,7 @@ import rococo.jupiter.extention.BearerStorage;
 
 public class ArtistApiStep {
     private final HttpBearerAuth httpBearerAuth = new HttpBearerAuth("bearer");
-    private final ApiClient apiClient = new ApiClient();
+    private final ApiClient apiClient = new ApiClient().addAuthorization("api", httpBearerAuth);
 
     private final ArtistControllerApi artistControllerApi = new ApiClient().createService(ArtistControllerApi.class);
 
@@ -31,9 +31,16 @@ public class ArtistApiStep {
 
     @Step("create artist")
     public ArtistDto createArtist(NewArtistDto artistDto) throws IOException {
-        apiClient.addAuthorization("api", httpBearerAuth).setBearerToken(BearerStorage.getCurrentBearer());
+        apiClient.setBearerToken(BearerStorage.getCurrentBearer());
         ArtistControllerApi api = apiClient.createService(ArtistControllerApi.class);
         return api.createArtist(artistDto).execute().body();
+    }
+
+    @Step("update artist")
+    public ArtistDto updateArtist(ArtistDto artistDto) throws IOException {
+        apiClient.setBearerToken(BearerStorage.getCurrentBearer());
+        ArtistControllerApi api = apiClient.createService(ArtistControllerApi.class);
+        return api.updateArtist(artistDto).execute().body();
     }
 
     @Step("try to create new artist")

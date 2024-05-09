@@ -70,19 +70,4 @@ public class ArtistTests {
         Assertions.assertEquals(createdArtist.getBiography(), artistDto.getBiography());
     }
 
-    @Test
-    @ApiForClientLogin
-    @DisplayName("check created artist equals actual")
-    void createArtist() throws IOException {
-        NewArtistDto artistDto = new NewArtistDto();
-        artistDto.setName("ArtistName");
-        artistDto.setPhoto(getSamplePhoto());
-        artistDto.setBiography("ArtistBiography");
-
-        ArtistDto createdArtist = artistApiStep.createArtist(artistDto);
-
-        Assertions.assertEquals(createdArtist.getName(), artistDto.getName());
-        Assertions.assertEquals(createdArtist.getBiography(), artistDto.getBiography());
-    }
-
 }

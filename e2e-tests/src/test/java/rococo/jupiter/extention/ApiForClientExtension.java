@@ -1,5 +1,6 @@
 package rococo.jupiter.extention;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -11,7 +12,7 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.platform.commons.support.AnnotationSupport;
 import rococo.api.AuthApiForClient;
 import rococo.api.cookie.ThreadSafeCookieManager;
-import rococo.db.model.UserAuthEntity;
+import rococo.exception.NoDataForTest;
 import rococo.jupiter.annotation.ApiForClientLogin;
 import rococo.model.CredsDto;
 import rococo.model.UserType;
@@ -25,41 +26,66 @@ public class ApiForClientExtension implements BeforeEachCallback, AfterTestExecu
             ExtensionContext.Namespace.create(ApiForClientExtension.class);
 
 
+    private static final Map<UserType, Queue<CredsDto>> USERS = new ConcurrentHashMap<>();
 
+    static {
+        Queue<CredsDto> defaultUsers = new ConcurrentLinkedQueue<>();
+
+        defaultUsers.add(new CredsDto("apilogin", "admin"));
+        defaultUsers.add(new CredsDto("apilogin1", "admin"));
+        USERS.put(UserType.DEFAULT, defaultUsers);
+    }
 
     @Override
     public void beforeEach(ExtensionContext extensionContext) throws Exception {
+
         ApiForClientLogin apiLogin = AnnotationSupport.findAnnotation(
                 extensionContext.getRequiredTestMethod(),
-                ApiForClientLogin.class
-        ).orElse(null);
+                ApiForClientLogin.class).orElseThrow();
 
-        if (apiLogin != null) {
-            final String codeVerifier = OauthUtils.generateCodeVerifier();
-            final String codeChallenge = OauthUtils.generateCodeChallange(codeVerifier);
-            String userName;
-            String password;
-            if (apiLogin.user().runnable()) {
-                Map createdUser = extensionContext.getStore(CreateUserExtension.DB_CREATE_USER_NAMESPACE)
-                        .get(extensionContext.getUniqueId(), Map.class);
-                UserAuthEntity userAuthEntity = ((UserAuthEntity) createdUser.get("auth"));
-                userName = userAuthEntity.getUsername();
-                password = userAuthEntity.getPassword();
-            } else {
-                userName = apiLogin.username();
-                password = apiLogin.password();
+        Map<UserType, CredsDto> usersForSave = new HashMap<>();
+
+        CredsDto testCandidate = null;
+        int safeCounter = 0;
+        Queue<CredsDto> queue = USERS.get(apiLogin.userType());
+        while (testCandidate == null && safeCounter < 300) {
+            testCandidate = queue.poll();
+            if (testCandidate == null) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new NoDataForTest("Cant find unused user for AT");
+                }
+                safeCounter++;
             }
-
-            setCodeVerifier(extensionContext, codeVerifier);
-            setCodChallenge(extensionContext, codeChallenge);
-            authApiClient.doLogin(extensionContext, userName, password);
-            BearerStorage.storeBearer(getToken(extensionContext));
         }
+        if (testCandidate == null) {
+            throw new NoDataForTest("Cant find unused user for AT");
+        }
+        usersForSave.put(apiLogin.userType(), testCandidate);
+        extensionContext.getStore(NAMESPACE).put(extensionContext.getUniqueId(), usersForSave);
+
+
+        final String codeVerifier = OauthUtils.generateCodeVerifier();
+        final String codeChallenge = OauthUtils.generateCodeChallange(codeVerifier);
+        setCodeVerifier(extensionContext, codeVerifier);
+        setCodChallenge(extensionContext, codeChallenge);
+        authApiClient.doLogin(extensionContext, testCandidate.userName(), testCandidate.password());
+        BearerStorage.storeBearer(getToken(extensionContext));
+
+        System.out.println(testCandidate.userName());
+        System.out.println( testCandidate.password());
     }
 
     @Override
     public void afterTestExecution(ExtensionContext extensionContext) throws Exception {
-        ThreadSafeCookieManager.INSTANCE.removeAll();
+        Map<UserType, CredsDto> usersFromTest = (Map<UserType, CredsDto>) extensionContext.getStore(NAMESPACE)
+                .get(extensionContext.getUniqueId(), Map.class);
+
+        for (UserType userType : usersFromTest.keySet()) {
+            USERS.get(userType).add(usersFromTest.get(userType));
+            ThreadSafeCookieManager.INSTANCE.removeAll();
+        }
     }
 
     public static void setCodeVerifier(ExtensionContext context, String codeVerifier) {
