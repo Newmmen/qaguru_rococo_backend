@@ -77,8 +77,6 @@ public class CreateUserExtension implements BeforeEachCallback, AfterTestExecuti
       UserEntity user = new UserEntity();
       user.setUsername(username);
 
-      //userRepository.createInAuth(userAuth);
-
       Map<String, Object> createdUser = Map.of(
           "auth", userAuth,
           "userdata", user

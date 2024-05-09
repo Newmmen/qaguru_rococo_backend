@@ -505,7 +505,7 @@ components:
         sort:
           $ref: '#/components/schemas/SortObject'
         pageable:
-          $ref: '#/components/schemas/PageableObject'
+          type: string
         numberOfElements:
           type: integer
           format: int32
@@ -564,7 +564,7 @@ components:
         sort:
           $ref: '#/components/schemas/SortObject'
         pageable:
-          $ref: '#/components/schemas/PageableObject'
+          type: string
         numberOfElements:
           type: integer
           format: int32
@@ -596,7 +596,7 @@ components:
         sort:
           $ref: '#/components/schemas/SortObject'
         pageable:
-          $ref: '#/components/schemas/PageableObject'
+          type: string
         numberOfElements:
           type: integer
           format: int32
@@ -628,7 +628,7 @@ components:
         sort:
           $ref: '#/components/schemas/SortObject'
         pageable:
-          $ref: '#/components/schemas/PageableObject'
+          type: string
         numberOfElements:
           type: integer
           format: int32

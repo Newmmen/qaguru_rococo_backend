@@ -1,6 +1,8 @@
-package rococo.test.api;
+package rococo.test.museum;
 
 
+import org.openapitools.client.api.MuseumControllerApi;
+import org.openapitools.client.model.Pageable;
 import rococo.jupiter.UsersQueueExtension;
 import rococo.pages.LoginPage;
 import rococo.pages.MainPage;
@@ -13,8 +15,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @ExtendWith(UsersQueueExtension.class)
 public class MuseunTest {
 
-    private org.openapitools.client.api.MuseumControllerApi apiClient;
-    private org.openapitools.client.model.Pageable pageable = new org.openapitools.client.model.Pageable();
+    private MuseumControllerApi apiClient;
+    private Pageable pageable = new Pageable();
 
 
     @BeforeEach
