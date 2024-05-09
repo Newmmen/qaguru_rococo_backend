@@ -2,7 +2,6 @@ package guru.qa.rococoartists.service;
 
 import java.util.UUID;
 
-import com.google.protobuf.ByteString;
 import guru.qa.grpc.rococo.grpc.AllArtistRequest;
 import guru.qa.grpc.rococo.grpc.Artist;
 import guru.qa.grpc.rococo.grpc.ArtistIdRequest;
@@ -29,15 +28,9 @@ public class GrpcArtistService extends RococoArtistServiceGrpc.RococoArtistServi
 
     @Override
     public void getAllArtists(AllArtistRequest request, StreamObserver<ArtistResponse> responseObserver) {
-        Page<ArtistEntity> list;
-        //todo разобраться с кейсом, когда getName().equals(" ")
-        if (request.getName().equals(" ")) {
-            list = artistRepository.findAll(PageRequest.of(request.getPageNumber(), request.getPageSize()));
-        } else {
-            list = artistRepository.findAllByNameContainsIgnoreCase(request.getName(),
-                    PageRequest.of(request.getPageNumber(),
-                            request.getPageSize()));
-        }
+        Page<ArtistEntity> list = artistRepository.findAllByNameContainsIgnoreCase(request.getName(),
+                PageRequest.of(request.getPageNumber(),
+                        request.getPageSize()));
 
         ArtistResponse artistResponse = ArtistResponse.newBuilder().addAllAllArtists(list.stream()
                         .map(artist -> Artist.newBuilder()

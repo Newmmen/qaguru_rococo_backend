@@ -50,7 +50,7 @@ public class PaintingController {
     }
 
     @GetMapping("/painting")
-    public Page<PaintingDto> getAllPaintings(@RequestParam(required = false) String name,
+    public Page<PaintingDto> getAllPaintings(@RequestParam(required = false, defaultValue = "") String name,
                                     @PageableDefault Pageable pageable) {
         return paintingGrpcClient.getAllPaintings(name, pageable);
     }

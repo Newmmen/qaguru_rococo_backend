@@ -32,7 +32,7 @@ public class MuseumController {
 
 
     @GetMapping("/museum")
-    public Page<MuseumDto> getAllMuseums(@RequestParam(required = false) String title,
+    public Page<MuseumDto> getAllMuseums(@RequestParam(required = false, defaultValue = "") String title,
                                   @PageableDefault Pageable pageable) {
         return museumClient.getAllMuseums(title, pageable);
     }

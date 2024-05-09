@@ -26,6 +26,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import static guru.qa.rococo.model.ArtistDto.fromGrpcMessage;
+import static guru.qa.rococo.utils.QueryHelper.wrapFilter;
 
 @Component
 public class ArtistGrpcClient {
@@ -91,7 +92,7 @@ public class ArtistGrpcClient {
     Page<ArtistDto> getAllArtist(String name, Pageable pageable) {
         try {
              List<ArtistDto> artistDtos = rococoArtistServiceBlockingStub.getAllArtists(AllArtistRequest.newBuilder()
-                            .setName(name == null ? " ": name)
+                            .setName(wrapFilter(name))
                             .setPageNumber(pageable.getPageNumber())
                             .setPageSize(pageable.getPageSize()).build()
                     ).getAllArtistsList()

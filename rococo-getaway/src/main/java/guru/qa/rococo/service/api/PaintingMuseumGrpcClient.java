@@ -42,6 +42,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
+import static guru.qa.rococo.utils.QueryHelper.wrapFilter;
+
 @Component
 public class PaintingMuseumGrpcClient {
 
@@ -172,7 +174,7 @@ public class PaintingMuseumGrpcClient {
         try {
             List<PaintingDto> paintingDtos =
                     rococoPaintingServiceBlockingStub.getAllPainting(AllPaintingRequest.newBuilder()
-                                    .setName(name == null ? " " : name)
+                                    .setName(wrapFilter(name))
                                     .setPageNumber(pageable.getPageNumber())
                                     .setPageSize(pageable.getPageSize()).build()
                             ).getAllpaintingList()
@@ -191,7 +193,7 @@ public class PaintingMuseumGrpcClient {
         try {
             List<MuseumDto> museumDtos =
                     rococoPaintingServiceBlockingStub.getAllMuseums(AllMuseumRequest.newBuilder()
-                                    .setName(name == null ? " " : name)
+                                    .setName(wrapFilter(name))
                                     .setPageNumber(pageable.getPageNumber())
                                     .setPageSize(pageable.getPageSize()).build()
                             ).getAllMuseumList()

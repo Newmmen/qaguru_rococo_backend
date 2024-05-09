@@ -53,6 +53,8 @@ create table if not exists painting
 
 
 insert into rococo.country(id, city) value (UUID_TO_BIN('ebf46385-7b3b-490d-9693-62efd68fd724'), 'Канада');
+insert into rococo.country(id, city) value (UUID_TO_BIN('b750a3cc-bdeb-4306-a602-a232ac839abd'), 'Россия');
+insert into rococo.country(id, city) value (UUID_TO_BIN('59e733d2-bc4c-409c-ae4d-de572e235ab1'), 'Казахстан');
 
 
 

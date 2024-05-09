@@ -47,7 +47,7 @@ public class ArtistController {
 
     @GetMapping("/artist")
     @PageableAsQueryParam
-    public Page<ArtistDto> getAllArtists(@RequestParam(required = false) String name,
+    public Page<ArtistDto> getAllArtists(@RequestParam(required = false, defaultValue = "") String name,
                                   @PageableDefault Pageable pageable) {
         return artistClient.getAllArtist(name, pageable);
     }

@@ -10,6 +10,7 @@ import okhttp3.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openapitools.client.model.MuseumDto;
@@ -27,7 +28,7 @@ import rococo.jupiter.extention.BearerStorage;
 import rococo.jupiter.extention.ContextHolderExtension;
 import rococo.jupiter.extention.CreateUserExtension;
 
-
+@Tag("tests")
 @ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiForClientExtension.class
 })
 public class MuseumValidationTest {
