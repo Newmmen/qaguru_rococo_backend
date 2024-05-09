@@ -7,6 +7,7 @@ import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openapitools.client.ApiClient;
@@ -28,7 +29,7 @@ import rococo.pages.MainPage;
 import static rococo.utils.DataUtils.getAnotherSamplePhoto;
 import static rococo.utils.DataUtils.getSamplePhoto;
 
-
+@Tag("tests")
 @ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiForClientExtension.class})
 public class ArtistApiTests {
     private final ArtistApiStep artistApiStep = new ArtistApiStep();

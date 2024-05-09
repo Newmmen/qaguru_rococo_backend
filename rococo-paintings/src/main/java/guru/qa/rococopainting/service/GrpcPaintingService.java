@@ -66,15 +66,9 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
     @Override
     public void getAllPainting(AllPaintingRequest request,
                                StreamObserver<PaintingResponse> responseObserver) {
-        Page<PaintingEntity> list;
-        //todo разобраться с кейсом, когда getName().equals(" ")
-        if (request.getName().equals(" ")) {
-            list = paintingRepository.findAll(PageRequest.of(request.getPageNumber(), request.getPageSize()));
-        } else {
-            list = paintingRepository.findAllByTitleContainsIgnoreCase(request.getName(),
-                    PageRequest.of(request.getPageNumber(),
-                            request.getPageSize()));
-        }
+        Page<PaintingEntity> list = paintingRepository.findAllByTitleContainsIgnoreCase(request.getName(),
+                PageRequest.of(request.getPageNumber(),
+                        request.getPageSize()));
 
         PaintingResponse paintingResponse = PaintingResponse.newBuilder().addAllAllpainting(list.stream()
                         .map(painting -> Painting.newBuilder()
@@ -94,17 +88,9 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
     @Override
     public void getAllMuseums(AllMuseumRequest request,
                               StreamObserver<MuseumResponse> responseObserver) {
-        Page<MuseumEntity> list;
-
-        //todo разобраться с кейсом, когда getName().equals(" ")
-        if (request.getName().equals(" ")) {
-            list = museumRepository.findAll(PageRequest.of(request.getPageNumber(), request.getPageSize()));
-        } else {
-            list = museumRepository.findAllByTitleContainsIgnoreCase(request.getName(),
-                    PageRequest.of(request.getPageNumber(),
-                            request.getPageSize()));
-        }
-
+        Page<MuseumEntity> list = museumRepository.findAllByTitleContainsIgnoreCase(request.getName(),
+                PageRequest.of(request.getPageNumber(),
+                        request.getPageSize()));
 
         MuseumResponse museumResponse = MuseumResponse.newBuilder().addAllAllMuseum(list.stream()
                         .map(museum -> Museum.newBuilder()

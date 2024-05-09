@@ -13,10 +13,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.openapitools.client.ApiClient;
 import org.openapitools.client.api.ArtistControllerApi;
 import org.openapitools.client.model.ArtistDto;
-import org.openapitools.client.model.NewArtistDto;
 import org.openapitools.client.model.Pageable;
 import rococo.apisteps.ArtistApiStep;
-import rococo.jupiter.annotation.ApiForClientLogin;
 import rococo.jupiter.annotation.ApiLogin;
 import rococo.jupiter.extention.ApiForClientExtension;
 import rococo.jupiter.extention.ApiLoginExtension;
@@ -26,10 +24,9 @@ import rococo.pages.ArtistPage;
 import rococo.pages.LoginPage;
 import rococo.pages.MainPage;
 
-import static rococo.utils.DataUtils.getSamplePhoto;
-
-
-@ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiLoginExtension.class, ApiForClientExtension.class})
+@Tag("tests")
+@ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiLoginExtension.class,
+        ApiForClientExtension.class})
 public class ArtistTests {
     LoginPage loginPage = new LoginPage();
     MainPage mainPage = new MainPage();
@@ -57,14 +54,14 @@ public class ArtistTests {
         artistDto.setPhoto("images/artistPic.png");
         artistDto.setBiography("12312414141343");
 
-        Selenide.open(ArtistPage.URL ,ArtistPage.class)
+        Selenide.open(ArtistPage.URL, ArtistPage.class)
                 .waitForPageLoaded();
         artistPage.createArtist(artistDto);
         ArtistDto createdArtist =
                 apiClient.getAllArtists(pageable, artistDto.getName()).execute().body().getContent().stream()
-                .filter(artist -> artist.getName().equals(artistDto.getName()))
-                .findFirst()
-                .get();
+                        .filter(artist -> artist.getName().equals(artistDto.getName()))
+                        .findFirst()
+                        .get();
 
         Assertions.assertEquals(createdArtist.getName(), artistDto.getName());
         Assertions.assertEquals(createdArtist.getBiography(), artistDto.getBiography());
