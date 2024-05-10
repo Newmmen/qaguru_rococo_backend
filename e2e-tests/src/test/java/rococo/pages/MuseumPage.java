@@ -3,6 +3,7 @@ package rococo.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import org.openapitools.client.model.NewMuseumDto;
+import org.openapitools.client.model.MuseumDto;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -27,7 +28,7 @@ public class MuseumPage extends BasePage<MuseumPage> {
 
 
     @Step("fill museum fields with data")
-    public MuseumPage fillMuseumFieldsWithData(NewMuseumDto museumDto, String country) {
+    public MuseumPage fillMuseumFieldsWithData(MuseumDto museumDto, String country) {
         $("input[name='title']").setValue(museumDto.getTitle());
         $(byText(country)).click();
         $("input[name='city']").setValue(country);
@@ -71,7 +72,7 @@ public class MuseumPage extends BasePage<MuseumPage> {
     }
 
     @Step("check museum information contains expected fields")
-    public MuseumPage checkMuseumInfoContainsExpectedFields(NewMuseumDto museumDto, String country) {
+    public MuseumPage checkMuseumInfoContainsExpectedFields(MuseumDto museumDto, String country) {
         museumInfoHeader.shouldHave(Condition.text(museumDto.getTitle()));
         museumInfoCountry.shouldHave(Condition.text(country));
         $("div").shouldHave(Condition.text(museumDto.getDescription()));

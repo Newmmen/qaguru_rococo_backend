@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openapitools.client.model.NewMuseumDto;
+import org.openapitools.client.model.MuseumDto;
 import org.openapitools.client.model.ArtistDto;
 import org.openapitools.client.model.PaintingDto;
 import rococo.jupiter.annotation.ApiLogin;
@@ -16,7 +17,9 @@ import rococo.pages.ArtistPage;
 import rococo.pages.MuseumPage;
 import rococo.pages.PaintingPage;
 
+import static rococo.utils.DataUtils.generateRandomArtistName;
 import static rococo.utils.DataUtils.generateRandomMuseumName;
+import static rococo.utils.DataUtils.generateRandomPaintingName;
 import static rococo.utils.DataUtils.generateRandomSentence;
 
 @DisplayName("User can successfully create artist, museum and add them to painting")
@@ -27,36 +30,44 @@ public class HappyPathTest {
     @ApiLogin
     @DisplayName("User can successfully create artist, museum and create  painting")
     void createArtistAndMuseumAndPaintingBasedOnThem() {
-//        NewMuseumDto museumDto = new NewMuseumDto();
-//        museumDto.setTitle(generateRandomMuseumName());
-//        museumDto.setPhoto("images/artistPic.png");
-//        museumDto.setDescription(generateRandomSentence(11));
-//        Selenide.open(MuseumPage.URL, MuseumPage.class)
-//                .waitForPageLoaded()
-//                .clickCreatePaintingButton()
-//                .fillMuseumFieldsWithData(museumDto, "Казахстан")
-//                .clickSubmitButton()
-//                .waitForPageLoaded()
-//                .findMuseumOnMuseumsPage(museumDto.getTitle());
-//
-//        ArtistDto artistDto = new ArtistDto();
-//        artistDto.setName("ssssssssss");
-//        artistDto.setPhoto("images/artistPic.png");
-//        artistDto.setBiography("12312414141343");
-//        Selenide.open(ArtistPage.URL, ArtistPage.class)
-//                .waitForPageLoaded()
-//                .clickCreateArtistTab()
-//                .fillArtistFieldsWithData(artistDto)
-//                .clickSubmitButton()
-//                .waitForPageLoaded()
-//                .findArtistOnArtistPage(artistDto.getName());
+        MuseumDto museumDto = new MuseumDto();
+        museumDto.setTitle(generateRandomMuseumName());
+        museumDto.setPhoto("images/artistPic.png");
+        museumDto.setDescription(generateRandomSentence(11));
+        Selenide.open(MuseumPage.URL, MuseumPage.class)
+                .waitForPageLoaded()
+                .clickCreatePaintingButton()
+                .fillMuseumFieldsWithData(museumDto, "Казахстан")
+                .clickSubmitButton()
+                .waitForPageLoaded()
+                .findMuseumOnMuseumsPage(museumDto.getTitle());
+
+        ArtistDto artistDto = new ArtistDto();
+        artistDto.setName(generateRandomArtistName());
+        artistDto.setPhoto("images/artistPic.png");
+        artistDto.setBiography("12312414141343");
+        Selenide.open(ArtistPage.URL, ArtistPage.class)
+                .waitForPageLoaded()
+                .clickCreateArtistTab()
+                .fillArtistFieldsWithData(artistDto)
+                .clickSubmitButton()
+                .waitForPageLoaded()
+                .findArtistOnArtistPage(artistDto.getName());
 
         PaintingDto paintingDto = new PaintingDto();
+        paintingDto.setArtist(artistDto);
+        paintingDto.setMuseum(museumDto);
+        paintingDto.setContent("images/anotherPic.png");
+        paintingDto.setTitle(generateRandomPaintingName());
+        paintingDto.setDescription(generateRandomSentence(11));
+
         Selenide.open(PaintingPage.URL, PaintingPage.class)
                 .waitForPageLoaded()
                 .clickCreatePainting()
                 .fillPaintingWithData(paintingDto)
-                .clickSubmitButton();
+                .clickSubmitButton()
+                .waitForPageLoaded()
+                .findPaintingOnPaintingPage(paintingDto.getTitle());
     }
 
 }

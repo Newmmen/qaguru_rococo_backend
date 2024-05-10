@@ -3,6 +3,7 @@ package rococo.test.museum;
 
 import com.codeborne.selenide.Selenide;
 import org.openapitools.client.model.NewMuseumDto;
+import org.openapitools.client.model.MuseumDto;
 import rococo.jupiter.annotation.ApiLogin;
 import rococo.jupiter.extention.ApiLoginExtension;
 import rococo.jupiter.extention.ContextHolderExtension;
@@ -24,7 +25,7 @@ public class MuseunTest {
     @ApiLogin
     @DisplayName("create museum via UI")
     void createMuseum() {
-        NewMuseumDto museumDto = new NewMuseumDto();
+        MuseumDto museumDto = new MuseumDto();
         museumDto.setTitle(generateRandomMuseumName());
         museumDto.setPhoto("images/artistPic.png");
         museumDto.setDescription(generateRandomSentence(11));
@@ -42,13 +43,13 @@ public class MuseunTest {
     @ApiLogin
     @DisplayName("update created museum via UI")
     void updateMuseum() {
-        NewMuseumDto museumDto = new NewMuseumDto();
+        MuseumDto museumDto = new MuseumDto();
         museumDto.setTitle(generateRandomMuseumName());
         museumDto.setPhoto("images/artistPic.png");
         museumDto.setDescription(generateRandomSentence(11));
 
         String newCountry = "Россия";
-        NewMuseumDto updatedMuseum = new NewMuseumDto();
+        MuseumDto updatedMuseum = new MuseumDto();
         updatedMuseum.setTitle(generateRandomMuseumName());
         updatedMuseum.setDescription(generateRandomSentence(11));
         updatedMuseum.setPhoto("images/anotherPic.png");

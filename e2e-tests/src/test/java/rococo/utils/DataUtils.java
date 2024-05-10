@@ -22,6 +22,10 @@ public class DataUtils {
     return faker.artist().name();
   }
 
+  public static String generateRandomPaintingName() {
+    return faker.funnyName().name();
+  }
+
   @Nonnull
   public static String generateRandomPassword() {
     return faker.bothify("????####");

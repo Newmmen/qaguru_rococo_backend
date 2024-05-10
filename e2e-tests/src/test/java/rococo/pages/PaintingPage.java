@@ -30,7 +30,7 @@ public class PaintingPage extends BasePage<PaintingPage> {
     private final SelenideElement submitButton =  $("button[type='submit']");
     private final SelenideElement authorSelector =  $("select[name='authorId']");
     private final SelenideElement museumSelector =  $("select[name='museumId']");
-    private final ElementsCollection museumCollection = $$("div[class='w-100']");
+    private final ElementsCollection paintingCollection = $$("div[class='w-100']");
 
 
 
@@ -49,7 +49,7 @@ public class PaintingPage extends BasePage<PaintingPage> {
         paintingTab.click();
         paintingFilterInput.setValue(paintingTitle);
         iconSearch.click();
-        museumCollection.findBy(Condition.text(museumTitle)).shouldBe(Condition.visible);
+        paintingCollection.findBy(Condition.text(paintingTitle)).shouldBe(Condition.visible);
         return this;
     }
 
