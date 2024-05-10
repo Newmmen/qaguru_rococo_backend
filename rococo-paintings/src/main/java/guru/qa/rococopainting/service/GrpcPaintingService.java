@@ -21,12 +21,10 @@ import guru.qa.grpc.rococo.grpc.PaintingResponse;
 import guru.qa.grpc.rococo.grpc.RococoPaintingServiceGrpc;
 import guru.qa.rococopainting.data.entity.ArtistEntity;
 import guru.qa.rococopainting.data.entity.CountryEntity;
-import guru.qa.rococopainting.data.entity.GeolocationEntity;
 import guru.qa.rococopainting.data.entity.MuseumEntity;
 import guru.qa.rococopainting.data.entity.PaintingEntity;
 import guru.qa.rococopainting.data.repository.ArtistRepository;
 import guru.qa.rococopainting.data.repository.CountryRepository;
-import guru.qa.rococopainting.data.repository.GeoRepository;
 import guru.qa.rococopainting.data.repository.MuseumRepository;
 import guru.qa.rococopainting.data.repository.PaintingRepository;
 import io.grpc.stub.StreamObserver;
@@ -46,20 +44,17 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
     private final ArtistRepository artistRepository;
     private final MuseumRepository museumRepository;
     private final CountryRepository countryRepository;
-    private final GeoRepository geoRepository;
 
 
     @Autowired
     public GrpcPaintingService(PaintingRepository paintingRepository,
                                ArtistRepository artistRepository,
                                MuseumRepository museumRepository,
-                               CountryRepository countryRepository,
-                               GeoRepository geoRepository) {
+                               CountryRepository countryRepository) {
         this.paintingRepository = paintingRepository;
         this.artistRepository = artistRepository;
         this.museumRepository = museumRepository;
         this.countryRepository = countryRepository;
-        this.geoRepository = geoRepository;
     }
 
 
@@ -98,7 +93,8 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
                                 .setTitle(museum.getTitle())
                                 .setDescription(museum.getDescription())
                                 .setPhoto(museum.getPhoto())
-                                .setGeo(GeolocationEntity.toGrpcMessage(museum.getGeolocationEntity()))
+                                .setCountry(CountryEntity.toGrpcMessage(museum.getCountryEntity()))
+                                .setCity(museum.getCity())
                                 .build())
                         .toList())
                 .build();
@@ -178,7 +174,8 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
                 .setTitle(museumEntity.getTitle())
                 .setDescription(museumEntity.getDescription())
                 .setPhoto(museumEntity.getPhoto())
-                .setGeo(GeolocationEntity.toGrpcMessage(museumEntity.getGeolocationEntity()))
+                .setCity(museumEntity.getCity())
+                .setCountry(CountryEntity.toGrpcMessage(museumEntity.getCountryEntity()))
                 .build();
 
         responseObserver.onNext(museum);
@@ -245,31 +242,24 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
     @Override
     public void createMuseum(NewMuseum request,
                              StreamObserver<CreatedMuseum> responseObserver) {
-
         MuseumEntity museumEntity = new MuseumEntity();
         CountryEntity countryEntity =
                 fetchEntity(countryRepository.findById(UUID.fromString(request.getGeo().getCountry().getId())));
-        GeolocationEntity geolocationEntity = geoRepository.findByCity(request.getGeo().getCity())
-                .orElseGet(() -> {
-                            GeolocationEntity geo = new GeolocationEntity();
-                            geo.setCity(request.getGeo().getCity());
-                            geo.setCountryEntity(countryEntity);
-                            return geoRepository.save(geo);
-
-                        }
-                );
         museumEntity.setTitle(request.getTitle());
         museumEntity.setDescription(request.getDescription());
         museumEntity.setPhoto(request.getPhoto());
-        museumEntity.setGeolocationEntity(geolocationEntity);
+        museumEntity.setCity(request.getGeo().getCity());
+        museumEntity.setCountryEntity(countryEntity);
         MuseumEntity createdMuseumEntity = museumRepository.save(museumEntity);
+
 
         CreatedMuseum createdMuseum = CreatedMuseum.newBuilder()
                 .setId(createdMuseumEntity.getId().toString())
                 .setTitle(createdMuseumEntity.getTitle())
                 .setDescription(createdMuseumEntity.getDescription())
                 .setPhoto(createdMuseumEntity.getPhoto())
-                .setGeo(GeolocationEntity.toGrpcMessage(geolocationEntity))
+                .setCity(createdMuseumEntity.getCity())
+                .setCountry(CountryEntity.toGrpcMessage(createdMuseumEntity.getCountryEntity()))
                 .build();
         responseObserver.onNext(createdMuseum);
         responseObserver.onCompleted();
@@ -283,21 +273,13 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
 
 
         CountryEntity countryEntity =
-                fetchEntity(countryRepository.findById(UUID.fromString(request.getGeo().getCountry().getId())));
-        GeolocationEntity geolocationEntity = geoRepository.findByCity(request.getGeo().getCity())
-                .orElseGet(() -> {
-                            GeolocationEntity geo = new GeolocationEntity();
-                            geo.setCity(request.getGeo().getCity());
-                            geo.setCountryEntity(countryEntity);
-                            geoRepository.save(geo);
-                            return geo;
-                        }
-                );
+                fetchEntity(countryRepository.findById(UUID.fromString(request.getCountry().getId())));
 
         museumEntity.setTitle(request.getTitle());
         museumEntity.setDescription(request.getDescription());
         museumEntity.setPhoto(request.getPhoto());
-        museumEntity.setGeolocationEntity(geolocationEntity);
+        museumEntity.setCity(request.getCity());
+        museumEntity.setCountryEntity(countryEntity);
         MuseumEntity updatedMuseumEntity = museumRepository.save(museumEntity);
 
         Museum museum = Museum.newBuilder()
@@ -305,7 +287,8 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
                 .setTitle(updatedMuseumEntity.getTitle())
                 .setDescription(updatedMuseumEntity.getDescription())
                 .setPhoto(updatedMuseumEntity.getPhoto())
-                .setGeo(GeolocationEntity.toGrpcMessage(updatedMuseumEntity.getGeolocationEntity()))
+                .setCity(updatedMuseumEntity.getCity())
+                .setCountry(CountryEntity.toGrpcMessage(updatedMuseumEntity.getCountryEntity()))
                 .build();
 
         responseObserver.onNext(museum);

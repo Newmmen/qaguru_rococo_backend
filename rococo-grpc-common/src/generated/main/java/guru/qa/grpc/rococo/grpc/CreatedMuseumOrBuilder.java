@@ -56,17 +56,29 @@ public interface CreatedMuseumOrBuilder extends
       getPhotoBytes();
 
   /**
-   * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
-   * @return Whether the geo field is set.
+   * <code>string city = 5;</code>
+   * @return The city.
    */
-  boolean hasGeo();
+  java.lang.String getCity();
   /**
-   * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
-   * @return The geo.
+   * <code>string city = 5;</code>
+   * @return The bytes for city.
    */
-  guru.qa.grpc.rococo.grpc.Geo getGeo();
+  com.google.protobuf.ByteString
+      getCityBytes();
+
   /**
-   * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+   * <code>.guru.qa.grpc.rococo.grpc.Country country = 6;</code>
+   * @return Whether the country field is set.
    */
-  guru.qa.grpc.rococo.grpc.GeoOrBuilder getGeoOrBuilder();
+  boolean hasCountry();
+  /**
+   * <code>.guru.qa.grpc.rococo.grpc.Country country = 6;</code>
+   * @return The country.
+   */
+  guru.qa.grpc.rococo.grpc.Country getCountry();
+  /**
+   * <code>.guru.qa.grpc.rococo.grpc.Country country = 6;</code>
+   */
+  guru.qa.grpc.rococo.grpc.CountryOrBuilder getCountryOrBuilder();
 }
