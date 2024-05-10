@@ -22,7 +22,7 @@ import rococo.jupiter.extention.BearerStorage;
 public class MuseumApiStep {
     private final HttpBearerAuth httpBearerAuth = new HttpBearerAuth("bearer");
     private final MuseumControllerApi museumControllerApi = new ApiClient().createService(MuseumControllerApi.class);
-    private final ApiClient apiClient = new ApiClient();
+    private final ApiClient apiClient = new ApiClient().addAuthorization("api", httpBearerAuth);
 
 
     @Step("try to get all museums and return response code")
@@ -36,7 +36,7 @@ public class MuseumApiStep {
     }
     @Step("create new museum")
     public CreatedMuseumDto createNewMuseum(NewMuseumDto museumDto) throws IOException {
-        apiClient.addAuthorization("api", httpBearerAuth).setBearerToken(BearerStorage.getCurrentBearer());
+        apiClient.setBearerToken(BearerStorage.getCurrentBearer());
         MuseumControllerApi api = apiClient.createService(MuseumControllerApi.class);
         return api.createMuseum(museumDto).execute().body();
     }
@@ -46,6 +46,13 @@ public class MuseumApiStep {
         return museumControllerApi.updateMuseum(museumDto).execute().code();
     }
 
+    @Step("update museum")
+    public MuseumDto updateMuseum(MuseumDto museumDto) throws IOException {
+        apiClient.setBearerToken(BearerStorage.getCurrentBearer());
+        MuseumControllerApi api = apiClient.createService(MuseumControllerApi.class);
+        return api.updateMuseum(museumDto).execute().body();
+    }
+
     @Step("try to get all countries")
     public int tryToGetAllCountries(Pageable pageable) throws IOException {
         return museumControllerApi.getAllCountries(pageable).execute().code();
@@ -53,16 +60,14 @@ public class MuseumApiStep {
 
     @Step("get all countries")
     public PageCountryDto getAllCountries(Pageable pageable) throws IOException {
-        apiClient.addAuthorization("api", httpBearerAuth).setBearerToken(BearerStorage.getCurrentBearer());
+        apiClient.setBearerToken(BearerStorage.getCurrentBearer());
         MuseumControllerApi api = apiClient.createService(MuseumControllerApi.class);
         return api.getAllCountries(pageable).execute().body();
     }
 
     @Step("get country by name")
     public CountryDto getCountryByName(Pageable pageable, String countryName) throws IOException {
-        apiClient.addAuthorization("api", httpBearerAuth).setBearerToken(BearerStorage.getCurrentBearer());
-        MuseumControllerApi api = apiClient.createService(MuseumControllerApi.class);
-        return api.getAllCountries(pageable).execute().body().getContent()
+        return getAllCountries(pageable).getContent()
                 .stream()
                 .filter(countryDto -> countryDto.getName().equals(countryName))
                 .findFirst()

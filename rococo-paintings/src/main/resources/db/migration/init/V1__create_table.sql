@@ -36,8 +36,8 @@ create table if not exists painting
     title       varchar(250) unicode not null,
     description varchar(250) unicode,
     content     MEDIUMTEXT unicode,
-    artist_id   binary(16) unique    not null default (UUID_TO_BIN(UUID(), true)),
-    museum_id   binary(16) unique    not null default (UUID_TO_BIN(UUID(), true)),
+    artist_id   binary(16)     not null default (UUID_TO_BIN(UUID(), true)),
+    museum_id   binary(16)     not null default (UUID_TO_BIN(UUID(), true)),
     FOREIGN KEY (artist_id) REFERENCES artist (id),
     FOREIGN KEY (museum_id) REFERENCES museum (id)
 );

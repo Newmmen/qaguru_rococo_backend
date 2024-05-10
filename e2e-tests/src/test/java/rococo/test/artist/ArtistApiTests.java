@@ -49,7 +49,7 @@ public class ArtistApiTests {
     void createArtist() throws IOException {
         String photo = getSamplePhoto();
         NewArtistDto artistDto = new NewArtistDto();
-        artistDto.setName("ArtistName");
+        artistDto.setName("ArtistName1");
         artistDto.setPhoto(photo);
         artistDto.setBiography("ArtistBiography");
 

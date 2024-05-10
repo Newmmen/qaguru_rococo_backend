@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openapitools.client.model.MuseumDto;
 import org.openapitools.client.model.NewMuseumDto;
+import org.openapitools.client.model.GeolocationDto;
+import org.openapitools.client.model.CreatedMuseumDto;
+import org.openapitools.client.model.CountryDto;
 import org.openapitools.client.model.Pageable;
 import rococo.apisteps.MuseumApiStep;
 import rococo.jupiter.annotation.ApiForClientLogin;
@@ -18,14 +21,15 @@ import rococo.jupiter.extention.ApiForClientExtension;
 import rococo.jupiter.extention.ContextHolderExtension;
 import rococo.jupiter.extention.CreateUserExtension;
 
+import static rococo.utils.DataUtils.getAnotherSamplePhoto;
+import static rococo.utils.DataUtils.getSamplePhoto;
+
 
 @ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiForClientExtension.class
 })
 public class MuseumApiTest {
     private final MuseumApiStep museumApiStep = new MuseumApiStep();
     private Pageable pageable = new Pageable();
-    private final int HTTP_SUCCESSFUL = 200;
-    private final int HTTP_UNAUTHORIZED = 401;
 
     @BeforeEach
     void setUp() {
@@ -34,41 +38,64 @@ public class MuseumApiTest {
     }
 
     @Test
-    @DisplayName("check unauthorized user can get all museums")
-    void checkUnauthorizedUserCanGetAllMuseums() throws IOException {
-        int code = museumApiStep.getAllMuseumResponseCode(pageable, null);
-        Assertions.assertEquals(HTTP_SUCCESSFUL, code);
+    @ApiForClientLogin
+    @DisplayName("museum creation by api")
+    void createMuseum() throws IOException {
+        GeolocationDto geolocationDto = new GeolocationDto();
+        CountryDto countryDto = museumApiStep.getCountryByName(pageable, "Россия");
+
+        geolocationDto.setCity("Москва");
+        geolocationDto.setCountry(countryDto);
+        NewMuseumDto newMuseumDto = new NewMuseumDto();
+        newMuseumDto.setGeo(geolocationDto);
+        newMuseumDto.setDescription("sample museum description");
+        newMuseumDto.setPhoto(getSamplePhoto());
+        newMuseumDto.setTitle("sample title description");
+        CreatedMuseumDto createdMuseumDto =  museumApiStep.createNewMuseum(newMuseumDto);
+
+        Assertions.assertAll("Assert museum created correctly",
+                () -> Assertions.assertEquals(newMuseumDto.getTitle(), createdMuseumDto.getTitle()),
+                () -> Assertions.assertEquals(newMuseumDto.getGeo(), createdMuseumDto.getGeo()),
+                () -> Assertions.assertEquals(newMuseumDto.getDescription(), createdMuseumDto.getDescription()),
+                () -> Assertions.assertEquals(newMuseumDto.getPhoto(), createdMuseumDto.getPhoto())
+        );
     }
 
     @Test
-    @DisplayName("check unauthorized user cannot get all countries")
-    void checkUnauthorizedUserCannotGetAllCountries() throws IOException {
-        int code = museumApiStep.tryToGetAllCountries(pageable);
-        Assertions.assertEquals(HTTP_UNAUTHORIZED, code);
-    }
+    @ApiForClientLogin
+    @DisplayName("update museum by api")
+    void updateMuseum() throws IOException {
+        GeolocationDto geolocationDto = new GeolocationDto();
+        CountryDto countryDto = museumApiStep.getCountryByName(pageable, "Россия");
 
-    @Test
-    @DisplayName("Check unauthorized user cannot create new museum")
-    void checkUnauthorizedUserCannotCreateMuseum() throws IOException {
-        NewMuseumDto museumDto = new NewMuseumDto();
-        museumDto.setTitle("sample museum name");
-        museumDto.setDescription("newartistBio12333");
-        museumDto.setPhoto("sample");
+        geolocationDto.setCity("Москва");
+        geolocationDto.setCountry(countryDto);
+        NewMuseumDto newMuseumDto = new NewMuseumDto();
+        newMuseumDto.setGeo(geolocationDto);
+        newMuseumDto.setDescription("sample museum description");
+        newMuseumDto.setPhoto(getSamplePhoto());
+        newMuseumDto.setTitle("sample title description");
+        CreatedMuseumDto createdMuseumDto =  museumApiStep.createNewMuseum(newMuseumDto);
 
-        int code = museumApiStep.tryToCreateNewMuseum(museumDto);
-        Assertions.assertEquals(HTTP_UNAUTHORIZED, code);
-    }
+        CountryDto newCountryDto = museumApiStep.getCountryByName(pageable, "Россия");
+        GeolocationDto newGeolocationDto = new GeolocationDto();
+        newGeolocationDto.setCity("Алматы");
+        newGeolocationDto.setCountry(newCountryDto);
 
-    @Test
-    @DisplayName("Check unauthorized user cannot update new museum")
-    void checkUnauthorizedUserCannotUpdateMuseum() throws IOException {
-        MuseumDto museumDto = new MuseumDto();
-        museumDto.setId(UUID.randomUUID());
-        museumDto.setTitle("updsteArtist");
-        museumDto.setDescription("updsteArtist");
-        museumDto.setPhoto("sample");
+        MuseumDto newCreatedMuseum = new MuseumDto();
+        newCreatedMuseum.setId(createdMuseumDto.getId());
+        newCreatedMuseum.setGeo(newGeolocationDto);
+        newCreatedMuseum.setDescription("updated description museum");
+        newCreatedMuseum.setPhoto(getAnotherSamplePhoto());
+        newCreatedMuseum.setTitle("updated museum");
 
-        int code = museumApiStep.tryToUpdateMuseum(museumDto);
-        Assertions.assertEquals(HTTP_UNAUTHORIZED, code);
+        MuseumDto updatedMuseum =  museumApiStep.updateMuseum(newCreatedMuseum);
+
+        Assertions.assertAll("Assert museum created correctly",
+                () -> Assertions.assertEquals(newCreatedMuseum.getTitle(), updatedMuseum.getTitle()),
+                () -> Assertions.assertEquals(newCreatedMuseum.getGeo(), updatedMuseum.getGeo()),
+                () -> Assertions.assertEquals(newCreatedMuseum.getDescription(), updatedMuseum.getDescription()),
+                () -> Assertions.assertEquals(newCreatedMuseum.getPhoto(), updatedMuseum.getPhoto())
+        );
     }
 }

@@ -72,9 +72,6 @@ public class ApiForClientExtension implements BeforeEachCallback, AfterTestExecu
         setCodChallenge(extensionContext, codeChallenge);
         authApiClient.doLogin(extensionContext, testCandidate.userName(), testCandidate.password());
         BearerStorage.storeBearer(getToken(extensionContext));
-
-        System.out.println(testCandidate.userName());
-        System.out.println( testCandidate.password());
     }
 
     @Override
