@@ -34,12 +34,15 @@ public class MuseumEntity  {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "city")
+    private String city;
+
     @Column(name = "content", columnDefinition = "MEDIUMTEXT")
     private String photo;
 
     @ManyToOne
-    @JoinColumn(name = "geolocation_id", referencedColumnName = "id") //todo передалать на айди (а не сущность)
-    private GeolocationEntity geolocationEntity;
+    @JoinColumn(name = "country_id", referencedColumnName = "id") //todo передалать на айди (а не сущность)
+    private CountryEntity countryEntity;
 
     @Override
     public final boolean equals(Object o) {
@@ -64,7 +67,8 @@ public class MuseumEntity  {
                 .setTitle(museumEntity.getTitle())
                 .setPhoto(museumEntity.getPhoto())
                 .setDescription(museumEntity.getDescription())
-                .setGeo(GeolocationEntity.toGrpcMessage(museumEntity.getGeolocationEntity()))
+                .setCity(museumEntity.getCity())
+                .setCountry(CountryEntity.toGrpcMessage(museumEntity.getCountryEntity()))
                 .build();
     }
 }

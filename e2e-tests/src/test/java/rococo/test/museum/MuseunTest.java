@@ -1,37 +1,71 @@
 package rococo.test.museum;
 
 
-import org.openapitools.client.api.MuseumControllerApi;
-import org.openapitools.client.model.Pageable;
-import rococo.jupiter.UsersQueueExtension;
-import rococo.pages.LoginPage;
+import com.codeborne.selenide.Selenide;
+import org.openapitools.client.model.NewMuseumDto;
+import org.openapitools.client.model.MuseumDto;
+import rococo.jupiter.annotation.ApiLogin;
+import rococo.jupiter.extention.ApiLoginExtension;
+import rococo.jupiter.extention.ContextHolderExtension;
+import rococo.jupiter.extention.CreateUserExtension;
 import rococo.pages.MainPage;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import rococo.pages.MuseumPage;
+
+import static rococo.utils.DataUtils.generateRandomMuseumName;
+import static rococo.utils.DataUtils.generateRandomSentence;
 
 
-@ExtendWith(UsersQueueExtension.class)
+@ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiLoginExtension.class})
 public class MuseunTest {
 
-    private MuseumControllerApi apiClient;
-    private Pageable pageable = new Pageable();
+    @Test
+    @ApiLogin
+    @DisplayName("create museum via UI")
+    void createMuseum() {
+        MuseumDto museumDto = new MuseumDto();
+        museumDto.setTitle(generateRandomMuseumName());
+        museumDto.setPhoto("images/artistPic.png");
+        museumDto.setDescription(generateRandomSentence(11));
 
-
-    @BeforeEach
-    void setUp() {
-        apiClient = new org.openapitools.client.ApiClient().createService(org.openapitools.client.api.MuseumControllerApi.class);
+        Selenide.open(MuseumPage.URL, MuseumPage.class)
+                .waitForPageLoaded()
+                .clickCreatePaintingButton()
+                .fillMuseumFieldsWithData(museumDto, "Казахстан")
+                .clickSubmitButton()
+                .waitForPageLoaded()
+                .findMuseumOnMuseumsPage(museumDto.getTitle());
     }
-
-    LoginPage loginPage = new LoginPage();
-    MainPage mainPage = new MainPage();
 
     @Test
-    @DisplayName("Check user with friend has correct text in friend's table")
-    void checkAllMuseumsCanBeSeen() {
+    @ApiLogin
+    @DisplayName("update created museum via UI")
+    void updateMuseum() {
+        MuseumDto museumDto = new MuseumDto();
+        museumDto.setTitle(generateRandomMuseumName());
+        museumDto.setPhoto("images/artistPic.png");
+        museumDto.setDescription(generateRandomSentence(11));
 
+        String newCountry = "Россия";
+        MuseumDto updatedMuseum = new MuseumDto();
+        updatedMuseum.setTitle(generateRandomMuseumName());
+        updatedMuseum.setDescription(generateRandomSentence(11));
+        updatedMuseum.setPhoto("images/anotherPic.png");
 
+        Selenide.open(MuseumPage.URL, MuseumPage.class)
+                .waitForPageLoaded()
+                .clickCreatePaintingButton()
+                .fillMuseumFieldsWithData(museumDto, "Казахстан")
+                .clickSubmitButton()
+                .waitForPageLoaded()
+                .findMuseumOnMuseumsPage(museumDto.getTitle())
+                .openMuseumInfo(museumDto.getTitle())
+                .clickOnUpdateButton()
+                .fillMuseumFieldsWithData(updatedMuseum, newCountry)
+                .clickSubmitButton();
+
+        new MuseumPage().checkMuseumInfoContainsExpectedFields(updatedMuseum, newCountry);
     }
-
 }

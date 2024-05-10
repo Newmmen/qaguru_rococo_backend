@@ -8,9 +8,22 @@ public class DataUtils {
 
   private static final Faker faker = new Faker();
 
+  //todo заменить все тд на фейкер в тестах
   @Nonnull
   public static String generateRandomUsername() {
     return faker.name().username();
+  }
+  @Nonnull
+  public static String generateRandomMuseumName() {
+    return faker.ancient().titan() + "Art Gallery";
+  }
+
+  public static String generateRandomArtistName() {
+    return faker.artist().name();
+  }
+
+  public static String generateRandomPaintingName() {
+    return faker.funnyName().name();
   }
 
   @Nonnull
