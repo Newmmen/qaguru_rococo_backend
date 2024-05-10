@@ -15,7 +15,7 @@ public record MuseumDto(UUID id, String photo, String title, String description,
                 response.getPhoto(),
                 response.getTitle(),
                 response.getDescription(),
-                GeolocationDto.fromGrpcMessage(response.getGeo())
+                GeolocationDto.fromGrpcMessage(response.getCity(), response.getCountry())
         );
     }
 }

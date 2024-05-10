@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import guru.qa.grpc.rococo.grpc.Artist;
 import guru.qa.grpc.rococo.grpc.Museum;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,12 +19,13 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.proxy.HibernateProxy;
+import org.springframework.context.annotation.Primary;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "\"museum\"")
-public class MuseumEntity implements Serializable {
+public class MuseumEntity  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -35,12 +37,16 @@ public class MuseumEntity implements Serializable {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "city")
+    private String city;
+
     @Column(name = "content", columnDefinition = "MEDIUMTEXT")
     private String photo;
 
     @ManyToOne
-    @JoinColumn(name = "geolocation_id") //todo передалать на айди (а не сущность)
-    private GeolocationEntity geolocationEntity;
+    @JoinColumn(name = "country_id", referencedColumnName = "id") //todo передалать на айди (а не сущность)
+    private CountryEntity countryEntity;
+
 
     @Override
     public final boolean equals(Object o) {
@@ -65,7 +71,8 @@ public class MuseumEntity implements Serializable {
                 .setTitle(museumEntity.getTitle())
                 .setPhoto(museumEntity.getPhoto())
                 .setDescription(museumEntity.getDescription())
-                .setGeo(GeolocationEntity.toGrpcMessage(museumEntity.getGeolocationEntity()))
+                .setCity(museumEntity.getCity())
+                .setCountry(CountryEntity.toGrpcMessage(museumEntity.getCountryEntity()))
                 .build();
     }
 }

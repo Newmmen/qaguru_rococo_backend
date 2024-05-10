@@ -8,6 +8,7 @@ spring:
     baseline-on-migrate: true
     schemas: rococo
     baseline-version: 0
+    locations: classpath:db/migration
   jpa:
     hibernate:
       ddl-auto: none

@@ -22,7 +22,7 @@ import org.hibernate.proxy.HibernateProxy;
 @Setter
 @Entity
 @Table(name = "\"museum\"")
-public class MuseumEntity implements Serializable {
+public class MuseumEntity  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -38,7 +38,7 @@ public class MuseumEntity implements Serializable {
     private String photo;
 
     @ManyToOne
-    @JoinColumn(name = "geolocation_id") //todo передалать на айди (а не сущность)
+    @JoinColumn(name = "geolocation_id", referencedColumnName = "id") //todo передалать на айди (а не сущность)
     private GeolocationEntity geolocationEntity;
 
     @Override

@@ -124,7 +124,8 @@ message Museum {
   string photo = 2;
   string title = 3;
   string description = 4;
-  Geo geo = 5;
+  string city = 5;
+  Country country = 6;
 }
 message CreatedPainting {
   string id = 1;
@@ -139,7 +140,8 @@ message CreatedMuseum {
   string title = 2;
   string description = 3;
   string photo = 4;
-  Geo geo = 5;
+  string city = 5;
+  Country country = 6;
 }
 message Painting {
   string id = 1;
@@ -156,10 +158,7 @@ message User {
   optional string lastname = 4;
   optional string avatar = 5;
 }
-message Geo {
-  string city = 1;
-  Country country = 2;
-}
+
 message Country {
   string id = 1;
   string name = 2;

@@ -20,6 +20,7 @@ private static final long serialVersionUID = 0L;
     title_ = "";
     description_ = "";
     photo_ = "";
+    city_ = "";
   }
 
   @java.lang.Override
@@ -199,30 +200,69 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int GEO_FIELD_NUMBER = 5;
-  private guru.qa.grpc.rococo.grpc.Geo geo_;
+  public static final int CITY_FIELD_NUMBER = 5;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object city_ = "";
   /**
-   * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
-   * @return Whether the geo field is set.
+   * <code>string city = 5;</code>
+   * @return The city.
    */
   @java.lang.Override
-  public boolean hasGeo() {
+  public java.lang.String getCity() {
+    java.lang.Object ref = city_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      city_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string city = 5;</code>
+   * @return The bytes for city.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getCityBytes() {
+    java.lang.Object ref = city_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      city_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int COUNTRY_FIELD_NUMBER = 6;
+  private guru.qa.grpc.rococo.grpc.Country country_;
+  /**
+   * <code>.guru.qa.grpc.rococo.grpc.Country country = 6;</code>
+   * @return Whether the country field is set.
+   */
+  @java.lang.Override
+  public boolean hasCountry() {
     return ((bitField0_ & 0x00000001) != 0);
   }
   /**
-   * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
-   * @return The geo.
+   * <code>.guru.qa.grpc.rococo.grpc.Country country = 6;</code>
+   * @return The country.
    */
   @java.lang.Override
-  public guru.qa.grpc.rococo.grpc.Geo getGeo() {
-    return geo_ == null ? guru.qa.grpc.rococo.grpc.Geo.getDefaultInstance() : geo_;
+  public guru.qa.grpc.rococo.grpc.Country getCountry() {
+    return country_ == null ? guru.qa.grpc.rococo.grpc.Country.getDefaultInstance() : country_;
   }
   /**
-   * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+   * <code>.guru.qa.grpc.rococo.grpc.Country country = 6;</code>
    */
   @java.lang.Override
-  public guru.qa.grpc.rococo.grpc.GeoOrBuilder getGeoOrBuilder() {
-    return geo_ == null ? guru.qa.grpc.rococo.grpc.Geo.getDefaultInstance() : geo_;
+  public guru.qa.grpc.rococo.grpc.CountryOrBuilder getCountryOrBuilder() {
+    return country_ == null ? guru.qa.grpc.rococo.grpc.Country.getDefaultInstance() : country_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -251,8 +291,11 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(photo_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, photo_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(city_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, city_);
+    }
     if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeMessage(5, getGeo());
+      output.writeMessage(6, getCountry());
     }
     getUnknownFields().writeTo(output);
   }
@@ -275,9 +318,12 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(photo_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, photo_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(city_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, city_);
+    }
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, getGeo());
+        .computeMessageSize(6, getCountry());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -302,10 +348,12 @@ private static final long serialVersionUID = 0L;
         .equals(other.getDescription())) return false;
     if (!getPhoto()
         .equals(other.getPhoto())) return false;
-    if (hasGeo() != other.hasGeo()) return false;
-    if (hasGeo()) {
-      if (!getGeo()
-          .equals(other.getGeo())) return false;
+    if (!getCity()
+        .equals(other.getCity())) return false;
+    if (hasCountry() != other.hasCountry()) return false;
+    if (hasCountry()) {
+      if (!getCountry()
+          .equals(other.getCountry())) return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -326,9 +374,11 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getDescription().hashCode();
     hash = (37 * hash) + PHOTO_FIELD_NUMBER;
     hash = (53 * hash) + getPhoto().hashCode();
-    if (hasGeo()) {
-      hash = (37 * hash) + GEO_FIELD_NUMBER;
-      hash = (53 * hash) + getGeo().hashCode();
+    hash = (37 * hash) + CITY_FIELD_NUMBER;
+    hash = (53 * hash) + getCity().hashCode();
+    if (hasCountry()) {
+      hash = (37 * hash) + COUNTRY_FIELD_NUMBER;
+      hash = (53 * hash) + getCountry().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -460,7 +510,7 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getGeoFieldBuilder();
+        getCountryFieldBuilder();
       }
     }
     @java.lang.Override
@@ -471,10 +521,11 @@ private static final long serialVersionUID = 0L;
       title_ = "";
       description_ = "";
       photo_ = "";
-      geo_ = null;
-      if (geoBuilder_ != null) {
-        geoBuilder_.dispose();
-        geoBuilder_ = null;
+      city_ = "";
+      country_ = null;
+      if (countryBuilder_ != null) {
+        countryBuilder_.dispose();
+        countryBuilder_ = null;
       }
       return this;
     }
@@ -521,11 +572,14 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000008) != 0)) {
         result.photo_ = photo_;
       }
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.geo_ = geoBuilder_ == null
-            ? geo_
-            : geoBuilder_.build();
+        result.city_ = city_;
+      }
+      int to_bitField0_ = 0;
+      if (((from_bitField0_ & 0x00000020) != 0)) {
+        result.country_ = countryBuilder_ == null
+            ? country_
+            : countryBuilder_.build();
         to_bitField0_ |= 0x00000001;
       }
       result.bitField0_ |= to_bitField0_;
@@ -595,8 +649,13 @@ private static final long serialVersionUID = 0L;
         bitField0_ |= 0x00000008;
         onChanged();
       }
-      if (other.hasGeo()) {
-        mergeGeo(other.getGeo());
+      if (!other.getCity().isEmpty()) {
+        city_ = other.city_;
+        bitField0_ |= 0x00000010;
+        onChanged();
+      }
+      if (other.hasCountry()) {
+        mergeCountry(other.getCountry());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -645,12 +704,17 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 34
             case 42: {
-              input.readMessage(
-                  getGeoFieldBuilder().getBuilder(),
-                  extensionRegistry);
+              city_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000010;
               break;
             } // case 42
+            case 50: {
+              input.readMessage(
+                  getCountryFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 50
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -956,125 +1020,197 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private guru.qa.grpc.rococo.grpc.Geo geo_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        guru.qa.grpc.rococo.grpc.Geo, guru.qa.grpc.rococo.grpc.Geo.Builder, guru.qa.grpc.rococo.grpc.GeoOrBuilder> geoBuilder_;
+    private java.lang.Object city_ = "";
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
-     * @return Whether the geo field is set.
+     * <code>string city = 5;</code>
+     * @return The city.
      */
-    public boolean hasGeo() {
-      return ((bitField0_ & 0x00000010) != 0);
-    }
-    /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
-     * @return The geo.
-     */
-    public guru.qa.grpc.rococo.grpc.Geo getGeo() {
-      if (geoBuilder_ == null) {
-        return geo_ == null ? guru.qa.grpc.rococo.grpc.Geo.getDefaultInstance() : geo_;
+    public java.lang.String getCity() {
+      java.lang.Object ref = city_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        city_ = s;
+        return s;
       } else {
-        return geoBuilder_.getMessage();
+        return (java.lang.String) ref;
       }
     }
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+     * <code>string city = 5;</code>
+     * @return The bytes for city.
      */
-    public Builder setGeo(guru.qa.grpc.rococo.grpc.Geo value) {
-      if (geoBuilder_ == null) {
+    public com.google.protobuf.ByteString
+        getCityBytes() {
+      java.lang.Object ref = city_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        city_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string city = 5;</code>
+     * @param value The city to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCity(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      city_ = value;
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string city = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearCity() {
+      city_ = getDefaultInstance().getCity();
+      bitField0_ = (bitField0_ & ~0x00000010);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string city = 5;</code>
+     * @param value The bytes for city to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCityBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      city_ = value;
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+
+    private guru.qa.grpc.rococo.grpc.Country country_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        guru.qa.grpc.rococo.grpc.Country, guru.qa.grpc.rococo.grpc.Country.Builder, guru.qa.grpc.rococo.grpc.CountryOrBuilder> countryBuilder_;
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Country country = 6;</code>
+     * @return Whether the country field is set.
+     */
+    public boolean hasCountry() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Country country = 6;</code>
+     * @return The country.
+     */
+    public guru.qa.grpc.rococo.grpc.Country getCountry() {
+      if (countryBuilder_ == null) {
+        return country_ == null ? guru.qa.grpc.rococo.grpc.Country.getDefaultInstance() : country_;
+      } else {
+        return countryBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.guru.qa.grpc.rococo.grpc.Country country = 6;</code>
+     */
+    public Builder setCountry(guru.qa.grpc.rococo.grpc.Country value) {
+      if (countryBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        geo_ = value;
+        country_ = value;
       } else {
-        geoBuilder_.setMessage(value);
+        countryBuilder_.setMessage(value);
       }
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000020;
       onChanged();
       return this;
     }
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+     * <code>.guru.qa.grpc.rococo.grpc.Country country = 6;</code>
      */
-    public Builder setGeo(
-        guru.qa.grpc.rococo.grpc.Geo.Builder builderForValue) {
-      if (geoBuilder_ == null) {
-        geo_ = builderForValue.build();
+    public Builder setCountry(
+        guru.qa.grpc.rococo.grpc.Country.Builder builderForValue) {
+      if (countryBuilder_ == null) {
+        country_ = builderForValue.build();
       } else {
-        geoBuilder_.setMessage(builderForValue.build());
+        countryBuilder_.setMessage(builderForValue.build());
       }
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000020;
       onChanged();
       return this;
     }
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+     * <code>.guru.qa.grpc.rococo.grpc.Country country = 6;</code>
      */
-    public Builder mergeGeo(guru.qa.grpc.rococo.grpc.Geo value) {
-      if (geoBuilder_ == null) {
-        if (((bitField0_ & 0x00000010) != 0) &&
-          geo_ != null &&
-          geo_ != guru.qa.grpc.rococo.grpc.Geo.getDefaultInstance()) {
-          getGeoBuilder().mergeFrom(value);
+    public Builder mergeCountry(guru.qa.grpc.rococo.grpc.Country value) {
+      if (countryBuilder_ == null) {
+        if (((bitField0_ & 0x00000020) != 0) &&
+          country_ != null &&
+          country_ != guru.qa.grpc.rococo.grpc.Country.getDefaultInstance()) {
+          getCountryBuilder().mergeFrom(value);
         } else {
-          geo_ = value;
+          country_ = value;
         }
       } else {
-        geoBuilder_.mergeFrom(value);
+        countryBuilder_.mergeFrom(value);
       }
-      if (geo_ != null) {
-        bitField0_ |= 0x00000010;
+      if (country_ != null) {
+        bitField0_ |= 0x00000020;
         onChanged();
       }
       return this;
     }
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+     * <code>.guru.qa.grpc.rococo.grpc.Country country = 6;</code>
      */
-    public Builder clearGeo() {
-      bitField0_ = (bitField0_ & ~0x00000010);
-      geo_ = null;
-      if (geoBuilder_ != null) {
-        geoBuilder_.dispose();
-        geoBuilder_ = null;
+    public Builder clearCountry() {
+      bitField0_ = (bitField0_ & ~0x00000020);
+      country_ = null;
+      if (countryBuilder_ != null) {
+        countryBuilder_.dispose();
+        countryBuilder_ = null;
       }
       onChanged();
       return this;
     }
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+     * <code>.guru.qa.grpc.rococo.grpc.Country country = 6;</code>
      */
-    public guru.qa.grpc.rococo.grpc.Geo.Builder getGeoBuilder() {
-      bitField0_ |= 0x00000010;
+    public guru.qa.grpc.rococo.grpc.Country.Builder getCountryBuilder() {
+      bitField0_ |= 0x00000020;
       onChanged();
-      return getGeoFieldBuilder().getBuilder();
+      return getCountryFieldBuilder().getBuilder();
     }
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+     * <code>.guru.qa.grpc.rococo.grpc.Country country = 6;</code>
      */
-    public guru.qa.grpc.rococo.grpc.GeoOrBuilder getGeoOrBuilder() {
-      if (geoBuilder_ != null) {
-        return geoBuilder_.getMessageOrBuilder();
+    public guru.qa.grpc.rococo.grpc.CountryOrBuilder getCountryOrBuilder() {
+      if (countryBuilder_ != null) {
+        return countryBuilder_.getMessageOrBuilder();
       } else {
-        return geo_ == null ?
-            guru.qa.grpc.rococo.grpc.Geo.getDefaultInstance() : geo_;
+        return country_ == null ?
+            guru.qa.grpc.rococo.grpc.Country.getDefaultInstance() : country_;
       }
     }
     /**
-     * <code>.guru.qa.grpc.rococo.grpc.Geo geo = 5;</code>
+     * <code>.guru.qa.grpc.rococo.grpc.Country country = 6;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        guru.qa.grpc.rococo.grpc.Geo, guru.qa.grpc.rococo.grpc.Geo.Builder, guru.qa.grpc.rococo.grpc.GeoOrBuilder> 
-        getGeoFieldBuilder() {
-      if (geoBuilder_ == null) {
-        geoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            guru.qa.grpc.rococo.grpc.Geo, guru.qa.grpc.rococo.grpc.Geo.Builder, guru.qa.grpc.rococo.grpc.GeoOrBuilder>(
-                getGeo(),
+        guru.qa.grpc.rococo.grpc.Country, guru.qa.grpc.rococo.grpc.Country.Builder, guru.qa.grpc.rococo.grpc.CountryOrBuilder> 
+        getCountryFieldBuilder() {
+      if (countryBuilder_ == null) {
+        countryBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            guru.qa.grpc.rococo.grpc.Country, guru.qa.grpc.rococo.grpc.Country.Builder, guru.qa.grpc.rococo.grpc.CountryOrBuilder>(
+                getCountry(),
                 getParentForChildren(),
                 isClean());
-        geo_ = null;
+        country_ = null;
       }
-      return geoBuilder_;
+      return countryBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

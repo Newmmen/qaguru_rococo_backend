@@ -13,7 +13,6 @@ import guru.qa.grpc.rococo.grpc.Country;
 import guru.qa.grpc.rococo.grpc.CountryIdRequest;
 import guru.qa.grpc.rococo.grpc.CreatedMuseum;
 import guru.qa.grpc.rococo.grpc.CreatedPainting;
-import guru.qa.grpc.rococo.grpc.Geo;
 import guru.qa.grpc.rococo.grpc.GeoIdRequest;
 import guru.qa.grpc.rococo.grpc.Museum;
 import guru.qa.grpc.rococo.grpc.MuseumIdRequest;
@@ -154,10 +153,9 @@ public class PaintingMuseumGrpcClient {
                     rococoPaintingServiceBlockingStub.updateMuseum(Museum.newBuilder()
                                     .setId(museumDto.id().toString())
                                     .setDescription(museumDto.description())
-                                    .setGeo(Geo.newBuilder()
-                                            .setCity(museumDto.geo().city())
-                                            .setCountry(Country.newBuilder()
-                                                    .setId(museumDto.geo().country().id().toString())))
+                                    .setCity(museumDto.geo().city())
+                                    .setCountry(Country.newBuilder()
+                                                    .setId(museumDto.geo().country().id().toString()))
                                     .setPhoto(museumDto.photo())
                                     .setTitle(museumDto.title())
                                     .build());

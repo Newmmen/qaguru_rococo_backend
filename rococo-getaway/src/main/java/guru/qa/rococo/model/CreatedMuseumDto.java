@@ -3,8 +3,6 @@ package guru.qa.rococo.model;
 import java.util.UUID;
 
 import guru.qa.grpc.rococo.grpc.CreatedMuseum;
-import guru.qa.grpc.rococo.grpc.CreatedPainting;
-import guru.qa.grpc.rococo.grpc.Geo;
 import jakarta.validation.constraints.NotNull;
 
 public record CreatedMuseumDto(UUID id, String title, String description, String photo, GeolocationDto geo) {
@@ -14,7 +12,7 @@ public record CreatedMuseumDto(UUID id, String title, String description, String
                 response.getTitle(),
                 response.getDescription(),
                 response.getPhoto(),
-                GeolocationDto.fromGrpcMessage(response.getGeo())
+                GeolocationDto.fromGrpcMessage(response.getCity(), response.getCountry())
                 );
     }
 
