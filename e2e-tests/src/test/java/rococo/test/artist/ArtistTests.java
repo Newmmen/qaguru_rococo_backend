@@ -76,6 +76,7 @@ public class ArtistTests {
                 .clickOnEditButton()
                 .fillArtistFieldsWithData(newArtist)
                 .clickSubmitButton();
+
         new ArtistPage().checkArtistInfoContainsExpectedFields(newArtist);
     }
 }

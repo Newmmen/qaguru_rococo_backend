@@ -61,6 +61,31 @@ public class MuseumApiTest {
         );
     }
 
+    //todo написать тест на гет по апи
+    @Test
+    @ApiForClientLogin
+    @DisplayName("get museum by id and assert it")
+    void getMuseumByIdAndAssert() throws IOException {
+        GeolocationDto geolocationDto = new GeolocationDto();
+        CountryDto countryDto = museumApiStep.getCountryByName(pageable, "Россия");
+
+        geolocationDto.setCity("Москва");
+        geolocationDto.setCountry(countryDto);
+        NewMuseumDto newMuseumDto = new NewMuseumDto();
+        newMuseumDto.setGeo(geolocationDto);
+        newMuseumDto.setDescription("sample museum description");
+        newMuseumDto.setPhoto(getSamplePhoto());
+        newMuseumDto.setTitle("sample title description");
+        CreatedMuseumDto createdMuseumDto =  museumApiStep.createNewMuseum(newMuseumDto);
+
+        Assertions.assertAll("Assert museum created correctly",
+                () -> Assertions.assertEquals(newMuseumDto.getTitle(), createdMuseumDto.getTitle()),
+                () -> Assertions.assertEquals(newMuseumDto.getGeo(), createdMuseumDto.getGeo()),
+                () -> Assertions.assertEquals(newMuseumDto.getDescription(), createdMuseumDto.getDescription()),
+                () -> Assertions.assertEquals(newMuseumDto.getPhoto(), createdMuseumDto.getPhoto())
+        );
+    }
+
     @Test
     @ApiForClientLogin
     @DisplayName("update museum by api")

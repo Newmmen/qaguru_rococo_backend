@@ -7,6 +7,7 @@ import com.codeborne.selenide.SelenideElement;
 import org.openapitools.client.model.ArtistDto;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Selectors.byTagAndText;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -22,6 +23,7 @@ public class ArtistPage extends BasePage<ArtistPage> {
     private final SelenideElement iconSearch = $("img[alt='Иконка поиска']");
     private final SelenideElement editButton = $("button[data-testid='edit-artist']");
     private final SelenideElement submitButton = $("button[type='submit']");
+    private final SelenideElement addPaintingInArtistButton = $(byTagAndText("button", "Добавить картину"));
     private final ElementsCollection artistCollection = $$("div[class='w-100']");
 
     public static final String URL = CFG.frontUrl() + "/artist";
@@ -73,6 +75,12 @@ public class ArtistPage extends BasePage<ArtistPage> {
         artistInfoHeader.shouldHave(Condition.text(artistDto.getName()));
         artistBiograthy.shouldHave(Condition.text(artistDto.getBiography()));
         return this;
+    }
+
+    @Step("click add painting into artist")
+    public PaintingPage clickAddPaintingIntoArtist() {
+        addPaintingInArtistButton.click();
+        return new PaintingPage();
     }
 
 

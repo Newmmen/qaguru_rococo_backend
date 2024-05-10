@@ -44,11 +44,25 @@ public class PaintingPage extends BasePage<PaintingPage> {
         return this;
     }
 
-    @Step("find painting on painting page by UI")
+    @Step("fill painting with data into artist")
+    public PaintingPage fillPaintingWithDataIntoArtist(PaintingDto paintingDto) {
+        $("input[name='title']").setValue(paintingDto.getTitle());
+        $("textarea[name='description']").setValue(paintingDto.getDescription());
+        $("input[name='content']").uploadFromClasspath(paintingDto.getContent());
+        museumSelector.$(byTagAndText("option",paintingDto.getMuseum().getTitle())).click();
+        return this;
+    }
+
+    @Step("find painting on painting page")
     public PaintingPage findPaintingOnPaintingPage(String paintingTitle) {
         paintingTab.click();
         paintingFilterInput.setValue(paintingTitle);
         iconSearch.click();
+        paintingCollection.findBy(Condition.text(paintingTitle)).shouldBe(Condition.visible);
+        return this;
+    }
+    @Step("check painting into artist is visible")
+    public PaintingPage checkPaintingIntoArtistPageIsVisible(String paintingTitle) {
         paintingCollection.findBy(Condition.text(paintingTitle)).shouldBe(Condition.visible);
         return this;
     }

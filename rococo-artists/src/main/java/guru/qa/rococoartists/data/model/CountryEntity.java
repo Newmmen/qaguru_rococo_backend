@@ -19,7 +19,7 @@ import org.hibernate.proxy.HibernateProxy;
 @Getter
 @Setter
 @Entity
-@Table(name = "\"museum\"")
+@Table(name = "\"country\"")
 public class CountryEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +27,7 @@ public class CountryEntity implements Serializable {
     private UUID id;
 
     @Column(nullable = false)
-    private String name;
+    private String city;
 
     @Override
     public final boolean equals(Object o) {
@@ -48,7 +48,7 @@ public class CountryEntity implements Serializable {
 
         return Country.newBuilder()
                 .setId(countryEntity.getId().toString())
-                .setName(countryEntity.getName())
+                .setName(countryEntity.getCity())
                 .build();
     }
 }

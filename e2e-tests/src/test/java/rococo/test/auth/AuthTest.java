@@ -11,31 +11,47 @@ import rococo.jupiter.annotation.ApiLogin;
 import rococo.jupiter.extention.ApiLoginExtension;
 import rococo.jupiter.extention.ContextHolderExtension;
 import rococo.jupiter.extention.CreateUserExtension;
+import rococo.pages.LoginPage;
 import rococo.pages.MuseumPage;
 
 import static rococo.utils.DataUtils.generateRandomMuseumName;
+import static rococo.utils.DataUtils.generateRandomPassword;
 import static rococo.utils.DataUtils.generateRandomSentence;
+import static rococo.utils.DataUtils.generateRandomUsername;
 
-@DisplayName("User can create ")
-@ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiLoginExtension.class})
+@DisplayName("Authorization tests")
 public class AuthTest {
 
     @Test
-    @ApiLogin
-    @DisplayName("")
-    void createMuseum() {
-        MuseumDto museumDto = new MuseumDto();
-        museumDto.setTitle(generateRandomMuseumName());
-        museumDto.setPhoto("images/artistPic.png");
-        museumDto.setDescription(generateRandomSentence(11));
-
-        Selenide.open(MuseumPage.URL, MuseumPage.class)
+    @DisplayName("successfully login with data")
+    void login() {
+        Selenide.open(LoginPage.URL, LoginPage.class)
+                .clickEnterButton()
+                .doUiLoginWithData("admin", "admin")
                 .waitForPageLoaded()
-                .clickCreatePaintingButton()
-                .fillMuseumFieldsWithData(museumDto, "Казахстан")
-                .clickSubmitButton()
-                .waitForPageLoaded()
-                .findMuseumOnMuseumsPage(museumDto.getTitle());
+                .checkAvatarPicture();
     }
 
+    @Test
+    @DisplayName("try to login with bad credentials")
+    void loginWithBadCredentials() {
+        Selenide.open(LoginPage.URL, LoginPage.class)
+                .clickEnterButton()
+                .doUiLoginWithData("wrong", "wrong");
+        new LoginPage().checkBadCredentialErrorVisible();
+    }
+
+    @Test
+    @DisplayName("successfully sign up")
+    void signUpSuccessfully() {
+        String username = generateRandomUsername();
+        String password = generateRandomPassword();
+        Selenide.open(LoginPage.URL, LoginPage.class)
+                .clickEnterButton()
+                .clickSignUpButton()
+                .doSignUpWithData(username, password)
+                .clickFormSubmitButton()
+                .doUiLoginWithData(username, password)
+                .checkAvatarPicture();
+    }
 }

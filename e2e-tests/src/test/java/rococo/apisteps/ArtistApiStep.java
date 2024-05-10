@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import java.io.IOException;
 
 import io.qameta.allure.Step;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.openapitools.client.api.ArtistControllerApi;
 import org.openapitools.client.model.Pageable;
@@ -51,5 +52,14 @@ public class ArtistApiStep {
     @Step("try to update artist")
     public int tryToUpdateArtist(ArtistDto artistDto) throws IOException {
         return artistControllerApi.updateArtist(artistDto).execute().code();
+    }
+
+    @Step("assert artist equals expected")
+    public void assertArtistEqualsExpected(ArtistDto expected, ArtistDto actual) {
+        Assertions.assertAll("Assert artists are equal",
+                () -> Assertions.assertEquals(expected.getName(), actual.getName()),
+                () -> Assertions.assertEquals(expected.getBiography(), actual.getBiography()),
+                () -> Assertions.assertEquals(expected.getPhoto(), actual.getPhoto())
+        );
     }
 }

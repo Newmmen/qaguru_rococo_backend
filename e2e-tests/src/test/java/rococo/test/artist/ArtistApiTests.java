@@ -47,10 +47,9 @@ public class ArtistApiTests {
     @ApiForClientLogin
     @DisplayName("check created artist equals actual")
     void createArtist() throws IOException {
-        String photo = getSamplePhoto();
         NewArtistDto artistDto = new NewArtistDto();
         artistDto.setName("ArtistName1");
-        artistDto.setPhoto(photo);
+        artistDto.setPhoto(getSamplePhoto());
         artistDto.setBiography("ArtistBiography");
 
         ArtistDto createdArtist = artistApiStep.createArtist(artistDto);
@@ -58,7 +57,7 @@ public class ArtistApiTests {
         Assertions.assertAll("Assert artists are equal",
                 () -> Assertions.assertEquals(artistDto.getName(), createdArtist.getName()),
                 () -> Assertions.assertEquals(artistDto.getBiography(), createdArtist.getBiography()),
-                () -> Assertions.assertEquals(photo, createdArtist.getPhoto())
+                () -> Assertions.assertEquals(artistDto.getPhoto(), createdArtist.getPhoto())
         );
 
     }
@@ -78,13 +77,30 @@ public class ArtistApiTests {
         createdArtist.setName("New name");
         createdArtist.setBiography("New biograthy info");
         createdArtist.setPhoto(getAnotherSamplePhoto());
-
         ArtistDto updatedArtist = artistApiStep.updateArtist(createdArtist);
 
+        artistApiStep.assertArtistEqualsExpected(createdArtist, updatedArtist);
+    }
+
+    //todo написать тест на гет по апи
+    @Test
+    @ApiForClientLogin
+    @DisplayName("get artist by id and assert it")
+    void getArtistByIdAndAssert() throws IOException {
+        String photo = getSamplePhoto();
+        NewArtistDto artistDto = new NewArtistDto();
+        artistDto.setName("ArtistName");
+        artistDto.setPhoto(photo);
+        artistDto.setBiography("ArtistBiography");
+
+        ArtistDto createdArtist = artistApiStep.createArtist(artistDto);
+
+
         Assertions.assertAll("Assert artists are equal",
-                () -> Assertions.assertEquals(createdArtist.getName(), updatedArtist.getName()),
-                () -> Assertions.assertEquals(createdArtist.getBiography(), updatedArtist.getBiography()),
-                () -> Assertions.assertEquals(createdArtist.getPhoto(), updatedArtist.getPhoto())
+                () -> Assertions.assertEquals(artistDto.getName(), createdArtist.getName()),
+                () -> Assertions.assertEquals(artistDto.getBiography(), createdArtist.getBiography()),
+                () -> Assertions.assertEquals(photo, createdArtist.getPhoto())
         );
+
     }
 }

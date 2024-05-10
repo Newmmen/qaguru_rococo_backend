@@ -40,18 +40,18 @@ public class PaintingController {
     }
 
     @PatchMapping("/painting")
-    public  PaintingDto updatePainting(@RequestBody PaintingDto paintingDto) {
+    public PaintingDto updatePainting(@RequestBody PaintingDto paintingDto) {
         return paintingGrpcClient.updatePainting(paintingDto);
     }
 
     @GetMapping("/painting/author/{id}")
-    public Page<PaintingDto> getByAuthorId(@PathVariable("id") UUID id,   @PageableDefault Pageable pageable) {
+    public Page<PaintingDto> getByAuthorId(@PathVariable("id") UUID id, @PageableDefault Pageable pageable) {
         return paintingGrpcClient.getAllByAuthorId(id, pageable);
     }
 
     @GetMapping("/painting")
     public Page<PaintingDto> getAllPaintings(@RequestParam(required = false, defaultValue = "") String title,
-                                    @PageableDefault Pageable pageable) {
+                                             @PageableDefault Pageable pageable) {
         return paintingGrpcClient.getAllPaintings(title, pageable);
     }
 }

@@ -70,4 +70,43 @@ public class HappyPathTest {
                 .findPaintingOnPaintingPage(paintingDto.getTitle());
     }
 
+    @Test
+    @ApiLogin
+    @DisplayName("User can add new painting to artist")
+    void createNewPaintingInArtist() {
+        MuseumDto museumDto = new MuseumDto();
+        museumDto.setTitle(generateRandomMuseumName());
+        museumDto.setPhoto("images/artistPic.png");
+        museumDto.setDescription(generateRandomSentence(11));
+        Selenide.open(MuseumPage.URL, MuseumPage.class)
+                .waitForPageLoaded()
+                .clickCreatePaintingButton()
+                .fillMuseumFieldsWithData(museumDto, "Казахстан")
+                .clickSubmitButton();
+
+        ArtistDto artistDto = new ArtistDto();
+        artistDto.setName(generateRandomArtistName());
+        artistDto.setPhoto("images/artistPic.png");
+        artistDto.setBiography("12312414141343");
+
+        PaintingDto paintingDto = new PaintingDto();
+        paintingDto.setMuseum(museumDto);
+        paintingDto.setContent("images/anotherPic.png");
+        paintingDto.setTitle(generateRandomPaintingName());
+        paintingDto.setDescription(generateRandomSentence(11));
+
+        Selenide.open(ArtistPage.URL, ArtistPage.class)
+                .waitForPageLoaded()
+                .clickCreateArtistTab()
+                .fillArtistFieldsWithData(artistDto)
+                .clickSubmitButton()
+                .waitForPageLoaded()
+                .findArtistOnArtistPage(artistDto.getName())
+                .openArtistInfo(artistDto.getName())
+                .clickAddPaintingIntoArtist()
+                .fillPaintingWithDataIntoArtist(paintingDto)
+                .clickSubmitButton();
+
+        new PaintingPage().checkPaintingIntoArtistPageIsVisible(paintingDto.getTitle());
+    }
 }

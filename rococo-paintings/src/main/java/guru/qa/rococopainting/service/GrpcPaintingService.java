@@ -217,7 +217,7 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
                 fetchEntity(artistRepository.findById(UUID.fromString(request.getArtist().getId())));
         MuseumEntity museumEntity =
                 fetchEntity(museumRepository.findById(UUID.fromString(request.getMuseum().getId())));
-        PaintingEntity paintingEntity = new PaintingEntity();
+        PaintingEntity paintingEntity = fetchEntity(paintingRepository.findById(UUID.fromString(request.getId())));
         paintingEntity.setTitle(request.getTitle());
         paintingEntity.setDescription(request.getDescription());
         paintingEntity.setContent(request.getContent());
