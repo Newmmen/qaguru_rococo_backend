@@ -2,6 +2,7 @@ package rococo.test.artist;
 
 
 import java.io.IOException;
+import java.util.UUID;
 
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Assertions;
@@ -30,7 +31,7 @@ import static rococo.utils.DataUtils.getAnotherSamplePhoto;
 import static rococo.utils.DataUtils.getSamplePhoto;
 
 @Tag("tests")
-@ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiForClientExtension.class})
+@ExtendWith({ContextHolderExtension.class,  ApiForClientExtension.class})
 public class ArtistApiTests {
     private final ArtistApiStep artistApiStep = new ArtistApiStep();
 
@@ -59,7 +60,26 @@ public class ArtistApiTests {
                 () -> Assertions.assertEquals(artistDto.getBiography(), createdArtist.getBiography()),
                 () -> Assertions.assertEquals(artistDto.getPhoto(), createdArtist.getPhoto())
         );
+    }
 
+    @Test
+    @ApiForClientLogin
+    @DisplayName("check created artist equals actual")
+    void getCreatedArtist() throws IOException {
+        NewArtistDto artistDto = new NewArtistDto();
+        artistDto.setName("ArtistName1");
+        artistDto.setPhoto(getSamplePhoto());
+        artistDto.setBiography("ArtistBiography");
+
+        UUID artistId = artistApiStep.createArtist(artistDto).getId();
+
+        ArtistDto createdArtist = artistApiStep.getArtist(artistId);
+
+        Assertions.assertAll("Assert artists are equal",
+                () -> Assertions.assertEquals(artistDto.getName(), createdArtist.getName()),
+                () -> Assertions.assertEquals(artistDto.getBiography(), createdArtist.getBiography()),
+                () -> Assertions.assertEquals(artistDto.getPhoto(), createdArtist.getPhoto())
+        );
     }
 
     @Test
@@ -82,7 +102,6 @@ public class ArtistApiTests {
         artistApiStep.assertArtistEqualsExpected(createdArtist, updatedArtist);
     }
 
-    //todo написать тест на гет по апи
     @Test
     @ApiForClientLogin
     @DisplayName("get artist by id and assert it")
@@ -94,8 +113,6 @@ public class ArtistApiTests {
         artistDto.setBiography("ArtistBiography");
 
         ArtistDto createdArtist = artistApiStep.createArtist(artistDto);
-
-
         Assertions.assertAll("Assert artists are equal",
                 () -> Assertions.assertEquals(artistDto.getName(), createdArtist.getName()),
                 () -> Assertions.assertEquals(artistDto.getBiography(), createdArtist.getBiography()),

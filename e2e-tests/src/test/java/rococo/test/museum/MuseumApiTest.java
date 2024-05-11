@@ -25,7 +25,7 @@ import static rococo.utils.DataUtils.getAnotherSamplePhoto;
 import static rococo.utils.DataUtils.getSamplePhoto;
 
 
-@ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiForClientExtension.class
+@ExtendWith({ContextHolderExtension.class,  ApiForClientExtension.class
 })
 public class MuseumApiTest {
     private final MuseumApiStep museumApiStep = new MuseumApiStep();
@@ -61,7 +61,6 @@ public class MuseumApiTest {
         );
     }
 
-    //todo написать тест на гет по апи
     @Test
     @ApiForClientLogin
     @DisplayName("get museum by id and assert it")
@@ -76,7 +75,8 @@ public class MuseumApiTest {
         newMuseumDto.setDescription("sample museum description");
         newMuseumDto.setPhoto(getSamplePhoto());
         newMuseumDto.setTitle("sample title description");
-        CreatedMuseumDto createdMuseumDto =  museumApiStep.createNewMuseum(newMuseumDto);
+        UUID museumId =  museumApiStep.createNewMuseum(newMuseumDto).getId();
+        MuseumDto createdMuseumDto =  museumApiStep.getMuseum(museumId);
 
         Assertions.assertAll("Assert museum created correctly",
                 () -> Assertions.assertEquals(newMuseumDto.getTitle(), createdMuseumDto.getTitle()),

@@ -3,14 +3,15 @@ package rococo.db.repository;
 import java.util.Optional;
 import java.util.UUID;
 
-import rococo.db.model.UserAuthEntity;
+import rococo.db.model.UserEntity;
 
 
 public interface UserRepository {
 
-  UserAuthEntity createInAuth(UserAuthEntity user);
+  UserEntity createInAuth(UserEntity user);
 
-  Optional<UserAuthEntity> findByIdInAuth(UUID id);
+  Optional<UserEntity> findByIdInAuth(UUID id);
+
 
 
   void deleteInAuthById(UUID id);

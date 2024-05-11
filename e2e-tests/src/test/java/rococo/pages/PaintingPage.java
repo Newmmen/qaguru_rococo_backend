@@ -39,8 +39,8 @@ public class PaintingPage extends BasePage<PaintingPage> {
         $("input[name='title']").setValue(paintingDto.getTitle());
         $("textarea[name='description']").setValue(paintingDto.getDescription());
         $("input[name='content']").uploadFromClasspath(paintingDto.getContent());
-        authorSelector.$(byTagAndText("option",paintingDto.getArtist().getName())).click();
-        museumSelector.$(byTagAndText("option",paintingDto.getMuseum().getTitle())).click();
+        $$("select[name='museumId']").first().click();
+        $$("select[name='authorId']").first().click();
         return this;
     }
 
@@ -49,7 +49,7 @@ public class PaintingPage extends BasePage<PaintingPage> {
         $("input[name='title']").setValue(paintingDto.getTitle());
         $("textarea[name='description']").setValue(paintingDto.getDescription());
         $("input[name='content']").uploadFromClasspath(paintingDto.getContent());
-        museumSelector.$(byTagAndText("option",paintingDto.getMuseum().getTitle())).click();
+        $$("select[name='museumId']").first().click();
         return this;
     }
 

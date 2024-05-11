@@ -18,7 +18,7 @@ import rococo.jupiter.extention.ContextHolderExtension;
 import rococo.jupiter.extention.CreateUserExtension;
 
 
-@ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiLoginExtension.class})
+@ExtendWith({ContextHolderExtension.class,  ApiLoginExtension.class})
 public class UserValidationTest {
     private final UserApiStep userApiStep = new UserApiStep();
     private Pageable pageable = new Pageable();

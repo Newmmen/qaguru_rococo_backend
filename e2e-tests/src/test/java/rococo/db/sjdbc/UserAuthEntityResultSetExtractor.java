@@ -4,21 +4,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
-
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
-import rococo.db.model.Authority;
-import rococo.db.model.AuthorityEntity;
-import rococo.db.model.UserAuthEntity;
+import rococo.db.model.UserEntity;
 
 
-public class UserAuthEntityResultSetExtractor implements ResultSetExtractor<UserAuthEntity> {
+public class UserAuthEntityResultSetExtractor implements ResultSetExtractor<UserEntity> {
 
   public static final UserAuthEntityResultSetExtractor instance = new UserAuthEntityResultSetExtractor();
 
   @Override
-  public UserAuthEntity extractData(ResultSet rs) throws SQLException, DataAccessException {
-    UserAuthEntity user = new UserAuthEntity();
+  public UserEntity extractData(ResultSet rs) throws SQLException, DataAccessException {
+    UserEntity user = new UserEntity();
     boolean userProcessed = false;
     while (rs.next()) {
       if (!userProcessed) {
@@ -26,16 +23,8 @@ public class UserAuthEntityResultSetExtractor implements ResultSetExtractor<User
         user.setUsername(rs.getString(2));
         user.setPassword(rs.getString(3));
         user.setEnabled(rs.getBoolean(4));
-        user.setAccountNonExpired(rs.getBoolean(5));
-        user.setAccountNonLocked(rs.getBoolean(6));
-        user.setCredentialsNonExpired(rs.getBoolean(7));
         userProcessed = true;
       }
-
-      AuthorityEntity authority = new AuthorityEntity();
-      authority.setId(rs.getObject(8, UUID.class));
-      authority.setAuthority(Authority.valueOf(rs.getString(10)));
-      user.getAuthorities().add(authority);
     }
     return user;
   }

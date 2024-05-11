@@ -13,7 +13,7 @@ import org.openqa.selenium.Cookie;
 import rococo.api.AuthApiClient;
 import rococo.api.cookie.ThreadSafeCookieManager;
 import rococo.config.Config;
-import rococo.db.model.UserAuthEntity;
+import rococo.db.model.UserEntity;
 import rococo.jupiter.annotation.ApiLogin;
 import rococo.utils.OauthUtils;
 
@@ -41,7 +41,7 @@ public class ApiLoginExtension implements BeforeEachCallback, AfterTestExecution
             if (apiLogin.user().runnable()) {
                 Map createdUser = extensionContext.getStore(CreateUserExtension.DB_CREATE_USER_NAMESPACE)
                         .get(extensionContext.getUniqueId(), Map.class);
-                UserAuthEntity userAuthEntity = ((UserAuthEntity) createdUser.get("auth"));
+                UserEntity userAuthEntity = ((UserEntity) createdUser.get("auth"));
                 userName = userAuthEntity.getUsername();
                 password = userAuthEntity.getPassword();
             } else {
@@ -51,7 +51,7 @@ public class ApiLoginExtension implements BeforeEachCallback, AfterTestExecution
 
             setCodeVerifier(extensionContext, codeVerifier);
             setCodChallenge(extensionContext, codeChallenge);
-            authApiClient.doLogin(extensionContext, userName, password);
+            authApiClient.doLogin(extensionContext, userName, "12345");
 
             Selenide.open(CFG.frontUrl());
             LocalStorage localStorage = Selenide.localStorage();

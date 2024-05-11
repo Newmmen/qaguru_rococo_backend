@@ -3,6 +3,7 @@ package rococo.apisteps;
 import javax.annotation.Nullable;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
@@ -35,6 +36,13 @@ public class ArtistApiStep {
         apiClient.setBearerToken(BearerStorage.getCurrentBearer());
         ArtistControllerApi api = apiClient.createService(ArtistControllerApi.class);
         return api.createArtist(artistDto).execute().body();
+    }
+
+    @Step("get artist")
+    public ArtistDto getArtist(UUID uuid) throws IOException {
+        apiClient.setBearerToken(BearerStorage.getCurrentBearer());
+        ArtistControllerApi api = apiClient.createService(ArtistControllerApi.class);
+        return api.getArtist(uuid).execute().body();
     }
 
     @Step("update artist")

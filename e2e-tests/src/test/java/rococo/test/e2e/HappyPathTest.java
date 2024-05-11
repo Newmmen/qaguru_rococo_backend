@@ -2,6 +2,7 @@ package rococo.test.e2e;
 
 
 import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,6 +11,7 @@ import org.openapitools.client.model.MuseumDto;
 import org.openapitools.client.model.ArtistDto;
 import org.openapitools.client.model.PaintingDto;
 import rococo.jupiter.annotation.ApiLogin;
+import rococo.jupiter.annotation.DbUser;
 import rococo.jupiter.extention.ApiLoginExtension;
 import rococo.jupiter.extention.ContextHolderExtension;
 import rococo.jupiter.extention.CreateUserExtension;
@@ -26,8 +28,16 @@ import static rococo.utils.DataUtils.generateRandomSentence;
 @ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiLoginExtension.class})
 public class HappyPathTest {
 
+
+    @AfterEach
+    void closeWebdriver(){
+        Selenide.closeWebDriver();
+    }
+
+
+
     @Test
-    @ApiLogin
+    @ApiLogin(user = @DbUser())
     @DisplayName("User can successfully create artist, museum and create  painting")
     void createArtistAndMuseumAndPaintingBasedOnThem() {
         MuseumDto museumDto = new MuseumDto();
@@ -71,7 +81,7 @@ public class HappyPathTest {
     }
 
     @Test
-    @ApiLogin
+    @ApiLogin(user = @DbUser())
     @DisplayName("User can add new painting to artist")
     void createNewPaintingInArtist() {
         MuseumDto museumDto = new MuseumDto();
@@ -109,4 +119,6 @@ public class HappyPathTest {
 
         new PaintingPage().checkPaintingIntoArtistPageIsVisible(paintingDto.getTitle());
     }
+
+
 }

@@ -1,23 +1,13 @@
 package rococo.db.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.stream.Stream;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,76 +20,26 @@ import org.hibernate.proxy.HibernateProxy;
 public class UserEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id", nullable = false, columnDefinition = "UUID default gen_random_uuid()")
+  @Column(name = "id", nullable = false)
   private UUID id;
 
   @Column(nullable = false, unique = true)
   private String username;
 
+  @Column()
+  private String lastName;
+
+  @Column()
+  private String firstName;
+
   @Column(nullable = false)
-  @Enumerated(EnumType.STRING)
-  private CurrencyValues currency;
+  private String password;
 
-  @Column()
-  private String firstname;
+  @Column(nullable = false)
+  private Boolean enabled;
 
-  @Column()
-  private String surname;
-
-  @Column(name = "photo", columnDefinition = "bytea")
-  private byte[] photo;
-
-  @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<FriendsEntity> friends = new ArrayList<>();
-
-  @OneToMany(mappedBy = "friend", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<FriendsEntity> invites = new ArrayList<>();
-
-  public void addFriends(boolean pending, UserEntity... friends) {
-    List<FriendsEntity> friendsEntities = Stream.of(friends)
-        .map(f -> {
-          FriendsEntity fe = new FriendsEntity();
-          fe.setUser(this);
-          fe.setFriend(f);
-          fe.setPending(pending);
-          return fe;
-        }).toList();
-    this.friends.addAll(friendsEntities);
-  }
-
-  public void addInvitations(UserEntity... invitations) {
-    List<FriendsEntity> invitationsEntities = Stream.of(invitations)
-        .map(i -> {
-          FriendsEntity fe = new FriendsEntity();
-          fe.setUser(i);
-          fe.setFriend(this);
-          fe.setPending(true);
-          return fe;
-        }).toList();
-    this.invites.addAll(invitationsEntities);
-  }
-
-  public void removeFriends(UserEntity... friends) {
-    List<UUID> idsToBeRemoved = Arrays.stream(friends).map(UserEntity::getId).toList();
-    for (Iterator<FriendsEntity> i = getFriends().iterator(); i.hasNext(); ) {
-      FriendsEntity friendsEntity = i.next();
-      if (idsToBeRemoved.contains(friendsEntity.getFriend().getId())) {
-        friendsEntity.setFriend(null);
-        i.remove();
-      }
-    }
-  }
-
-  public void removeInvites(UserEntity... invitations) {
-    List<UUID> idsToBeRemoved = Arrays.stream(invitations).map(UserEntity::getId).toList();
-    for (Iterator<FriendsEntity> i = getInvites().iterator(); i.hasNext(); ) {
-      FriendsEntity friendsEntity = i.next();
-      if (idsToBeRemoved.contains(friendsEntity.getUser().getId())) {
-        friendsEntity.setUser(null);
-        i.remove();
-      }
-    }
-  }
+  @Column(name = "avatar", columnDefinition = "MEDIUMTEXT")
+  private String avatar;
 
   @Override
   public final boolean equals(Object o) {
