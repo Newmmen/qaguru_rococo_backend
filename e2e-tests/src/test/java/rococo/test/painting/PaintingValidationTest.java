@@ -18,8 +18,7 @@ import rococo.jupiter.extention.ApiLoginExtension;
 import rococo.jupiter.extention.ContextHolderExtension;
 import rococo.jupiter.extention.CreateUserExtension;
 
-
-@ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiLoginExtension.class})
+@DisplayName("painting api validation tests")
 public class PaintingValidationTest {
     private final PaintingApiStep paintingApiStep = new PaintingApiStep();
     private Pageable pageable = new Pageable();
