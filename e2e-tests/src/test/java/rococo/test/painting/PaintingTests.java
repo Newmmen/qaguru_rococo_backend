@@ -25,8 +25,7 @@ import rococo.pages.LoginPage;
 import rococo.pages.MainPage;
 
 @Tag("tests")
-@ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiLoginExtension.class,
-        ApiForClientExtension.class})
+@ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiLoginExtension.class})
 public class PaintingTests {
     LoginPage loginPage = new LoginPage();
     MainPage mainPage = new MainPage();

@@ -22,7 +22,6 @@ import rococo.jupiter.extention.CreateUserExtension;
 import rococo.test.BaseWebTest;
 
 //todo добавить тестам дисплей нейм
-@ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiLoginExtension.class})
 public class ArtistValidationTest {
     private final ArtistApiStep artistStep = new ArtistApiStep();
     private Pageable pageable = new Pageable();

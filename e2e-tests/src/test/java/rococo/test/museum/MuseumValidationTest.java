@@ -29,8 +29,6 @@ import rococo.jupiter.extention.ContextHolderExtension;
 import rococo.jupiter.extention.CreateUserExtension;
 
 @Tag("tests")
-@ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiForClientExtension.class
-})
 public class MuseumValidationTest {
     private final MuseumApiStep museumApiStep = new MuseumApiStep();
     private Pageable pageable = new Pageable();
@@ -48,17 +46,6 @@ public class MuseumValidationTest {
     void checkUnauthorizedUserCanGetAllMuseums() throws IOException {
         int code = museumApiStep.getAllMuseumResponseCode(pageable, null);
         Assertions.assertEquals(HTTP_SUCCESSFUL, code);
-    }
-
-    @Test
-    @ApiForClientLogin
-    @DisplayName("check new user creation")
-    void checkNewMuseumCreation() throws IOException {
-        NewMuseumDto newMuseumDto = new NewMuseumDto();
-
-
-        CountryDto countryDto = museumApiStep.getCountryByName(pageable, "Канада"); ////////
-
     }
 
     @Test
