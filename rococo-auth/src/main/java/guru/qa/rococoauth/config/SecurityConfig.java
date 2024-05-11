@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -68,7 +67,8 @@ public class SecurityConfig {
                         .loginPage("/login")
                         .permitAll())
                 .logout(logout -> logout
-                        .logoutRequestMatcher(antMatcher("/logout")) // https://github.com/spring-projects/spring-authorization-server/issues/266
+                        .logoutRequestMatcher(antMatcher(
+                                "/logout")) // https://github.com/spring-projects/spring-authorization-server/issues/266
                         .deleteCookies("JSESSIONID", "XSRF-TOKEN")
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)

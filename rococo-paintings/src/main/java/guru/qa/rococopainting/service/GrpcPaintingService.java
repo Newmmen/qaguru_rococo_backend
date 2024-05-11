@@ -45,7 +45,6 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
     private final MuseumRepository museumRepository;
     private final CountryRepository countryRepository;
 
-
     @Autowired
     public GrpcPaintingService(PaintingRepository paintingRepository,
                                ArtistRepository artistRepository,
@@ -56,7 +55,6 @@ public class GrpcPaintingService extends RococoPaintingServiceGrpc.RococoPaintin
         this.museumRepository = museumRepository;
         this.countryRepository = countryRepository;
     }
-
 
     @Override
     public void getAllPainting(AllPaintingRequest request,

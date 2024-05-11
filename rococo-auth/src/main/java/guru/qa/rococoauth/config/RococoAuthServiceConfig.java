@@ -8,7 +8,6 @@ import java.util.UUID;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
-
 import guru.qa.rococoauth.config.keys.KeyManager;
 import guru.qa.rococoauth.service.SpecificRequestDumperFilter;
 import guru.qa.rococoauth.service.cors.CorsCustomizer;

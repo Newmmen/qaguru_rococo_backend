@@ -1,11 +1,9 @@
 package guru.qa.rococoauth.domain;
 
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 import guru.qa.rococoauth.data.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class RococoUserPrincipal implements UserDetails {

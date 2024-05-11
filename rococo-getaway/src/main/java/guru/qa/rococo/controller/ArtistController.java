@@ -26,12 +26,12 @@ public class ArtistController {
     public ArtistGrpcClient artistClient;
 
     @Autowired
-    public ArtistController(ArtistGrpcClient artistClient){
+    public ArtistController(ArtistGrpcClient artistClient) {
         this.artistClient = artistClient;
     }
 
     @GetMapping("/artist/{id}")
-    public ArtistDto getArtist(@PathVariable("id")UUID id) {
+    public ArtistDto getArtist(@PathVariable("id") UUID id) {
         return artistClient.getArtist(id);
     }
 
@@ -48,7 +48,7 @@ public class ArtistController {
     @GetMapping("/artist")
     @PageableAsQueryParam
     public Page<ArtistDto> getAllArtists(@RequestParam(required = false, defaultValue = "") String name,
-                                  @PageableDefault Pageable pageable) {
+                                         @PageableDefault Pageable pageable) {
         return artistClient.getAllArtist(name, pageable);
     }
 

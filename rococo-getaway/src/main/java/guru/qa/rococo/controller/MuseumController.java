@@ -26,14 +26,14 @@ public class MuseumController {
     public final PaintingMuseumGrpcClient museumClient;
 
     @Autowired
-    public MuseumController(PaintingMuseumGrpcClient museumClient){
+    public MuseumController(PaintingMuseumGrpcClient museumClient) {
         this.museumClient = museumClient;
     }
 
 
     @GetMapping("/museum")
     public Page<MuseumDto> getAllMuseums(@RequestParam(required = false, defaultValue = "") String title,
-                                  @PageableDefault Pageable pageable) {
+                                         @PageableDefault Pageable pageable) {
         return museumClient.getAllMuseums(title, pageable);
     }
 

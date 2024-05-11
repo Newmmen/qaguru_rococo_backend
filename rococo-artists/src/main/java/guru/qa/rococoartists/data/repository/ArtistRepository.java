@@ -15,7 +15,7 @@ public interface ArtistRepository extends JpaRepository<ArtistEntity, UUID> {
     @Nonnull
     @Query("select art from ArtistEntity art where name like :name")
     Page<ArtistEntity> findAllByNameContainsIgnoreCase(
-            @Nonnull @Param("name")String name,
+            @Nonnull @Param("name") String name,
             @Nonnull Pageable pageable
     );
 }
