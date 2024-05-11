@@ -62,9 +62,7 @@ public class CreateUserExtension implements BeforeEachCallback, AfterTestExecuti
       Map<String, Object> createdUser = Map.of(
           "auth", userAuth
       );
-
       userRepository.createInAuth(userAuth);
-
       extensionContext.getStore(DB_CREATE_USER_NAMESPACE).put(extensionContext.getUniqueId(), createdUser);
     }
   }
