@@ -21,7 +21,6 @@ subprojects {
         glassfishJaxbVersion = '4.0.1'
         wsdl4jVersion = '1.6.3'
 
-        //todo убрать все упоминания про докер
         dockerImage = System.getProperty("os.arch") == "aarch64" || System.getProperty("os.arch") == "arm64"
                 ? "arm64v8/eclipse-temurin:19-jre"
                 : "eclipse-temurin:19-jre"

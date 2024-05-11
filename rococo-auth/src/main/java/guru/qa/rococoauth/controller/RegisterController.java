@@ -19,7 +19,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class RegisterController {
@@ -30,7 +29,8 @@ public class RegisterController {
     private static final String MODEL_USERNAME_ATTR = "username";
     private static final String MODEL_REG_FORM_ATTR = "registrationModel";
     private static final String MODEL_FRONT_URI_ATTR = "frontUri";
-    private static final String REG_MODEL_ERROR_BEAN_NAME = "org.springframework.validation.BindingResult.registrationModel";
+    private static final String REG_MODEL_ERROR_BEAN_NAME =
+            "org.springframework.validation.BindingResult.registrationModel";
 
     private final UserService userService;
     private final String nifflerFrontUri;
@@ -83,7 +83,8 @@ public class RegisterController {
                                              @Nonnull Model model,
                                              @Nonnull String fieldName,
                                              @Nonnull String error) {
-        BeanPropertyBindingResult errorResult = (BeanPropertyBindingResult) model.getAttribute(REG_MODEL_ERROR_BEAN_NAME);
+        BeanPropertyBindingResult errorResult =
+                (BeanPropertyBindingResult) model.getAttribute(REG_MODEL_ERROR_BEAN_NAME);
         if (errorResult == null) {
             errorResult = new BeanPropertyBindingResult(registrationModel, "registrationModel");
         }

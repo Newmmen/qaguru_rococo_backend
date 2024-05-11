@@ -21,7 +21,6 @@ import guru.qa.grpc.rococo.grpc.NewPainting;
 import guru.qa.grpc.rococo.grpc.Painting;
 import guru.qa.grpc.rococo.grpc.PaintingIdRequest;
 import guru.qa.grpc.rococo.grpc.RococoPaintingServiceGrpc;
-import guru.qa.rococo.model.ArtistDto;
 import guru.qa.rococo.model.CountryDto;
 import guru.qa.rococo.model.CreatedMuseumDto;
 import guru.qa.rococo.model.CreatedPaintingDto;
@@ -89,12 +88,13 @@ public class PaintingMuseumGrpcClient {
         try {
             CreatedPainting painting =
                     rococoPaintingServiceBlockingStub.createPainting(NewPainting.newBuilder()
-                                    .setArtist(ArtistIdRequest.newBuilder().setId(String.valueOf(newPaintingDto.artist().id())))
-                                    .setContent(newPaintingDto.content())
-                                    .setDescription(newPaintingDto.description())
-                                    .setMuseum(MuseumIdRequest.newBuilder().setId(String.valueOf(newPaintingDto.museum().id())).build())
-                                    .setTitle(newPaintingDto.title())
-                                    .build());
+                            .setArtist(ArtistIdRequest.newBuilder().setId(String.valueOf(newPaintingDto.artist().id())))
+                            .setContent(newPaintingDto.content())
+                            .setDescription(newPaintingDto.description())
+                            .setMuseum(MuseumIdRequest.newBuilder().setId(String.valueOf(newPaintingDto.museum().id()))
+                                    .build())
+                            .setTitle(newPaintingDto.title())
+                            .build());
 
             return CreatedPaintingDto.fromGrpcMessage(painting);
         } catch (StatusRuntimeException e) {
@@ -109,13 +109,13 @@ public class PaintingMuseumGrpcClient {
         try {
             Painting painting =
                     rococoPaintingServiceBlockingStub.updatePainting(Painting.newBuilder()
-                                    .setId(paintingDto.id().toString())
-                                    .setTitle(paintingDto.title())
-                                    .setDescription(paintingDto.description())
-                                    .setContent(paintingDto.content())
-                                    .setArtist(Artist.newBuilder().setId(paintingDto.artist().id().toString()).build())
-                                    .setMuseum(Museum.newBuilder().setId(paintingDto.museum().id().toString()).build())
-                                    .build());
+                            .setId(paintingDto.id().toString())
+                            .setTitle(paintingDto.title())
+                            .setDescription(paintingDto.description())
+                            .setContent(paintingDto.content())
+                            .setArtist(Artist.newBuilder().setId(paintingDto.artist().id().toString()).build())
+                            .setMuseum(Museum.newBuilder().setId(paintingDto.museum().id().toString()).build())
+                            .build());
 
             return PaintingDto.fromGrpcMessage(painting);
         } catch (StatusRuntimeException e) {
@@ -129,14 +129,14 @@ public class PaintingMuseumGrpcClient {
         try {
             CreatedMuseum createdMuseum =
                     rococoPaintingServiceBlockingStub.createMuseum(NewMuseum.newBuilder()
-                                    .setDescription(newMuseumDto.description())
-                                    .setGeo(GeoIdRequest.newBuilder()
-                                            .setCity(newMuseumDto.geo().city())
-                                            .setCountry(CountryIdRequest.newBuilder()
-                                                    .setId(newMuseumDto.geo().country().id().toString()).build()))
-                                    .setPhoto(newMuseumDto.photo())
-                                    .setTitle(newMuseumDto.title())
-                                    .build());
+                            .setDescription(newMuseumDto.description())
+                            .setGeo(GeoIdRequest.newBuilder()
+                                    .setCity(newMuseumDto.geo().city())
+                                    .setCountry(CountryIdRequest.newBuilder()
+                                            .setId(newMuseumDto.geo().country().id().toString()).build()))
+                            .setPhoto(newMuseumDto.photo())
+                            .setTitle(newMuseumDto.title())
+                            .build());
 
             return CreatedMuseumDto.fromGrpcMessage(createdMuseum);
         } catch (StatusRuntimeException e) {
@@ -150,14 +150,14 @@ public class PaintingMuseumGrpcClient {
         try {
             Museum museum =
                     rococoPaintingServiceBlockingStub.updateMuseum(Museum.newBuilder()
-                                    .setId(museumDto.id().toString())
-                                    .setDescription(museumDto.description())
-                                    .setCity(museumDto.geo().city())
-                                    .setCountry(Country.newBuilder()
-                                                    .setId(museumDto.geo().country().id().toString()))
-                                    .setPhoto(museumDto.photo())
-                                    .setTitle(museumDto.title())
-                                    .build());
+                            .setId(museumDto.id().toString())
+                            .setDescription(museumDto.description())
+                            .setCity(museumDto.geo().city())
+                            .setCountry(Country.newBuilder()
+                                    .setId(museumDto.geo().country().id().toString()))
+                            .setPhoto(museumDto.photo())
+                            .setTitle(museumDto.title())
+                            .build());
 
             return MuseumDto.fromGrpcMessage(museum);
         } catch (StatusRuntimeException e) {

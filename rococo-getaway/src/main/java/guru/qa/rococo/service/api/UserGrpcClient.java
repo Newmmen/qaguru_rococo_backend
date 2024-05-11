@@ -1,31 +1,19 @@
 package guru.qa.rococo.service.api;
 
-import java.util.List;
-import java.util.UUID;
-
-import guru.qa.grpc.rococo.grpc.AllArtistRequest;
-import guru.qa.grpc.rococo.grpc.Artist;
-import guru.qa.grpc.rococo.grpc.ArtistIdRequest;
-import guru.qa.grpc.rococo.grpc.RococoArtistServiceGrpc;
 import guru.qa.grpc.rococo.grpc.RococoUserServiceGrpc;
 import guru.qa.grpc.rococo.grpc.User;
 import guru.qa.grpc.rococo.grpc.UserIdRequest;
-import guru.qa.rococo.model.ArtistDto;
 import guru.qa.rococo.model.UserDto;
 import io.grpc.StatusRuntimeException;
 import jakarta.annotation.Nonnull;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
 import static com.google.common.base.Strings.nullToEmpty;
-import static guru.qa.rococo.model.ArtistDto.fromGrpcMessage;
 
 @Component
 public class UserGrpcClient {
