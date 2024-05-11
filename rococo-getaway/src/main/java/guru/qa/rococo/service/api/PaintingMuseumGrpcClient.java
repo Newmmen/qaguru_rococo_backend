@@ -85,7 +85,6 @@ public class PaintingMuseumGrpcClient {
     }
 
     public @Nonnull
-    //todo museum id может быть нал с фронта
     CreatedPaintingDto createPainting(NewPaintingDto newPaintingDto) {
         try {
             CreatedPainting painting =

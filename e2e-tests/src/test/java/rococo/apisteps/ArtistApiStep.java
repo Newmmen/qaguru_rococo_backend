@@ -1,21 +1,17 @@
 package rococo.apisteps;
 
 import javax.annotation.Nullable;
-
 import java.io.IOException;
 import java.util.UUID;
 
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.openapitools.client.api.ArtistControllerApi;
-import org.openapitools.client.model.Pageable;
-import org.openapitools.client.model.NewArtistDto;
-import org.openapitools.client.model.ArtistDto;
 import org.openapitools.client.ApiClient;
+import org.openapitools.client.api.ArtistControllerApi;
 import org.openapitools.client.auth.HttpBearerAuth;
-
-import rococo.client.HttpClient;
+import org.openapitools.client.model.ArtistDto;
+import org.openapitools.client.model.NewArtistDto;
+import org.openapitools.client.model.Pageable;
 import rococo.jupiter.extention.BearerStorage;
 
 
@@ -24,7 +20,6 @@ public class ArtistApiStep {
     private final ApiClient apiClient = new ApiClient().addAuthorization("api", httpBearerAuth);
 
     private final ArtistControllerApi artistControllerApi = new ApiClient().createService(ArtistControllerApi.class);
-
 
     @Step("try to get all artist and return response code")
     public int getAllArtistResponseCode(Pageable pageable, @Nullable String name) throws IOException {

@@ -5,18 +5,15 @@ import java.io.IOException;
 import java.util.UUID;
 
 import io.qameta.allure.Step;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
 import org.openapitools.client.ApiClient;
 import org.openapitools.client.api.MuseumControllerApi;
+import org.openapitools.client.auth.HttpBearerAuth;
+import org.openapitools.client.model.CountryDto;
 import org.openapitools.client.model.CreatedMuseumDto;
 import org.openapitools.client.model.MuseumDto;
 import org.openapitools.client.model.NewMuseumDto;
-import org.openapitools.client.model.CountryDto;
 import org.openapitools.client.model.PageCountryDto;
 import org.openapitools.client.model.Pageable;
-import org.openapitools.client.auth.HttpBearerAuth;
-import rococo.api.interceptor.CodeInterceptor;
 import rococo.jupiter.extention.BearerStorage;
 
 
@@ -24,7 +21,6 @@ public class MuseumApiStep {
     private final HttpBearerAuth httpBearerAuth = new HttpBearerAuth("bearer");
     private final MuseumControllerApi museumControllerApi = new ApiClient().createService(MuseumControllerApi.class);
     private final ApiClient apiClient = new ApiClient().addAuthorization("api", httpBearerAuth);
-
 
     @Step("try to get all museums and return response code")
     public int getAllMuseumResponseCode(Pageable pageable, @Nullable String name) throws IOException {
@@ -35,6 +31,7 @@ public class MuseumApiStep {
     public int tryToCreateNewMuseum(NewMuseumDto museumDto) throws IOException {
         return museumControllerApi.createMuseum(museumDto).execute().code();
     }
+
     @Step("create new museum")
     public CreatedMuseumDto createNewMuseum(NewMuseumDto museumDto) throws IOException {
         apiClient.setBearerToken(BearerStorage.getCurrentBearer());
@@ -79,6 +76,6 @@ public class MuseumApiStep {
                 .stream()
                 .filter(countryDto -> countryDto.getName().equals(countryName))
                 .findFirst()
-                .orElseThrow(()-> new RuntimeException("Cannot find country by country name"));
+                .orElseThrow(() -> new RuntimeException("Cannot find country by country name"));
     }
 }

@@ -1,6 +1,5 @@
 package rococo.jupiter.extention;
 
-import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
 
@@ -11,7 +10,6 @@ import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
 import org.junit.jupiter.api.extension.ParameterResolver;
 import org.junit.platform.commons.support.AnnotationSupport;
-
 import rococo.db.model.UserEntity;
 import rococo.db.repository.UserRepository;
 import rococo.db.repository.UserRepositoryHibernate;
@@ -25,7 +23,6 @@ public class CreateUserExtension implements BeforeEachCallback, AfterTestExecuti
       = ExtensionContext.Namespace.create(CreateUserExtension.class);
 
   private static UserRepository userRepository = new UserRepositoryHibernate();
-
 
   @Override
   public void beforeEach(ExtensionContext extensionContext) throws Exception {

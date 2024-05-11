@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openapitools.client.model.NewPaintingDto;
@@ -18,10 +19,11 @@ import rococo.jupiter.extention.ApiLoginExtension;
 import rococo.jupiter.extention.ContextHolderExtension;
 import rococo.jupiter.extention.CreateUserExtension;
 
-@DisplayName("painting api validation tests")
+@Tag("API")
+@DisplayName("Painting API validation tests")
 public class PaintingValidationTest {
     private final PaintingApiStep paintingApiStep = new PaintingApiStep();
-    private Pageable pageable = new Pageable();
+    private final Pageable pageable = new Pageable();
     private final int HTTP_SUCCESSFUL = 200;
     private final int HTTP_UNAUTHORIZED = 401;
 
@@ -49,9 +51,6 @@ public class PaintingValidationTest {
     @DisplayName("Check unauthorized user cannot create new painting")
     void checkUnauthorizedUserCannotCreatePaintings() throws IOException {
         NewPaintingDto paintingDto = new NewPaintingDto();
-        paintingDto.setTitle("sample museum name");
-        paintingDto.setDescription("newartistBio12333");
-        paintingDto.setContent("sample");
 
         int code = paintingApiStep.tryToCreateNewPainting(paintingDto);
         Assertions.assertEquals(HTTP_UNAUTHORIZED, code);
@@ -62,9 +61,6 @@ public class PaintingValidationTest {
     void checkUnauthorizedUserCannotUpdatePaintings() throws IOException {
         PaintingDto paintingDto = new PaintingDto();
         paintingDto.setId(UUID.randomUUID());
-        paintingDto.setTitle("updsteArtist");
-        paintingDto.setDescription("updsteArtist");
-        paintingDto.setContent("sample");
 
         int code = paintingApiStep.tryToUpdatePainting(paintingDto);
         Assertions.assertEquals(HTTP_UNAUTHORIZED, code);

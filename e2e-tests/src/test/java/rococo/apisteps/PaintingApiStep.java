@@ -8,11 +8,11 @@ import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.openapitools.client.ApiClient;
 import org.openapitools.client.api.PaintingControllerApi;
-import org.openapitools.client.model.CreatedPaintingDto;
-import org.openapitools.client.model.PaintingDto;
 import org.openapitools.client.auth.HttpBearerAuth;
+import org.openapitools.client.model.CreatedPaintingDto;
 import org.openapitools.client.model.NewPaintingDto;
 import org.openapitools.client.model.Pageable;
+import org.openapitools.client.model.PaintingDto;
 import rococo.jupiter.extention.BearerStorage;
 
 
@@ -43,13 +43,14 @@ public class PaintingApiStep {
     public int tryToUpdatePainting(PaintingDto paintingDto) throws IOException {
         return paintingControllerApi.updatePainting(paintingDto).execute().code();
     }
+
     @Step("try to get all painting by author")
     public int tryToGetAllPaintingsByAuthor(UUID artistId, Pageable pageable) throws IOException {
         return paintingControllerApi.getByAuthorId(artistId, pageable).execute().code();
     }
 
     @Step("assert created painting dto equals expected")
-    public void assertCreatedPaintingEqualsExpected(CreatedPaintingDto createdPaintingDto, NewPaintingDto expected)  {
+    public void assertCreatedPaintingEqualsExpected(CreatedPaintingDto createdPaintingDto, NewPaintingDto expected) {
 
         Assertions.assertAll("Assert painting created correctly",
                 () -> Assertions.assertEquals(expected.getTitle(), createdPaintingDto.getTitle()),

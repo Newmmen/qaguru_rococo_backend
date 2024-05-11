@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openapitools.client.ApiClient;
@@ -21,23 +22,20 @@ import rococo.jupiter.extention.ContextHolderExtension;
 import rococo.jupiter.extention.CreateUserExtension;
 import rococo.test.BaseWebTest;
 
-//todo добавить тестам дисплей нейм
+@Tag("API")
+@DisplayName("Test artist API controllers validation")
 public class ArtistValidationTest {
     private final ArtistApiStep artistStep = new ArtistApiStep();
-    private Pageable pageable = new Pageable();
     private final int HTTP_SUCCESSFUL = 200;
     private final int HTTP_UNAUTHORIZED = 401;
-
-
-    @BeforeEach
-    void setUp() {
-        pageable.setPage(18);
-        pageable.setSize(0);
-    }
 
     @Test
     @DisplayName("check unauthorized user can get all artist")
     void checkUnauthorizedUserCanGetAllArtist() throws IOException {
+        Pageable pageable = new Pageable();
+        pageable.setPage(18);
+        pageable.setSize(0);
+
         int code = artistStep.getAllArtistResponseCode(pageable, null);
         Assertions.assertEquals(HTTP_SUCCESSFUL, code);
     }
@@ -46,9 +44,6 @@ public class ArtistValidationTest {
     @DisplayName("Check unauthorized user cannot create new artist")
     void checkUnauthorizedUserCannotCreateArtist() throws IOException {
         NewArtistDto artistDto = new NewArtistDto();
-        artistDto.setName("newartist");
-        artistDto.setBiography("newartistBio12333");
-        artistDto.setPhoto("sample");
 
         int code = artistStep.tryToCreateNewArtist(artistDto);
         Assertions.assertEquals(HTTP_UNAUTHORIZED, code);
@@ -59,9 +54,6 @@ public class ArtistValidationTest {
     void checkUnauthorizedUserCannotUpdateArtist() throws IOException {
         ArtistDto artistDto = new ArtistDto();
         artistDto.setId(UUID.randomUUID());
-        artistDto.setName("updsteArtist");
-        artistDto.setBiography("updsteArtist");
-        artistDto.setPhoto("sample");
 
         int code = artistStep.tryToUpdateArtist(artistDto);
         Assertions.assertEquals(HTTP_UNAUTHORIZED, code);

@@ -2,11 +2,10 @@ package rococo.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import org.openapitools.client.model.NewMuseumDto;
-import org.openapitools.client.model.MuseumDto;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openapitools.client.model.MuseumDto;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -18,13 +17,12 @@ public class MuseumPage extends BasePage<MuseumPage> {
     private final SelenideElement museumTab = $("a[href='/museum']");
     private final SelenideElement museumFilterInput = $("input[title='Искать музей...']");
     private final SelenideElement museumInfoHeader = $("header[class='card-header text-center font-bold']");
-    private final SelenideElement museumInfoCountry =  $("div[class='text-center']");
+    private final SelenideElement museumInfoCountry = $("div[class='text-center']");
     private final SelenideElement iconSearch = $("img[alt='Иконка поиска']");
     private final SelenideElement editButton = $("button[data-testid='edit-museum']");
     private final ElementsCollection museumCollection = $$("div[class='w-100']");
 
     public static final String URL = CFG.frontUrl() + "/museum";
-
 
     @Step("fill museum fields with data")
     public MuseumPage fillMuseumFieldsWithData(MuseumDto museumDto, String country) {
@@ -48,8 +46,7 @@ public class MuseumPage extends BasePage<MuseumPage> {
         return this;
     }
 
-
-    @Step("find museum on museum page by UI")
+    @Step("find museum on museum page")
     public MuseumPage findMuseumOnMuseumsPage(String museumTitle) {
         museumTab.click();
         museumFilterInput.setValue(museumTitle);
@@ -79,25 +76,8 @@ public class MuseumPage extends BasePage<MuseumPage> {
     }
 
 
-    @Step("click museum tab")
-    public MuseumPage clickMuseumTab() {
-        museumTab.click();
-
-        return this;
-    }
-
-    @Step("user exit from application")
-    public MuseumPage closeBrowser() {
-        Selenide.closeWebDriver();
-        return this;
-    }
-
     @Override public MuseumPage waitForPageLoaded() {
         createMuseum.shouldBe(Condition.visible);
-        return this;
-    }
-    public MuseumPage waitForEditPageLoaded() {
-        editHeader.shouldBe(Condition.visible);
         return this;
     }
 }

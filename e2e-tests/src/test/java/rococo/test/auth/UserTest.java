@@ -2,6 +2,7 @@ package rococo.test.auth;
 
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import rococo.jupiter.annotation.ApiLogin;
@@ -14,13 +15,14 @@ import rococo.pages.MainPage;
 import static rococo.utils.DataUtils.generateRandomFirstname;
 import static rococo.utils.DataUtils.generateRandomLastname;
 
-@DisplayName("User can create")
+@Tag("UI")
+@DisplayName("UI user tests")
 @ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiLoginExtension.class})
 public class UserTest {
 
     @Test
     @ApiLogin(user = @DbUser())
-    @DisplayName("update user")
+    @DisplayName("update user information")
     void UpdateUser() {
         String firstname = generateRandomFirstname();
         String lastname = generateRandomLastname();

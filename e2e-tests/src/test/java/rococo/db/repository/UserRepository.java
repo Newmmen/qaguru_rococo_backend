@@ -8,12 +8,10 @@ import rococo.db.model.UserEntity;
 
 public interface UserRepository {
 
-  UserEntity createInAuth(UserEntity user);
+    UserEntity createInAuth(UserEntity user);
 
-  Optional<UserEntity> findByIdInAuth(UUID id);
+    Optional<UserEntity> findByIdInAuth(UUID id);
 
-
-
-  void deleteInAuthById(UUID id);
+    void deleteInAuthById(UUID id);
 
 }

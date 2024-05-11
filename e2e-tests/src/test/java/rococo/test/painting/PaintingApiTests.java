@@ -31,20 +31,21 @@ import rococo.jupiter.annotation.ApiLogin;
 import rococo.jupiter.extention.ApiForClientExtension;
 import rococo.jupiter.extention.ContextHolderExtension;
 
+import static rococo.utils.DataUtils.generateRandomArtistName;
 import static rococo.utils.DataUtils.generateRandomMuseumName;
 import static rococo.utils.DataUtils.generateRandomPaintingName;
 import static rococo.utils.DataUtils.generateRandomSentence;
 import static rococo.utils.DataUtils.getSamplePhoto;
 
-@Tag("tests")
+@Tag("API")
+@DisplayName("API apinting tests")
 @ExtendWith({ContextHolderExtension.class,  ApiForClientExtension.class})
 public class PaintingApiTests {
     private final PaintingApiStep paintingApiStep = new PaintingApiStep();
     private final ArtistApiStep artistApiStep = new ArtistApiStep();
     private final MuseumApiStep museumApiStep = new MuseumApiStep();
 
-    private ArtistControllerApi apiClient;
-    private Pageable pageable = new Pageable();
+    private final Pageable pageable = new Pageable();
 
 
     @BeforeEach
@@ -53,7 +54,6 @@ public class PaintingApiTests {
         pageable.setPage(0);
     }
 
-
     @AfterEach
     void closeWebdriver(){
         Selenide.closeWebDriver();
@@ -61,7 +61,7 @@ public class PaintingApiTests {
 
     @Test
     @ApiForClientLogin
-    @DisplayName("create painting by api")
+    @DisplayName("create painting")
     void createPaintingByApi() throws IOException {
         GeolocationDto geolocationDto = new GeolocationDto();
         CountryDto countryDto = museumApiStep.getCountryByName(pageable, "Россия");
@@ -77,9 +77,9 @@ public class PaintingApiTests {
 
         String photo = getSamplePhoto();
         NewArtistDto artistDto = new NewArtistDto();
-        artistDto.setName("ArtistName");
+        artistDto.setName(generateRandomArtistName());
         artistDto.setPhoto(photo);
-        artistDto.setBiography("ArtistBiography");
+        artistDto.setBiography(generateRandomSentence(11));
 
         UUID artistId = artistApiStep.createArtist(artistDto).getId();
 
