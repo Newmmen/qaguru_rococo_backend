@@ -3,7 +3,6 @@ package rococo.pages;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byTagAndText;
 import static com.codeborne.selenide.Selectors.byText;
@@ -14,9 +13,8 @@ public class MainPage extends BasePage<MainPage> {
 
     private final SelenideElement usernameInput = $("input[name='firstname']");
     private final SelenideElement surnameInput = $("input[name='surname']");
-    private final SelenideElement avatarImage =   $(".avatar-initials");
-    private final SelenideElement toastElement =   $(byTagAndText("div","Профиль обновлен"));
-
+    private final SelenideElement avatarImage = $(".avatar-initials");
+    private final SelenideElement toastElement = $(byTagAndText("div", "Профиль обновлен"));
 
 
     @Step("open friends page")
@@ -49,18 +47,6 @@ public class MainPage extends BasePage<MainPage> {
         toastElement.shouldBe(visible);
     }
 
-    @Step("Check friend has income request sign")
-    public MainPage checkRequestSign() {
-        $("a[href='/friends']")
-                .$(".header__sign").shouldBe(visible);
-        return this;
-    }
-
-    @Step("")
-    public MainPage clickEnter() {
-        $(byText("Войти")).click();
-        return this;
-    }
 
     @Override public MainPage waitForPageLoaded() {
         avatarImage.shouldBe(visible);

@@ -36,11 +36,11 @@ public class PaintingEntity implements Serializable {
     private String content;
 
     @ManyToOne
-    @JoinColumn(name = "artist_id") //todo передалать на айди (а не сущность)
+    @JoinColumn(name = "artist_id")
     private ArtistEntity artist;
 
     @ManyToOne
-    @JoinColumn(name = "museum_id") //todo передалать на айди (а не сущность)
+    @JoinColumn(name = "museum_id")
     private MuseumEntity museum;
 
     @Override

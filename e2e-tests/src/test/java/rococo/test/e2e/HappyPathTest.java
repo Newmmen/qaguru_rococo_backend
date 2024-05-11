@@ -4,11 +4,11 @@ package rococo.test.e2e;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.openapitools.client.model.NewMuseumDto;
-import org.openapitools.client.model.MuseumDto;
 import org.openapitools.client.model.ArtistDto;
+import org.openapitools.client.model.MuseumDto;
 import org.openapitools.client.model.PaintingDto;
 import rococo.jupiter.annotation.ApiLogin;
 import rococo.jupiter.annotation.DbUser;
@@ -24,17 +24,15 @@ import static rococo.utils.DataUtils.generateRandomMuseumName;
 import static rococo.utils.DataUtils.generateRandomPaintingName;
 import static rococo.utils.DataUtils.generateRandomSentence;
 
+@Tag("UI")
 @DisplayName("User can successfully create artist, museum and add them to painting")
 @ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiLoginExtension.class})
 public class HappyPathTest {
 
-
     @AfterEach
-    void closeWebdriver(){
+    void closeWebdriver() {
         Selenide.closeWebDriver();
     }
-
-
 
     @Test
     @ApiLogin(user = @DbUser())
@@ -97,7 +95,7 @@ public class HappyPathTest {
         ArtistDto artistDto = new ArtistDto();
         artistDto.setName(generateRandomArtistName());
         artistDto.setPhoto("images/artistPic.png");
-        artistDto.setBiography("12312414141343");
+        artistDto.setBiography(generateRandomSentence(11));
 
         PaintingDto paintingDto = new PaintingDto();
         paintingDto.setMuseum(museumDto);
@@ -112,7 +110,7 @@ public class HappyPathTest {
                 .clickSubmitButton()
                 .waitForPageLoaded()
                 .findArtistOnArtistPage(artistDto.getName())
-                .openArtistInfo(artistDto.getName())
+                .openArtistInfo()
                 .clickAddPaintingIntoArtist()
                 .fillPaintingWithDataIntoArtist(paintingDto)
                 .clickSubmitButton();

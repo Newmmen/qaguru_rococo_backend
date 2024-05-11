@@ -6,9 +6,7 @@ import java.util.Base64;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import rococo.api.interceptor.CodeForApiInterceptor;
-import rococo.api.interceptor.CodeInterceptor;
 import rococo.jupiter.extention.ApiForClientExtension;
-import rococo.jupiter.extention.ApiLoginExtension;
 
 public class AuthApiForClient extends RestClient {
 

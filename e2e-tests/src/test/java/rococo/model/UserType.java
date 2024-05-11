@@ -1,6 +1,6 @@
 package rococo.model;
 
 public enum UserType {
-    DEFAULT, FOR_BLOCK
-
+    DEFAULT,
+    FOR_BLOCK
 }

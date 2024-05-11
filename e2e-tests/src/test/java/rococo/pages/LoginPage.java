@@ -13,11 +13,11 @@ public class LoginPage extends BasePage<LoginPage> {
     public static final String URL = CFG.frontUrl();
 
     private final SelenideElement inputUsername = $("input[name='username']");
-    private final SelenideElement inputPassword =$("input[name='password']");
-    private final SelenideElement inputPasswordSubmit =$("input[name='passwordSubmit']");
-    private final SelenideElement submitButton =$("button[type='submit']");
-    private final SelenideElement formSubmitButton =$("a[class='form__submit']");
-    private final SelenideElement badCredentialLabel =$(byTagAndText("p", "Bad credentials"));
+    private final SelenideElement inputPassword = $("input[name='password']");
+    private final SelenideElement inputPasswordSubmit = $("input[name='passwordSubmit']");
+    private final SelenideElement submitButton = $("button[type='submit']");
+    private final SelenideElement formSubmitButton = $("a[class='form__submit']");
+    private final SelenideElement badCredentialLabel = $(byTagAndText("p", "Bad credentials"));
 
 
     @Step("Do login with data")
@@ -38,6 +38,7 @@ public class LoginPage extends BasePage<LoginPage> {
         $("a[href='/register']").click();
         return this;
     }
+
     @Step("click enter button")
     public LoginPage clickEnterButton() {
         $(byText("Войти")).click();
@@ -56,12 +57,6 @@ public class LoginPage extends BasePage<LoginPage> {
         inputPassword.setValue(password);
         inputPasswordSubmit.setValue(password);
         submitButton.click();
-        return this;
-    }
-
-    @Step("user exit from application")
-    public LoginPage closeBrowser() {
-        Selenide.closeWebDriver();
         return this;
     }
 

@@ -13,9 +13,9 @@ import rococo.jupiter.extention.CreateUserExtension;
 @ExtendWith(CreateUserExtension.class)
 public @interface DbUser {
 
-  boolean runnable() default true;
+    boolean runnable() default true;
 
-  String username() default "";
+    String username() default "";
 
-  String password() default "";
+    String password() default "";
 }

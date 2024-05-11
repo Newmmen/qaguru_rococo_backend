@@ -4,27 +4,19 @@ package rococo.test.auth;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.openapitools.client.model.NewMuseumDto;
-import org.openapitools.client.model.MuseumDto;
-import rococo.jupiter.annotation.ApiLogin;
-import rococo.jupiter.extention.ApiLoginExtension;
-import rococo.jupiter.extention.ContextHolderExtension;
-import rococo.jupiter.extention.CreateUserExtension;
 import rococo.pages.LoginPage;
-import rococo.pages.MuseumPage;
 
-import static rococo.utils.DataUtils.generateRandomMuseumName;
 import static rococo.utils.DataUtils.generateRandomPassword;
-import static rococo.utils.DataUtils.generateRandomSentence;
 import static rococo.utils.DataUtils.generateRandomUsername;
 
-@DisplayName("Authorization tests")
+@Tag("UI")
+@DisplayName("UI Authorization tests")
 public class AuthTest {
 
     @BeforeEach
-    void clean(){
+    void clean() {
         Selenide.closeWebDriver();
     }
 

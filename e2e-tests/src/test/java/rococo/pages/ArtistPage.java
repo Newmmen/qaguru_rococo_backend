@@ -2,10 +2,9 @@ package rococo.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import org.openapitools.client.model.ArtistDto;
 import io.qameta.allure.Step;
+import org.openapitools.client.model.ArtistDto;
 
 import static com.codeborne.selenide.Selectors.byTagAndText;
 import static com.codeborne.selenide.Selectors.byText;
@@ -16,7 +15,6 @@ public class ArtistPage extends BasePage<ArtistPage> {
 
     private final SelenideElement createArtistTab = $(byText("Добавить художника"));
     private final SelenideElement artistTab = $("a[href='/artist']");
-    private final SelenideElement editHeader = $(byText("Редактировать"));
     private final SelenideElement artistFilterInput = $("input[title='Искать художников...']");
     private final SelenideElement artistInfoHeader = $("header[class='card-header text-center font-bold text-2xl']");
     private final SelenideElement artistBiograthy = $("p[class='col-span-2 w-4/5 m-2']");
@@ -38,7 +36,7 @@ public class ArtistPage extends BasePage<ArtistPage> {
     }
 
     @Step("open artist information on artist page")
-    public ArtistPage openArtistInfo(String artistName) {
+    public ArtistPage openArtistInfo() {
         $("[data-testid='avatar'] img").click();
         return this;
     }
@@ -61,7 +59,7 @@ public class ArtistPage extends BasePage<ArtistPage> {
         return this;
     }
 
-    @Step("find artist on artist page by UI")
+    @Step("find artist on artist page")
     public ArtistPage findArtistOnArtistPage(String artistName) {
         artistTab.click();
         artistFilterInput.setValue(artistName);
@@ -70,7 +68,7 @@ public class ArtistPage extends BasePage<ArtistPage> {
         return this;
     }
 
-    @Step("check museum information contains expected fields")
+    @Step("check artist information contains expected fields")
     public ArtistPage checkArtistInfoContainsExpectedFields(ArtistDto artistDto) {
         artistInfoHeader.shouldHave(Condition.text(artistDto.getName()));
         artistBiograthy.shouldHave(Condition.text(artistDto.getBiography()));
@@ -81,20 +79,6 @@ public class ArtistPage extends BasePage<ArtistPage> {
     public PaintingPage clickAddPaintingIntoArtist() {
         addPaintingInArtistButton.click();
         return new PaintingPage();
-    }
-
-
-    @Step("")
-    public ArtistPage clickArtistTab() {
-        artistTab.click();
-
-        return this;
-    }
-
-    @Step("user exit from application")
-    public ArtistPage closeBrowser() {
-        Selenide.closeWebDriver();
-        return this;
     }
 
     @Override public ArtistPage waitForPageLoaded() {

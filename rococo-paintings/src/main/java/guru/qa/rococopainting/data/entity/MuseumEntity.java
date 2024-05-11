@@ -44,7 +44,7 @@ public class MuseumEntity  {
     private String photo;
 
     @ManyToOne
-    @JoinColumn(name = "country_id", referencedColumnName = "id") //todo передалать на айди (а не сущность)
+    @JoinColumn(name = "country_id", referencedColumnName = "id")
     private CountryEntity countryEntity;
 
 

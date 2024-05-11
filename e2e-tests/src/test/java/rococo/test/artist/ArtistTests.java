@@ -1,17 +1,13 @@
 package rococo.test.artist;
 
 
-import java.io.IOException;
-
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openapitools.client.model.ArtistDto;
-import org.openapitools.client.model.Pageable;
 import rococo.jupiter.annotation.ApiLogin;
 import rococo.jupiter.annotation.DbUser;
 import rococo.jupiter.extention.ApiLoginExtension;
@@ -22,33 +18,24 @@ import rococo.pages.ArtistPage;
 import static rococo.utils.DataUtils.generateRandomArtistName;
 import static rococo.utils.DataUtils.generateRandomSentence;
 
-@Tag("tests")
+@Tag("UI")
+@DisplayName("UI tests artist features")
 @ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiLoginExtension.class})
 public class ArtistTests {
-    private Pageable pageable = new Pageable();
-
-
-    @BeforeEach
-    void setUp() {
-        pageable.setSize(10);
-        pageable.setPage(0);
-    }
 
     @AfterEach
-    void closeWebdriver(){
+    void closeWebdriver() {
         Selenide.closeWebDriver();
     }
-
-
 
     @Test
     @ApiLogin(user = @DbUser())
     @DisplayName("check created artist placed on artist tab")
     void checkCreatedArtistInAllArtistList() {
         ArtistDto artistDto = new ArtistDto();
-        artistDto.setName("ssssssssss");
+        artistDto.setName(generateRandomArtistName());
         artistDto.setPhoto("images/artistPic.png");
-        artistDto.setBiography("12312414141343");
+        artistDto.setBiography(generateRandomSentence(11));
 
         Selenide.open(ArtistPage.URL, ArtistPage.class)
                 .waitForPageLoaded()
@@ -64,9 +51,9 @@ public class ArtistTests {
     @DisplayName("check artist can be updated")
     void checkArtistCanBeUpdated() {
         ArtistDto artistDto = new ArtistDto();
-        artistDto.setName("ssssssssss");
+        artistDto.setName(generateRandomArtistName());
         artistDto.setPhoto("images/artistPic.png");
-        artistDto.setBiography("12312414141343");
+        artistDto.setBiography(generateRandomSentence(11));
 
         ArtistDto newArtist = new ArtistDto();
         newArtist.setName(generateRandomArtistName());
@@ -80,7 +67,7 @@ public class ArtistTests {
                 .clickSubmitButton()
                 .waitForPageLoaded()
                 .findArtistOnArtistPage(artistDto.getName())
-                .openArtistInfo(artistDto.getName())
+                .openArtistInfo()
                 .clickOnEditButton()
                 .fillArtistFieldsWithData(newArtist)
                 .clickSubmitButton();
