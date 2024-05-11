@@ -27,6 +27,14 @@ mysql> GRANT ALL PRIVILEGES ON rococo.* TO 'admin'@'localhost';
 
 - Запускается Rococo-backend сервисы стандартно либо через main сервиса, либо через Services (в Idea)
 
+Запускать сервисы:
+```posh
+RococoArtistsApplication
+RococoAuthApplication
+RococoGetawayApplication
+RococoPaintingApplication
+```
+
 ```posh
 Active profile = local
 ```
