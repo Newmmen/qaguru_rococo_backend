@@ -37,16 +37,13 @@ public class ApiLoginExtension implements BeforeEachCallback, AfterTestExecution
             final String codeVerifier = OauthUtils.generateCodeVerifier();
             final String codeChallenge = OauthUtils.generateCodeChallange(codeVerifier);
             String userName;
-            String password;
             if (apiLogin.user().runnable()) {
                 Map createdUser = extensionContext.getStore(CreateUserExtension.DB_CREATE_USER_NAMESPACE)
                         .get(extensionContext.getUniqueId(), Map.class);
                 UserEntity userAuthEntity = ((UserEntity) createdUser.get("auth"));
                 userName = userAuthEntity.getUsername();
-                password = userAuthEntity.getPassword();
             } else {
                 userName = apiLogin.username();
-                password = apiLogin.password();
             }
 
             setCodeVerifier(extensionContext, codeVerifier);

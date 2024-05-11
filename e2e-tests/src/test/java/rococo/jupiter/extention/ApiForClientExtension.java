@@ -24,13 +24,10 @@ public class ApiForClientExtension implements BeforeEachCallback, AfterTestExecu
 
     public static final ExtensionContext.Namespace NAMESPACE =
             ExtensionContext.Namespace.create(ApiForClientExtension.class);
-
-
     private static final Map<UserType, Queue<CredsDto>> USERS = new ConcurrentHashMap<>();
 
     static {
         Queue<CredsDto> defaultUsers = new ConcurrentLinkedQueue<>();
-
         defaultUsers.add(new CredsDto("apilogin", "admin"));
         defaultUsers.add(new CredsDto("apilogin1", "admin"));
         USERS.put(UserType.DEFAULT, defaultUsers);
