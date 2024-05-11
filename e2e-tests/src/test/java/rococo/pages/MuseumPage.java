@@ -13,7 +13,6 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class MuseumPage extends BasePage<MuseumPage> {
-
     private final SelenideElement createMuseum = $(byText("Добавить музей"));
     private final SelenideElement editHeader = $(byText("Редактировать музей"));
     private final SelenideElement museumTab = $("a[href='/museum']");

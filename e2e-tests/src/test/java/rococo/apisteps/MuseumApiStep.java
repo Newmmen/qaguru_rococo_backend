@@ -2,6 +2,7 @@ package rococo.apisteps;
 
 import javax.annotation.Nullable;
 import java.io.IOException;
+import java.util.UUID;
 
 import io.qameta.allure.Step;
 import okhttp3.Interceptor;
@@ -39,6 +40,13 @@ public class MuseumApiStep {
         apiClient.setBearerToken(BearerStorage.getCurrentBearer());
         MuseumControllerApi api = apiClient.createService(MuseumControllerApi.class);
         return api.createMuseum(museumDto).execute().body();
+    }
+
+    @Step("get museum")
+    public MuseumDto getMuseum(UUID uuid) throws IOException {
+        apiClient.setBearerToken(BearerStorage.getCurrentBearer());
+        MuseumControllerApi api = apiClient.createService(MuseumControllerApi.class);
+        return api.getMuseum(uuid).execute().body();
     }
 
     @Step("try to update museum")

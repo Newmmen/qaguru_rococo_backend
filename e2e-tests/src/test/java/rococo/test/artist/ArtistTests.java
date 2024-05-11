@@ -4,6 +4,7 @@ package rococo.test.artist;
 import java.io.IOException;
 
 import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.openapitools.client.model.ArtistDto;
 import org.openapitools.client.model.Pageable;
 import rococo.jupiter.annotation.ApiLogin;
+import rococo.jupiter.annotation.DbUser;
 import rococo.jupiter.extention.ApiLoginExtension;
 import rococo.jupiter.extention.ContextHolderExtension;
 import rococo.jupiter.extention.CreateUserExtension;
@@ -32,9 +34,15 @@ public class ArtistTests {
         pageable.setPage(0);
     }
 
+    @AfterEach
+    void closeWebdriver(){
+        Selenide.closeWebDriver();
+    }
+
+
 
     @Test
-    @ApiLogin
+    @ApiLogin(user = @DbUser())
     @DisplayName("check created artist placed on artist tab")
     void checkCreatedArtistInAllArtistList() {
         ArtistDto artistDto = new ArtistDto();
@@ -52,7 +60,7 @@ public class ArtistTests {
     }
 
     @Test
-    @ApiLogin
+    @ApiLogin(user = @DbUser())
     @DisplayName("check artist can be updated")
     void checkArtistCanBeUpdated() {
         ArtistDto artistDto = new ArtistDto();

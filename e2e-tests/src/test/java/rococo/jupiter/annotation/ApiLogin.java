@@ -9,9 +9,9 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface ApiLogin {
 
-  String username() default "admin";
+  String username() default "";
 
-  String password() default "admin";
+  String password() default "";
 
   DbUser user() default @DbUser(runnable = false);
 }

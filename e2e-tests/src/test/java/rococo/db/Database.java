@@ -6,10 +6,8 @@ import rococo.config.Config;
 
 @RequiredArgsConstructor
 public enum Database {
-  AUTH("jdbc:mysql://%s:%d/rococo"),
-  CURRENCY("jdbc:postgresql://%s:%d/niffler-currency"),
-  SPEND("jdbc:postgresql://%s:%d/niffler-spend"),
-  USERDATA("jdbc:postgresql://%s:%d/niffler-userdata");
+  AUTH("jdbc:mysql://%s:%d/auth"),
+  GETAWAY("jdbc:mysql://%s:%d/rococo");
 
   private final String url;
 

@@ -11,9 +11,7 @@ import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
 import org.junit.jupiter.api.extension.ParameterResolver;
 import org.junit.platform.commons.support.AnnotationSupport;
-import rococo.db.model.Authority;
-import rococo.db.model.AuthorityEntity;
-import rococo.db.model.UserAuthEntity;
+
 import rococo.db.model.UserEntity;
 import rococo.db.repository.UserRepository;
 import rococo.db.repository.UserRepositoryHibernate;
@@ -26,7 +24,7 @@ public class CreateUserExtension implements BeforeEachCallback, AfterTestExecuti
   public static final ExtensionContext.Namespace DB_CREATE_USER_NAMESPACE
       = ExtensionContext.Namespace.create(CreateUserExtension.class);
 
-  //private static UserRepository userRepository = new UserRepositoryHibernate();
+  private static UserRepository userRepository = new UserRepositoryHibernate();
 
 
   @Override
@@ -57,30 +55,15 @@ public class CreateUserExtension implements BeforeEachCallback, AfterTestExecuti
           ? "12345"
           : dbUser.password();
 
-      UserAuthEntity userAuth = new UserAuthEntity();
+      UserEntity userAuth = new UserEntity();
       userAuth.setUsername(username);
       userAuth.setPassword(password);
       userAuth.setEnabled(true);
-      userAuth.setAccountNonExpired(true);
-      userAuth.setAccountNonLocked(true);
-      userAuth.setCredentialsNonExpired(true);//todo УБРАТЬ АВТОРИТИЬ
-      AuthorityEntity[] authorities = Arrays.stream(Authority.values()).map(
-          a -> {
-            AuthorityEntity ae = new AuthorityEntity();
-            ae.setAuthority(a);
-            return ae;
-          }
-      ).toArray(AuthorityEntity[]::new);
-
-      userAuth.addAuthorities(authorities);
-
-      UserEntity user = new UserEntity();
-      user.setUsername(username);
-
       Map<String, Object> createdUser = Map.of(
-          "auth", userAuth,
-          "userdata", user
+          "auth", userAuth
       );
+
+      userRepository.createInAuth(userAuth);
 
       extensionContext.getStore(DB_CREATE_USER_NAMESPACE).put(extensionContext.getUniqueId(), createdUser);
     }
@@ -88,21 +71,21 @@ public class CreateUserExtension implements BeforeEachCallback, AfterTestExecuti
 
   @Override
   public void afterTestExecution(ExtensionContext extensionContext) throws Exception {
-//    Map createdUser = extensionContext.getStore(DB_CREATE_USER_NAMESPACE)
-//        .get(extensionContext.getUniqueId(), Map.class);
-//    userRepository.deleteInAuthById(((UserAuthEntity) createdUser.get("auth")).getId());
+    Map createdUser = extensionContext.getStore(DB_CREATE_USER_NAMESPACE)
+        .get(extensionContext.getUniqueId(), Map.class);
+    userRepository.deleteInAuthById(((UserEntity) createdUser.get("auth")).getId());
   }
 
   @Override
   public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
     return AnnotationSupport.findAnnotation(extensionContext.getRequiredTestMethod(), DbUser.class)
         .isPresent() &&
-        parameterContext.getParameter().getType().isAssignableFrom(UserAuthEntity.class);
+        parameterContext.getParameter().getType().isAssignableFrom(UserEntity.class);
   }
 
   @Override
-  public UserAuthEntity resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
-    return (UserAuthEntity) extensionContext.getStore(DB_CREATE_USER_NAMESPACE).get(extensionContext.getUniqueId(), Map.class)
+  public UserEntity resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
+    return (UserEntity) extensionContext.getStore(DB_CREATE_USER_NAMESPACE).get(extensionContext.getUniqueId(), Map.class)
         .get("auth");
   }
 }

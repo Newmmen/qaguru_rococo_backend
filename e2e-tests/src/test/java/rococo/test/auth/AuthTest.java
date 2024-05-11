@@ -2,6 +2,7 @@ package rococo.test.auth;
 
 
 import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,6 +22,11 @@ import static rococo.utils.DataUtils.generateRandomUsername;
 
 @DisplayName("Authorization tests")
 public class AuthTest {
+
+    @BeforeEach
+    void clean(){
+        Selenide.closeWebDriver();
+    }
 
     @Test
     @DisplayName("successfully login with data")

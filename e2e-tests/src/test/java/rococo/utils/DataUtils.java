@@ -13,6 +13,16 @@ public class DataUtils {
   public static String generateRandomUsername() {
     return faker.name().username();
   }
+
+  @Nonnull
+  public static String generateRandomFirstname() {
+    return faker.name().firstName();
+  }
+
+  @Nonnull
+  public static String generateRandomLastname() {
+    return faker.name().lastName();
+  }
   @Nonnull
   public static String generateRandomMuseumName() {
     return faker.ancient().titan() + "Art Gallery";

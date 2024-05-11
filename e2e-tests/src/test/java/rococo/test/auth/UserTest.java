@@ -7,34 +7,39 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openapitools.client.model.MuseumDto;
 import rococo.jupiter.annotation.ApiLogin;
+import rococo.jupiter.annotation.DbUser;
 import rococo.jupiter.extention.ApiLoginExtension;
 import rococo.jupiter.extention.ContextHolderExtension;
 import rococo.jupiter.extention.CreateUserExtension;
+import rococo.pages.LoginPage;
+import rococo.pages.MainPage;
 import rococo.pages.MuseumPage;
 
+import static rococo.utils.DataUtils.generateRandomFirstname;
+import static rococo.utils.DataUtils.generateRandomLastname;
 import static rococo.utils.DataUtils.generateRandomMuseumName;
+import static rococo.utils.DataUtils.generateRandomPassword;
 import static rococo.utils.DataUtils.generateRandomSentence;
+import static rococo.utils.DataUtils.generateRandomUsername;
 
-@DisplayName("User can create ")
+@DisplayName("User can create")
 @ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiLoginExtension.class})
 public class UserTest {
 
+
     @Test
-    @ApiLogin
-    @DisplayName("")
-    void createMuseum() {
-        MuseumDto museumDto = new MuseumDto();
-        museumDto.setTitle(generateRandomMuseumName());
-        museumDto.setPhoto("images/artistPic.png");
-        museumDto.setDescription(generateRandomSentence(11));
+    @ApiLogin(user = @DbUser())
+    @DisplayName("update user")
+    void UpdateUser() {
+        String firstname = generateRandomFirstname();
+        String lastname = generateRandomLastname();
 
-        Selenide.open(MuseumPage.URL, MuseumPage.class)
+        Selenide.open(MainPage.URL, MainPage.class)
                 .waitForPageLoaded()
-                .clickCreatePaintingButton()
-                .fillMuseumFieldsWithData(museumDto, "Казахстан")
+                .clickAvatarPic()
+                .fillUserWithData(firstname, lastname)
                 .clickSubmitButton()
-                .waitForPageLoaded()
-                .findMuseumOnMuseumsPage(museumDto.getTitle());
+                .clickAvatarPic()
+                .checkModalItemVisible();
     }
-
 }

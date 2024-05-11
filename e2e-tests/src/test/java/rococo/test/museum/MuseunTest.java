@@ -2,9 +2,11 @@ package rococo.test.museum;
 
 
 import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.AfterEach;
 import org.openapitools.client.model.NewMuseumDto;
 import org.openapitools.client.model.MuseumDto;
 import rococo.jupiter.annotation.ApiLogin;
+import rococo.jupiter.annotation.DbUser;
 import rococo.jupiter.extention.ApiLoginExtension;
 import rococo.jupiter.extention.ContextHolderExtension;
 import rococo.jupiter.extention.CreateUserExtension;
@@ -21,8 +23,17 @@ import static rococo.utils.DataUtils.generateRandomSentence;
 @ExtendWith({ContextHolderExtension.class, CreateUserExtension.class, ApiLoginExtension.class})
 public class MuseunTest {
 
+
+
+
+    @AfterEach
+    void closeWebdriver(){
+        Selenide.closeWebDriver();
+    }
+
+
     @Test
-    @ApiLogin
+    @ApiLogin(user = @DbUser())
     @DisplayName("create museum via UI")
     void createMuseum() {
         MuseumDto museumDto = new MuseumDto();
@@ -40,7 +51,7 @@ public class MuseunTest {
     }
 
     @Test
-    @ApiLogin
+    @ApiLogin(user = @DbUser())
     @DisplayName("update created museum via UI")
     void updateMuseum() {
         MuseumDto museumDto = new MuseumDto();
