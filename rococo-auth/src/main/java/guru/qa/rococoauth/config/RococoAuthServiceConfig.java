@@ -47,8 +47,8 @@ import org.springframework.security.web.session.DisableEncodeUrlFilter;
 public class RococoAuthServiceConfig {
 
     private final KeyManager keyManager;
-    private final String nifflerFrontUri;
-    private final String nifflerAuthUri;
+    private final String rococoFrontUri;
+    private final String rococoAuthUri;
     private final String clientId;
     private final String clientSecret;
     private final CorsCustomizer corsCustomizer;
@@ -58,16 +58,16 @@ public class RococoAuthServiceConfig {
 
     @Autowired
     public RococoAuthServiceConfig(KeyManager keyManager,
-                                   @Value("${rococo-front.base-uri}") String nifflerFrontUri,
-                                   @Value("${rococo-auth.base-uri}") String nifflerAuthUri,
+                                   @Value("${rococo-front.base-uri}") String rococoFrontUri,
+                                   @Value("${rococo-auth.base-uri}") String rococoAuthUri,
                                    @Value("${oauth2.client-id}") String clientId,
                                    @Value("${oauth2.client-secret}") String clientSecret,
                                    @Value("${server.port}") String serverPort,
                                    CorsCustomizer corsCustomizer,
                                    Environment environment) {
         this.keyManager = keyManager;
-        this.nifflerFrontUri = nifflerFrontUri;
-        this.nifflerAuthUri = nifflerAuthUri;
+        this.rococoFrontUri = rococoFrontUri;
+        this.rococoAuthUri = rococoAuthUri;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.serverPort = serverPort;
@@ -77,8 +77,7 @@ public class RococoAuthServiceConfig {
 
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
-    public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http,
-                                                                      LoginUrlAuthenticationEntryPoint entryPoint) throws Exception {
+    public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http) throws Exception {
         OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
         if (environment.acceptsProfiles(Profiles.of("local", "staging"))) {
             http.addFilterBefore(new SpecificRequestDumperFilter(
@@ -90,7 +89,8 @@ public class RococoAuthServiceConfig {
         http.getConfigurer(OAuth2AuthorizationServerConfigurer.class)
                 .oidc(Customizer.withDefaults());    // Enable OpenID Connect 1.0
 
-        http.exceptionHandling(exceptions -> exceptions.authenticationEntryPoint(entryPoint))
+        http.exceptionHandling(
+                        exceptions -> exceptions.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login")))
                 .oauth2ResourceServer(rs -> rs.jwt(Customizer.withDefaults()));
 
         corsCustomizer.corsCustomizer(http);
@@ -129,7 +129,7 @@ public class RococoAuthServiceConfig {
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri(nifflerFrontUri + "/authorized")
+                .redirectUri(rococoFrontUri + "/authorized")
                 .scope(OidcScopes.OPENID)
                 .clientSettings(ClientSettings.builder()
                         .requireAuthorizationConsent(true).build())
@@ -150,7 +150,7 @@ public class RococoAuthServiceConfig {
     @Bean
     public AuthorizationServerSettings authorizationServerSettings() {
         return AuthorizationServerSettings.builder()
-                .issuer(nifflerAuthUri)
+                .issuer(rococoAuthUri)
                 .build();
     }
 
