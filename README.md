@@ -14,9 +14,11 @@
 
 Запуск Rococo-backend реализовн локально (без докера)
 
-- Создание БД и пользователей:
+- Создание БД и пользователей для MacOc:
 
 ```posh
+User-MacBook ~ % brew install mysql
+User-MacBook ~ % brew services start mysql
 User-MacBook ~ % mysql -u root -p  
 mysql> CREATE SCHEMA auth;
 mysql> CREATE SCHEMA rococo;
