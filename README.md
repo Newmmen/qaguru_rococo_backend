@@ -12,6 +12,8 @@
 
 Ссылка на фронтенд - https://github.com/Newmmen/rococo_frontend
 
+Запуск фронтенда:
+
 ```posh
 User-MacBook-Pro rococo % cd rococo-client
 User-MacBook-Pro rococo-client % npm i
@@ -21,6 +23,12 @@ User-MacBook-Pro rococo-client % npm run dev
 # Запуск Rococo Back-end
 
 Гайд по запуску бэка:
+Версии: 
+
+```posh
+java - 17.0.9
+gradle - 8.4
+```
 
 Запуск Rococo-backend реализовн локально (без докера)
 
