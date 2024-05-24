@@ -299,6 +299,7 @@ local-storage браузера, где уже используются для UI
 Тесты поделены на UI и API, запускаются общей таской
 
 ```posh
+e2e-tests % gradle clean buildGetawayClient
 e2e-tests % gradle test
 ```
 
