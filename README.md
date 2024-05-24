@@ -8,6 +8,16 @@
 
 <img src="images/scheme_rococo.png" width="600">
 
+# Запуск фронтенда
+
+Ссылка на фронтенд - https://github.com/Newmmen/rococo_frontend
+
+```posh
+User-MacBook-Pro rococo % cd rococo-client
+User-MacBook-Pro rococo-client % npm i
+User-MacBook-Pro rococo-client % npm run dev
+```
+
 # Запуск Rococo Back-end
 
 Гайд по запуску бэка:
