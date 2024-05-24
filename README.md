@@ -49,10 +49,10 @@ mysql> GRANT ALL PRIVILEGES ON rococo.* TO 'admin'@'localhost';
 
 Запускать сервисы:
 ```posh
-RococoArtistsApplication
-RococoAuthApplication
-RococoGetawayApplication
-RococoPaintingApplication
+RococoArtistsApplication port: 8082
+RococoAuthApplication port: 9000
+RococoGetawayApplication port: 8083
+RococoPaintingApplication port: 8080
 ```
 
 ```posh
